@@ -1,0 +1,133 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r3c3",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 10.15,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 776
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 30,
+    "y": 150,
+    "bbox": [
+     0,
+     55,
+     115,
+     280
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 880,
+    "y": 100,
+    "bbox": [
+     765,
+     0,
+     990,
+     240
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 125,
+    "y": 4,
+    "bbox": [
+     92,
+     0,
+     152,
+     10
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS4QoKEAgSGAI4AUIIdGhpbmtpbmcSDG3IUfarPN1sWlB4IRoMdrb9jnCL7j9IzWgvIjDILduBEi7htuaP3JZCrvt2nMwOsyxAnsy2THYd8TVzmQw6l3l7uPytLF3TSRQj+HYq/gkZ5miRv11b63k9PbzN6e6oesJG0tpyvcfLDEyh35w7eF5xg8tW6gznvaJsKDLPyLdDlu04X7rncIDBIZ95FtYI2nSv/tPWyqPYB0ORlgAVY+4PbXAg5lFpeDvru+6SHuCrZDVa+eBXXtFlXHhk/ieQP0fAh7wXcvdF00Gzx7MAI9ZOnLa6kNMpuq+EOtLW/eABPkj1wHRzuxKUtdRihs/xiOU6oTSFIPJKLSoAuPRPN9f8uq36DANEeLPKIQnke77jCbCzIkgOewxTGDDdoPukDIjYtUY8UpMxycCIvdZKYq/u+I93gWXL5dxiL5yZGNI+9zJ44n9RjRM1SIUq8zaXnq/002V4jH9CiJZrMGjKixGovlWLxPGEKWZfNbXkJEPpUv7hJ/oEHozeL6Gwx9u23G5L0KWYzdjnU+ADenRKqA4fPgOmiz4NlQ7ntP95r5+RVVm1d4HihugDRYRecr8d7qsqo8cuJYGTuciqUANWqMcb8VSqQqh+Cg4gDqRDHLUWj2J6ANFvD1zUv66KLbdxnSfPXWP/VIrkP+xBzdVj84TjwvgWBMU4t2yiDlNtYMTCePSeeVsgWCYwZPc8wnpsz1YOsuSlw2Wbg1XCeyNWeOWJveRBDTBkltTosTNPVpn+x/kvAuKt6ZrJTNlcI3GTST3fvsu4EBiZuS2Y/dPUjFZCyCh6I1/j38ukb3+Xu50kvXPHGWwNDGqiZ68eRB28w0RmaW8I0qHOLGHRUipD5xNMYpApNbfVHYaLXPiK6on75cS8y/Zc/fYCb4Q8ykmbNJkXV2Rj1yC2bX7tzlZFlA1DsJUkQUFpIFWPIUXw/xh/zR5/HGANkPV6CavRqebutuyCMmNxbc6FuY8Eqg2N+1CZIagZ66APv2O//VGjyZ/lSCCao/VSH93ZtcQnX9dMyd/mibLfhHzja/H3/PFkBgrT77G7MRqgevl3Lh6k40JwQ18arphoRZySze6DYeTV3GI6X3qOA99Q+ztowC/c4oAXhuw+/72gr9hO7hoadXnmjb50OGeSJNFHTwSIaX6pKBEP0wGY9jA3zSZ301sgudoEL4Iaf4VMGSfJ4McoARGxQt6QuexUNEubGmseR+jpZj3ZHUatTA/YMzxH9XgLRdeihssf8lwV1kwsNovEQC0roG6bCpH1A1FrVmPrWsetAW2oCmjFItXIGWlgbvrHQKiI7k0G8viibCXGBWZ6RQ74uaIymBDZTXdITXuh0JquPBCvmXLwtOszupQcpZv7xBrPaazqi1jh0wWl+S8uqYdrqGDEtPAtUyMx139EtoARlZFyiHCuQuunjSfNjr1Qa5sLx/vLL4akL3gKf0cGzU2RhhdqZ5dKVYD/UdG3c0eP9SQXIV6CpT2H/TUr16SiMI88CrocwJnB3y/AUlpC81oXjFBP1QJstRBPkbJNtmq2KEIqAsw7+C80/94LJ63jGlA2tthnaWYiWTQkBP4PSSC2YnZ6WJkZZn24wiXPd/bxDoqgzoQeYhrQAn3ciovyvLbtm6cIO1gc5mqTw0HUNkAmvsoUUwahh9iYZexJoeni4hNyJTZh3tg9BKPgxGC8MEvsVY7xax8TSgKCRp6BM97U3S2NSDb9eSkkUoxVRC3mb9XPF1JJAMqBgZm3eY8i1inG82aVtlvA12RuYhoCCZIczgj5fFMvoQBZYdV067m/ocLeZekah7BSIRqi+eUYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "citations": null,
+   "text": "I found three water bodies on this tile. All of them are cut off by the tile edge, and none has a name printed next to it.\n\n1. **Top-left:** a dark filled tank with a small hatched section on its upper-right side, cut off by the left edge.\n2. **Top-right:** a larger dark filled tank with hatched sections along its left side, cut off by the top and right edges.\n3. **Top edge, left of centre:** a small hatched strip at about x 92\u2013152 along the top of the tile. It looks like the bottom of a separate tank, but I'm least sure of this one because so little of it shows.",
+   "type": "text"
+  },
+  {
+   "id": "toolu_012VjExqEb3Y2iDoTbD36Af9",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 30,
+      "y": 150,
+      "bbox": [
+       0,
+       55,
+       115,
+       280
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 880,
+      "y": 100,
+      "bbox": [
+       765,
+       0,
+       990,
+       240
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 125,
+      "y": 4,
+      "bbox": [
+       92,
+       0,
+       152,
+       10
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

@@ -1,0 +1,1142 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "front_se",
+ "run": 1,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 31.92,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2023,
+  "output_tokens": 3260
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 990,
+  "image_height": 676,
+  "tanks": [
+   {
+    "x": 120,
+    "y": 100,
+    "bbox": [
+     103,
+     78,
+     135,
+     122
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 405,
+    "y": 117,
+    "bbox": [
+     392,
+     95,
+     418,
+     140
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 518,
+    "y": 82,
+    "bbox": [
+     505,
+     70,
+     530,
+     95
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 492,
+    "y": 145,
+    "bbox": [
+     470,
+     118,
+     515,
+     172
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 205,
+    "y": 187,
+    "bbox": [
+     195,
+     175,
+     215,
+     198
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 262,
+    "y": 190,
+    "bbox": [
+     252,
+     180,
+     272,
+     200
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 612,
+    "y": 222,
+    "bbox": [
+     602,
+     210,
+     625,
+     235
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 272,
+    "y": 275,
+    "bbox": [
+     248,
+     235,
+     295,
+     305
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 88,
+    "y": 290,
+    "bbox": [
+     58,
+     265,
+     115,
+     315
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 415,
+    "y": 360,
+    "bbox": [
+     262,
+     322,
+     448,
+     415
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 798,
+    "y": 285,
+    "bbox": [
+     695,
+     258,
+     815,
+     335
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 178,
+    "y": 372,
+    "bbox": [
+     155,
+     350,
+     200,
+     395
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 975,
+    "y": 365,
+    "bbox": [
+     955,
+     335,
+     990,
+     410
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 765,
+    "y": 147,
+    "bbox": [
+     750,
+     135,
+     780,
+     160
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 800,
+    "y": 206,
+    "bbox": [
+     795,
+     198,
+     808,
+     215
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 450,
+    "y": 456,
+    "bbox": [
+     432,
+     445,
+     465,
+     470
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 487,
+    "y": 437,
+    "bbox": [
+     478,
+     428,
+     497,
+     445
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 228,
+    "y": 450,
+    "bbox": [
+     205,
+     428,
+     265,
+     470
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 410,
+    "y": 486,
+    "bbox": [
+     398,
+     470,
+     425,
+     500
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 95,
+    "y": 520,
+    "bbox": [
+     65,
+     480,
+     125,
+     560
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 5,
+    "y": 550,
+    "bbox": [
+     0,
+     530,
+     15,
+     575
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 385,
+    "y": 542,
+    "bbox": [
+     372,
+     525,
+     398,
+     560
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 520,
+    "y": 578,
+    "bbox": [
+     505,
+     560,
+     535,
+     600
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 670,
+    "y": 505,
+    "bbox": [
+     655,
+     485,
+     690,
+     530
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 641,
+    "y": 542,
+    "bbox": [
+     632,
+     525,
+     650,
+     560
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 556,
+    "y": 434,
+    "bbox": [
+     548,
+     425,
+     565,
+     445
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 657,
+    "y": 381,
+    "bbox": [
+     650,
+     372,
+     665,
+     390
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 580,
+    "y": 630,
+    "bbox": [
+     565,
+     620,
+     600,
+     640
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 690,
+    "y": 636,
+    "bbox": [
+     675,
+     620,
+     705,
+     655
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 720,
+    "y": 582,
+    "bbox": [
+     712,
+     570,
+     730,
+     595
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 767,
+    "y": 607,
+    "bbox": [
+     755,
+     590,
+     780,
+     625
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 865,
+    "y": 630,
+    "bbox": [
+     852,
+     615,
+     880,
+     645
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 910,
+    "y": 647,
+    "bbox": [
+     898,
+     635,
+     925,
+     660
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 975,
+    "y": 645,
+    "bbox": [
+     960,
+     630,
+     990,
+     660
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 350,
+    "y": 582,
+    "bbox": [
+     335,
+     565,
+     365,
+     600
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 366,
+    "y": 650,
+    "bbox": [
+     350,
+     635,
+     380,
+     665
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 215,
+    "y": 650,
+    "bbox": [
+     205,
+     640,
+     228,
+     662
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 445,
+    "y": 632,
+    "bbox": [
+     432,
+     620,
+     460,
+     645
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 878,
+    "y": 545,
+    "bbox": [
+     868,
+     535,
+     890,
+     555
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 718,
+    "y": 10,
+    "bbox": [
+     705,
+     0,
+     730,
+     20
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 230,
+    "y": 7,
+    "bbox": [
+     220,
+     0,
+     240,
+     15
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 640,
+    "y": 97,
+    "bbox": [
+     632,
+     90,
+     650,
+     105
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01Su5cTmp8WhMYokyjmCvSH8",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 990,
+    "image_height": 676,
+    "tanks": [
+     {
+      "x": 120,
+      "y": 100,
+      "bbox": [
+       103,
+       78,
+       135,
+       122
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 405,
+      "y": 117,
+      "bbox": [
+       392,
+       95,
+       418,
+       140
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 518,
+      "y": 82,
+      "bbox": [
+       505,
+       70,
+       530,
+       95
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 492,
+      "y": 145,
+      "bbox": [
+       470,
+       118,
+       515,
+       172
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 205,
+      "y": 187,
+      "bbox": [
+       195,
+       175,
+       215,
+       198
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 262,
+      "y": 190,
+      "bbox": [
+       252,
+       180,
+       272,
+       200
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 612,
+      "y": 222,
+      "bbox": [
+       602,
+       210,
+       625,
+       235
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 272,
+      "y": 275,
+      "bbox": [
+       248,
+       235,
+       295,
+       305
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 88,
+      "y": 290,
+      "bbox": [
+       58,
+       265,
+       115,
+       315
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 415,
+      "y": 360,
+      "bbox": [
+       262,
+       322,
+       448,
+       415
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 798,
+      "y": 285,
+      "bbox": [
+       695,
+       258,
+       815,
+       335
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 178,
+      "y": 372,
+      "bbox": [
+       155,
+       350,
+       200,
+       395
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 975,
+      "y": 365,
+      "bbox": [
+       955,
+       335,
+       990,
+       410
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 765,
+      "y": 147,
+      "bbox": [
+       750,
+       135,
+       780,
+       160
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 800,
+      "y": 206,
+      "bbox": [
+       795,
+       198,
+       808,
+       215
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 450,
+      "y": 456,
+      "bbox": [
+       432,
+       445,
+       465,
+       470
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 487,
+      "y": 437,
+      "bbox": [
+       478,
+       428,
+       497,
+       445
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 228,
+      "y": 450,
+      "bbox": [
+       205,
+       428,
+       265,
+       470
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 410,
+      "y": 486,
+      "bbox": [
+       398,
+       470,
+       425,
+       500
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 95,
+      "y": 520,
+      "bbox": [
+       65,
+       480,
+       125,
+       560
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 5,
+      "y": 550,
+      "bbox": [
+       0,
+       530,
+       15,
+       575
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 385,
+      "y": 542,
+      "bbox": [
+       372,
+       525,
+       398,
+       560
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 520,
+      "y": 578,
+      "bbox": [
+       505,
+       560,
+       535,
+       600
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 670,
+      "y": 505,
+      "bbox": [
+       655,
+       485,
+       690,
+       530
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 641,
+      "y": 542,
+      "bbox": [
+       632,
+       525,
+       650,
+       560
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 556,
+      "y": 434,
+      "bbox": [
+       548,
+       425,
+       565,
+       445
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 657,
+      "y": 381,
+      "bbox": [
+       650,
+       372,
+       665,
+       390
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 580,
+      "y": 630,
+      "bbox": [
+       565,
+       620,
+       600,
+       640
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 690,
+      "y": 636,
+      "bbox": [
+       675,
+       620,
+       705,
+       655
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 720,
+      "y": 582,
+      "bbox": [
+       712,
+       570,
+       730,
+       595
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 767,
+      "y": 607,
+      "bbox": [
+       755,
+       590,
+       780,
+       625
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 865,
+      "y": 630,
+      "bbox": [
+       852,
+       615,
+       880,
+       645
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 910,
+      "y": 647,
+      "bbox": [
+       898,
+       635,
+       925,
+       660
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 975,
+      "y": 645,
+      "bbox": [
+       960,
+       630,
+       990,
+       660
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 350,
+      "y": 582,
+      "bbox": [
+       335,
+       565,
+       365,
+       600
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 366,
+      "y": 650,
+      "bbox": [
+       350,
+       635,
+       380,
+       665
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 215,
+      "y": 650,
+      "bbox": [
+       205,
+       640,
+       228,
+       662
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 445,
+      "y": 632,
+      "bbox": [
+       432,
+       620,
+       460,
+       645
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 878,
+      "y": 545,
+      "bbox": [
+       868,
+       535,
+       890,
+       555
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 718,
+      "y": 10,
+      "bbox": [
+       705,
+       0,
+       730,
+       20
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 230,
+      "y": 7,
+      "bbox": [
+       220,
+       0,
+       240,
+       15
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 640,
+      "y": 97,
+      "bbox": [
+       632,
+       90,
+       650,
+       105
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

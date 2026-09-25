@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r3c1",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 7.62,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 490
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 22,
+    "y": 90,
+    "bbox": [
+     0,
+     36,
+     58,
+     142
+    ],
+    "name_as_printed": "emp\u00e2mbudhi Tank",
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAIS1wkKsQIIEhgCKkDNPylc0jqr+mKwt8CxVeK8fw+tSa1OCPxGUuHOV8yLEJAhn957st8MMWS4BaD2RrNV07oq6jH6N3vLX1KT4KfiMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQwZWU2ZDEwMy1hZmFlLTQyOWEtODA4MC1kYWQ0ZTNiNDc0NDWoAcTI2tUGwgE9CAUQABoPAj1IA083Bsa5BWHeBCatIAEyBBJxzyU6BDgzI4pCBAhibcZKBGSPsEpQAVoE2QXhVmACaAFwANoBYAoWcHJlZml4X2JlZm9yZV9ibG9ja192MRIgFXlc1th7aC/uFXWiDNUSdEEWnFVjrG+aY00metj/Z6siADIgwsATyGqckuIvlm89hhd2j4t6RMkCrcwJe/oeCYr7Th9IAxIM3YKUDNZ893hvKnLMGgy0HxihSGiNf75I9e8iMNP527R37ia1Fnam4cy4Ko3R1K9PBNVQUUuM5gYDBZ35x0sNKxpemJN1qJfcYgr3YirSBk3rVVk23TRV+9XwMGaMaZ2bLYP8SuL/CO+etV+khEMX1dPUlMsTZY17Go+PbFCLbKpl+jJcTfUvIZl+ySDovVqRG+QKPT/gzLbMN8he4NpxQEQANkDSQKwcjI8+ZP2C0UlcHZidLnZIEkKei8c5xsRXz2JHPZ6ruSYr9Axh3YSG9axxyUjPSvtpGFAMULkTBZyGx+uNTftK0YiiV/jGdwi5dEs/VbmfrgdjvD9mlICGd+Zc0mjkQsKo7HZaaCrtEqtAniv1PcQe4i/v5v/zK4PMyR+Q75kbOTrt0xlZyG0alR5Hz4mHCGuWBxi1VVUOfDQqN4i/1AnQ+tc0BqB8KomVwHLclOrvjStN+lC3fMsVjKKHruI6Zq4BwShmwgXaXXvrqMSRA1w/iw53qtinX1VvSS01wQK7FGOos57z9IiIOhWLaZ3i9Q4DqDRY5ZTDxJeJzAE7YJvF9C/I3K2b9++Dy9umnGHz9Rszdlo38w+4aje+bUzyXSjzLsUhAD+LxyDOjXlazv2Mux9Z2GR87heCEXdTW46phG4kE0JlWxCnvrZb5ZX0yuTMDplfZHzHi4BxkqvrUpiwq7enmcdMXx9L53m/auFgzaCt9g4tQezQ6V32hnhQJJHInpNPyzL4+t9gPgYm2XfTw0iiEBMTBRHsvN09d2jMQd8JI4V86qDlyAylT1+Jy3o/kt7dWOvS3hz56uAFWlHZbHzGAA10bgN4sRsrG3v2FJc4MoQ/MC3dlXJQwoNAjXQHlxJ9cBUOKax7xoY95oFEZjorNxA1dORL3vQk1MlGDmKTsf5/PG1eFYt4yYKNK/sigeUisNQXL95R+305MIhANnUbmd5BWeFAbJy4f9lIQoj8PezEjT2V4EiYVf5IKf6sygbdrOOV4NEPF3jB4VixIhelwd5QA50dQw08F2P7LNuIRkBe9H92mgFqZj3/zrUReBcsuAisj6VvDedhAyz9O6RUbplIkW/rMGbBZ61mYpoYDh4O+YuHYebABKwif6pxWNLpraivMZJGieBbTkfzbjpu1TKyOeehGpq2+/pP1UVunWWQCQdgg4MG4zQl3YC2FJ5HwIZiPHj2Qgo5pKPB4YvS+dQfCnsROXek6RvEEABTRk4QupXqNAUYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01Q6zjQz9BmRo5cHnkdudZH3",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 22,
+      "y": 90,
+      "bbox": [
+       0,
+       36,
+       58,
+       142
+      ],
+      "name_as_printed": "emp\u00e2mbudhi Tank",
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

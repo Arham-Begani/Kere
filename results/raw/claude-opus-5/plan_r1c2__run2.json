@@ -1,0 +1,102 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r1c2",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 8.65,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 550
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 830,
+    "y": 660,
+    "bbox": [
+     735,
+     533,
+     923,
+     795
+    ],
+    "name_as_printed": "Hals\u016br Tank",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 240,
+    "y": 470,
+    "bbox": [
+     193,
+     428,
+     300,
+     527
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAISsAkKsQIIEhgCKkDD8s1EOMQR/SwTmH+5zxTl15jqUTfYYLOlhFH76mEF2C0No0juBIm+laRvxf+Cd7MwIw3rS+Qly7BokAMxkkaiMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQwZWU2ZDEwMy1hZmFlLTQyOWEtODA4MC1kYWQ0ZTNiNDc0NDWoAcLH2tUGwgE9CAUQABoPAj1IA083BsENBWHeBCatIAEyBBJxzyU6BDgzI4pCBAhibcZKBGSPsEpQAVoE2QXhVmACaAFwANoBYAoWcHJlZml4X2JlZm9yZV9ibG9ja192MRIgInW0iwLf0jqW9mDzjuBBs+nEYiCWNLIZBgfwELH7nVwiADIgwsATyGqckuIvlm89hhd2j4t6RMkCrcwJe/oeCYr7Th9IAxIMBa0JpY4N1VxliLjcGgxg7NYLAmVmnHxJ85siMK7JjQh9tNQQ1t64Km1wpWCpZTnTXDAKGOnnWEyxdOz7guAqLglcMc9A1GVGNksSSyqrBpl7NeryzK3V8XrH8kNqeccE/+XFnoFQAK/0y4fKgQQCDTTooo++kgcZISuLZ4IyzvQtNQGeSgcRPX8FxlK8VM/Q7h6aEmPZ8qSjbHruw102XWOc4/taj/watDOjxrMYFy2f3o3nCRDmqVr9x52eIXktox1Cr34Jxvk5/PBEBX1m4NoZnKbqzy0zS5jsBXvv3cjqoxMnRXYUJQJGKSBlgPMXf22J2pP773UJPkmXzvgrKIrfh85deSzE0vMRaXtku3MKX9Fts09Ci6vQJux6BtjM5H3AX3OfHYsREHMqhgcJPz+6aCmvXzhiy9YFKyfBnAhodTowP04+1EyeQfw4ZjJgiygQ40zw3kRV99So3TJBXeGAPxguLSEDqzEHdqcdSpASZhvsSwd1lF9mGIACrJvSFhpeBHain9FtksV6X20NhUWvaqfAT9O6YDJuZbKJs8zy6YRuvxr25FhPKQlgzDWHpsVSKYNU0xBTrwZnuqubjDHGitWE/hzDtTruZEMGqn6Q5yNj+6Z3Mc9wYJyJa7JrACVybNtj4Ys6As2BfmLrILGvgAuLb6K1AKPh8OXBEMfXeKNmi7CesJmSBjGVEjAs4htA+bNjbjZLPNR3l3J2MMgbX8qYlVp0Hx3WNkfSYALs/xJnuezQWOGR7XzN4UEW8ukuIbH9aTvqTmoP6bAvLcN7MujgDBnpD91dlBJQDHGk6qP2XIe5YijzdDoX8ZD2fOa6RkYd5CmNj4B8sbF4C5upi3B7NtyhZYJh4ltbDNfGHACA5BFhBigv35Ven3c15wur+wrJjAqNaTrhjAzj1ursykMlGQAx47d1TxYHty0s8XbMVELikRqMXqEfNaAkSI513Bwt+dFgqhs7P/u5LdshaHsm1vmOBmKZmTME1haobfvPvTO24fuL87oXmLYhA6C9u97MkBJTod1FjBmbslS1x3jWJxG5WRNOL7572hnVJDBTnBc6D7uuetSAbOTTIyY+1+rPMFfOwctml70pvq8neqZ41AXa9fF76BjlDQ68ImkQAMDjAu1vxoi9+qDtIo1GRWr4hfbz0FpRMBs5z75ROQEVjd5j2UQYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01ALgqEUzhPVH5J9wXCfFCQT",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 830,
+      "y": 660,
+      "bbox": [
+       735,
+       533,
+       923,
+       795
+      ],
+      "name_as_printed": "Hals\u016br Tank",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 240,
+      "y": 470,
+      "bbox": [
+       193,
+       428,
+       300,
+       527
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

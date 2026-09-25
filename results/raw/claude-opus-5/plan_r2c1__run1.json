@@ -1,0 +1,128 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r2c1",
+ "run": 1,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.07,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 773
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 295,
+    "y": 100,
+    "bbox": [
+     232,
+     0,
+     342,
+     192
+    ],
+    "name_as_printed": "Tank",
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 60,
+    "y": 370,
+    "bbox": [
+     0,
+     286,
+     142,
+     445
+    ],
+    "name_as_printed": "Tank",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 25,
+    "y": 810,
+    "bbox": [
+     0,
+     752,
+     62,
+     878
+    ],
+    "name_as_printed": "emp\u0101mbudhi Tank",
+    "style": "mixed",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01MZb1YgC2DH6cEqyP7yrHp7",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 295,
+      "y": 100,
+      "bbox": [
+       232,
+       0,
+       342,
+       192
+      ],
+      "name_as_printed": "Tank",
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 60,
+      "y": 370,
+      "bbox": [
+       0,
+       286,
+       142,
+       445
+      ],
+      "name_as_printed": "Tank",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 25,
+      "y": 810,
+      "bbox": [
+       0,
+       752,
+       62,
+       878
+      ],
+      "name_as_printed": "emp\u0101mbudhi Tank",
+      "style": "mixed",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

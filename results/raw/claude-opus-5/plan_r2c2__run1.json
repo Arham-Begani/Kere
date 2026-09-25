@@ -1,0 +1,206 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r2c2",
+ "run": 1,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 18.14,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 1158
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 632,
+    "y": 330,
+    "bbox": [
+     594,
+     299,
+     690,
+     362
+    ],
+    "name_as_printed": "Sh\u00fcle Tank",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 315,
+    "y": 522,
+    "bbox": [
+     287,
+     489,
+     349,
+     556
+    ],
+    "name_as_printed": "Mud Tank",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 762,
+    "y": 655,
+    "bbox": [
+     708,
+     620,
+     806,
+     698
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 822,
+    "y": 793,
+    "bbox": [
+     797,
+     763,
+     852,
+     822
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 690,
+    "y": 885,
+    "bbox": [
+     556,
+     784,
+     884,
+     962
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 848,
+    "y": 14,
+    "bbox": [
+     806,
+     0,
+     896,
+     46
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01HLzzTgT7HkCyDv4dPXFWfU",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 632,
+      "y": 330,
+      "bbox": [
+       594,
+       299,
+       690,
+       362
+      ],
+      "name_as_printed": "Sh\u00fcle Tank",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 315,
+      "y": 522,
+      "bbox": [
+       287,
+       489,
+       349,
+       556
+      ],
+      "name_as_printed": "Mud Tank",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 762,
+      "y": 655,
+      "bbox": [
+       708,
+       620,
+       806,
+       698
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 822,
+      "y": 793,
+      "bbox": [
+       797,
+       763,
+       852,
+       822
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 690,
+      "y": 885,
+      "bbox": [
+       556,
+       784,
+       884,
+       962
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 848,
+      "y": 14,
+      "bbox": [
+       806,
+       0,
+       896,
+       46
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

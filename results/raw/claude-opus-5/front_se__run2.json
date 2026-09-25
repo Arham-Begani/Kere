@@ -1,0 +1,726 @@
+{
+ "model": "claude-opus-5",
+ "tile": "front_se",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 44.83,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2021,
+  "output_tokens": 3377
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 990,
+  "image_height": 676,
+  "tanks": [
+   {
+    "x": 214,
+    "y": 78,
+    "bbox": [
+     199,
+     64,
+     232,
+     93
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 394,
+    "y": 92,
+    "bbox": [
+     375,
+     76,
+     417,
+     110
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 407,
+    "y": 134,
+    "bbox": [
+     390,
+     113,
+     426,
+     158
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 478,
+    "y": 141,
+    "bbox": [
+     455,
+     118,
+     503,
+     166
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 513,
+    "y": 122,
+    "bbox": [
+     496,
+     105,
+     535,
+     141
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 275,
+    "y": 266,
+    "bbox": [
+     249,
+     246,
+     302,
+     291
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 86,
+    "y": 285,
+    "bbox": [
+     63,
+     262,
+     113,
+     312
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 152,
+    "y": 339,
+    "bbox": [
+     129,
+     320,
+     180,
+     357
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 320,
+    "y": 378,
+    "bbox": [
+     253,
+     352,
+     420,
+     406
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 244,
+    "y": 457,
+    "bbox": [
+     225,
+     443,
+     268,
+     474
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 112,
+    "y": 492,
+    "bbox": [
+     93,
+     478,
+     132,
+     506
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 74,
+    "y": 552,
+    "bbox": [
+     52,
+     532,
+     100,
+     573
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 8,
+    "y": 520,
+    "bbox": [
+     0,
+     500,
+     22,
+     542
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 318,
+    "y": 583,
+    "bbox": [
+     297,
+     566,
+     345,
+     603
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 520,
+    "y": 568,
+    "bbox": [
+     503,
+     548,
+     538,
+     592
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 594,
+    "y": 503,
+    "bbox": [
+     575,
+     487,
+     615,
+     520
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 690,
+    "y": 632,
+    "bbox": [
+     668,
+     612,
+     712,
+     654
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 869,
+    "y": 634,
+    "bbox": [
+     848,
+     614,
+     890,
+     656
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 934,
+    "y": 601,
+    "bbox": [
+     916,
+     586,
+     953,
+     620
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 770,
+    "y": 288,
+    "bbox": [
+     722,
+     262,
+     832,
+     315
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 963,
+    "y": 297,
+    "bbox": [
+     940,
+     276,
+     990,
+     318
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 806,
+    "y": 342,
+    "bbox": [
+     785,
+     326,
+     830,
+     360
+    ],
+    "name_as_printed": "Vart\u016br",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 663,
+    "y": 253,
+    "bbox": [
+     645,
+     240,
+     684,
+     268
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 928,
+    "y": 519,
+    "bbox": [
+     906,
+     502,
+     950,
+     537
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 466,
+    "y": 296,
+    "bbox": [
+     450,
+     283,
+     484,
+     310
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 530,
+    "y": 470,
+    "bbox": [
+     520,
+     462,
+     540,
+     480
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01MZtYqejTbTC2WP1Rg7woKr",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 990,
+    "image_height": 676,
+    "tanks": [
+     {
+      "x": 214,
+      "y": 78,
+      "bbox": [
+       199,
+       64,
+       232,
+       93
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 394,
+      "y": 92,
+      "bbox": [
+       375,
+       76,
+       417,
+       110
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 407,
+      "y": 134,
+      "bbox": [
+       390,
+       113,
+       426,
+       158
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 478,
+      "y": 141,
+      "bbox": [
+       455,
+       118,
+       503,
+       166
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 513,
+      "y": 122,
+      "bbox": [
+       496,
+       105,
+       535,
+       141
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 275,
+      "y": 266,
+      "bbox": [
+       249,
+       246,
+       302,
+       291
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 86,
+      "y": 285,
+      "bbox": [
+       63,
+       262,
+       113,
+       312
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 152,
+      "y": 339,
+      "bbox": [
+       129,
+       320,
+       180,
+       357
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 320,
+      "y": 378,
+      "bbox": [
+       253,
+       352,
+       420,
+       406
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 244,
+      "y": 457,
+      "bbox": [
+       225,
+       443,
+       268,
+       474
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 112,
+      "y": 492,
+      "bbox": [
+       93,
+       478,
+       132,
+       506
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 74,
+      "y": 552,
+      "bbox": [
+       52,
+       532,
+       100,
+       573
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 8,
+      "y": 520,
+      "bbox": [
+       0,
+       500,
+       22,
+       542
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 318,
+      "y": 583,
+      "bbox": [
+       297,
+       566,
+       345,
+       603
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 520,
+      "y": 568,
+      "bbox": [
+       503,
+       548,
+       538,
+       592
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 594,
+      "y": 503,
+      "bbox": [
+       575,
+       487,
+       615,
+       520
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 690,
+      "y": 632,
+      "bbox": [
+       668,
+       612,
+       712,
+       654
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 869,
+      "y": 634,
+      "bbox": [
+       848,
+       614,
+       890,
+       656
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 934,
+      "y": 601,
+      "bbox": [
+       916,
+       586,
+       953,
+       620
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 770,
+      "y": 288,
+      "bbox": [
+       722,
+       262,
+       832,
+       315
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 963,
+      "y": 297,
+      "bbox": [
+       940,
+       276,
+       990,
+       318
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 806,
+      "y": 342,
+      "bbox": [
+       785,
+       326,
+       830,
+       360
+      ],
+      "name_as_printed": "Vart\u016br",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 663,
+      "y": 253,
+      "bbox": [
+       645,
+       240,
+       684,
+       268
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 928,
+      "y": 519,
+      "bbox": [
+       906,
+       502,
+       950,
+       537
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 466,
+      "y": 296,
+      "bbox": [
+       450,
+       283,
+       484,
+       310
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 530,
+      "y": 470,
+      "bbox": [
+       520,
+       462,
+       540,
+       480
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

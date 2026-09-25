@@ -1,0 +1,102 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r3c2",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 12.08,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 794
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 690,
+    "y": 180,
+    "bbox": [
+     437,
+     0,
+     845,
+     285
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 900,
+    "y": 10,
+    "bbox": [
+     795,
+     0,
+     1000,
+     28
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_017FXNnZdCFftVWf8xaMyYdR",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 690,
+      "y": 180,
+      "bbox": [
+       437,
+       0,
+       845,
+       285
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 900,
+      "y": 10,
+      "bbox": [
+       795,
+       0,
+       1000,
+       28
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

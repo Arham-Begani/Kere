@@ -1,0 +1,154 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r1c1",
+ "run": 1,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 7.77,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 636
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 290,
+    "y": 820,
+    "bbox": [
+     238,
+     735,
+     347,
+     902
+    ],
+    "name_as_printed": "Dharm\u00e2mbudni Tank",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 248,
+    "y": 525,
+    "bbox": [
+     224,
+     474,
+     269,
+     582
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 965,
+    "y": 480,
+    "bbox": [
+     926,
+     440,
+     1000,
+     517
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 350,
+    "y": 48,
+    "bbox": [
+     337,
+     32,
+     363,
+     66
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQShQoKEAgSGAI4AUIIdGhpbmtpbmcSDNVSlQatC2wY0tC0lhoMTygQJ/L2f3u7eILcIjC8MIa7/NJ991tPA/z9++NBcs/Zd3fDV+CEPkXYyRUhdNAtwLhDF9ExrZGExhGB76sqoglHGxXhn21+7s7od2CBEG6MK8iYz8qm4XmeGetDRpzWdYopulUtZknzlPTH926L0GccGtW8IkgoMom1mN9s20nEWLGEIJ/DB9ysXxvATEt0X13aMzT9lkYsQXgxHUtJSVMoE9HpOdm6CYieYQnkrGpyuMQlacnLGAcDjVIxlfrpJeHYIcLzjOwGvutSLhndFvtamXgv8N3kff+qOleMkOV3dxZOPvv3/QkQuJ6SjaYQvCpyjQlyZj/BmhMJ/7OlsrEQxAYzfnIDbrBKSjOLdp6XLwJU2k6eOaGwplzHwNi0nOSfIASN9RnuFcWU3kZqsOrA6nFMOg697BZq/JILZJzkpZ+se8VxKggFYd+tUBCsdEI1SeytI1+wg88mEssCZFy3z8IhtMAUKIbqR0457tWz/OwJTQnplxP8yUVewf0Z+nBJWqJkj66RA2/XnoBqKqyoW94Flbv8xWn1+PB02D7Ny6We5dAP5MtBkf7w1AitZaf+mrjn3jWqEuZxKXVQ9ipL8CTGPD1eLcHBjkoYkpmen1OAbeZeDOkYBlLVF0irS3I2Fulb/M3u2xKag0/L4yQ/5+Wg6UHrbCkC5cNiFs4PHfeFPRDeupvRAcTYD9rFJl6VrfgeNhJGEyCiat8g+IF5tgI/WwKB2w4jyrDorTFDgl0c9CFsXDo+Z9WYdaKi58eF2KKlLMsXoYY0yn1NMG0HTESP8ps4ZEFPW5fsFY4l6yUjcPBmhHw1GOVMUGYhNiSMO4GKR81UCyQ+MLU/RNbAZI4NbAaH0xFBmJnyN1cNp/hKeuJ47sW/pkNU/G4MvrZNax93SPFo955lom470S+lXRG8P8ALqMaKevsNXvH3xwRQ5z4l9HMsdoT8d2X0hfGLVFfxNG1k6ubgWaTkORmX05KADs1qmTgTLj1v4sKvrq5/j4ULnTTy+IX1MUkKp4D/IhM0xAQo39DEgRegx0CNlsu3m3iYv0FFY0hNBQ2CRwklaqpWDncshcREl/5fs/gvJS7YBwad/bYMStpZVU1ItWmSht2EG9vTN0DIotF3WOY6nKWbQxOxcDTw0M7jr3CghnDxhfdYWSuAtqPjGQgiIsWWBj+ZotcoyFvbYB+i+BYCvnC0enGGRYpcx8mgdmuG3fg7R+I8Hj1lqYAiWMorEkUxxVQ/Jm3rMJlOvHnOdq+S7e4/0bFXnmbZ7VANG/62b6RQuKuFWBslvkSKeOEYe2yHJp9nHobT/RoFr7QkJ3GNvuX2shnMlLvZXzs/2/je+AxJvPdgWIsiUM3YlR+ZWjEkGZ7vv6ngZCt+26b/9u7SWr2SOtNlhL8mfpc0xDB2dNeGlc6lCPzJc6gEVy5xdlGQk/Ddk+j9GR7msn+GbP6SndlbMm2MkypX2gwieY9fSDwQgPRjPEKBIuZZLtRxC4eXXgCuvPmaflaODPCA2u/6qQdLL1lX6OePmAu/DNAlil+ZtiBvgP+jzvghju+teQFhmDOKxbJaiPpu98amEYQYeMwP87cDwQh46/GI5tVVALYmzR68x44hGo+PB1Uu2MslCFgA8ezPeYJ7CsHSDk0FPrUeC+YHwQZJqT85ck+CGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01GZDdCJC8wGx84KsMJsyEyU",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 290,
+      "y": 820,
+      "bbox": [
+       238,
+       735,
+       347,
+       902
+      ],
+      "name_as_printed": "Dharm\u00e2mbudni Tank",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 248,
+      "y": 525,
+      "bbox": [
+       224,
+       474,
+       269,
+       582
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 965,
+      "y": 480,
+      "bbox": [
+       926,
+       440,
+       1000,
+       517
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 350,
+      "y": 48,
+      "bbox": [
+       337,
+       32,
+       363,
+       66
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r0c2",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 6.96,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 278
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 65,
+    "y": 200,
+    "bbox": [
+     35,
+     95,
+     112,
+     285
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQSxwYKEAgSGAI4AUIIdGhpbmtpbmcSDL9jmfNTgbujdq6GlxoMR/QHcECT7E8RqylSIjDbE741NxV7lKPH2baBlDAdCY7cWur1O2YZfWFONfuPL9g0UlPuurd8OKOR9s9kUeMq5AVv7V81TUpNJjGzYhskyQym/DZbWzdXH5wDw09JZ3sOygd5VWXQ8t4WKGKtdos2BUzc9XdfCYkuFAUSouhnJ8rN2Xn4jbKUOYpppRlhU1ca2HvcOa3X3rFDoCkD4y7OcjuK8puty9eVDzOnDZdiItudM4Csjhwz9FBL8wZIfsagfCbHg0tdBr+t+UCNDQUclvlses1LD8uUJ5gKbuc3V5Y7I0/MV7fzMmECVtQFxl5LxUcpZUo3HbcmUuMo+nHxIUBDQyRKvilVhemcRfij9h86iLQt3k8O0pvVaFi2XQUifQjdVX+i3jVFtrWYdtHnwfWRVzinLyWpdxcdLVyt0W82kfbL/5DDQxR1D9ExA/PegkMoyJfjZEPb28LPlEVB+FD56PfF9B1ztKYDNm6YjaKzDxexCDIqSR4ldvVCPg2MuTINjHEo0itjPau+wP3YiT85pY7zOGqEdAUEFm/hR3Fcg69/SPFTpY8youh+kbuXeXLlRiW2pHRV5gZQlnrtmUbDsuqKh0W+7t9AkP+WgIeQfqid0hkTpyUSA96qk0ifR2GcwyaQ1/3Ke1W1Oqb5GAYk/aLdz4KSBTMo3rlqYLEp1foklbXSVEX/DjO2ZxVaXVh2bIofOZ6K6o4kW4e9qYa0WZ05Y3kqhUTnj6RlooTWC6UOOkHF6wBcnW2aWhzKw5pMbDT2nfJ2Urwercn1251H6Jg9/sS3HyzNE1M2ZPYVhhIVMgpdKihBM+2X8lhkHmvaoD4DlJqgrKBPYDcGv1RlX6cuO/RkWmuYyGnszJLbeBSnz6Mxg8mepbhmyAgU8HAAJtrOjAkeyMasdtlon835cyjha+CUeLYIgXdN1ElDwRJuQ3hUbNkuA7J0cLJB4eLxzJjEWlpkxHyN/W+INAO4l74KU0TV0r2p64+g8mVewgJkU8AC016Z5nlQsnA2zn2g/k/vevNnjIKienC6xQGcH4t8W/S929n5iMBZjiZ2aSOHrRgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01Hy774MfznhLkGPFD3EwbNb",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 65,
+      "y": 200,
+      "bbox": [
+       35,
+       95,
+       112,
+       285
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

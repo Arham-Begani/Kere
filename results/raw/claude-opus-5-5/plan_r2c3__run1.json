@@ -1,0 +1,180 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r2c3",
+ "run": 1,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 7.48,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 710
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 120,
+    "y": 30,
+    "bbox": [
+     80,
+     0,
+     172,
+     95
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": true
+   },
+   {
+    "x": 830,
+    "y": 410,
+    "bbox": [
+     742,
+     363,
+     886,
+     457
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 870,
+    "y": 820,
+    "bbox": [
+     762,
+     632,
+     986,
+     965
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 35,
+    "y": 655,
+    "bbox": [
+     0,
+     628,
+     74,
+     700
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 35,
+    "y": 870,
+    "bbox": [
+     0,
+     775,
+     115,
+     995
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS3AoKEAgSGAI4AUIIdGhpbmtpbmcSDCeK3DSTQBmFaMkZrxoMv32fJAZBTiWiAGrQIjC0x8YoehsWM8Gu2hyhk6tzlfQR2KJ9BjuqidgpRlgGM0GHSBm5oWZ1poreK3GXcrkq+QlaNq08KBnDec5cVabxp1x17XfZFhX2sxIQG6rQaNYp4cbmcdPTxbbVkGmGen+XVh/UhPzGILT3djp9sVEenonvtiyUce6M774xrg9Sg7YXAqLbLg7whFr2X8G+KIW6dwBTFN4s+35KBKQ21pYEgX7JxddKoo7jMHsPUJSOtL31q0SvwI6NPaJjt8dGO+MHFb2fvkKwLvl1m5rHWtnfa9SkIvl69Jc60/QvJGVbQ1fJfTrpI+OrnWWE9N7uXdhkwi67hXMuLlInVmNUKUy0eSN4qCQRHsxsXSk6vTF4zZgrLZpHnJq18A3QmiOzRHdvoN4Sgb1mbgOXaAAsSxXocYQ7ky6IkAxCHJVKdy8wYn18s3e5klZwIyyYE27lL2ImCdhK1GnXC+OpRziUQAEPw7JdaHiOq87CoenxyIBVLZdHniEgc1gM6pIZ+BpZFeQKnvRRpiQ717b8LxUEiderWmo/I3126kQ4o9Kul5xxRVT6zXSt2pCbdznwAoDq/p9Wbf35C3JXjfy8laH1ppCCITFwDEYY9cqhiQOy65rhqNy6aW2wlxkbDY1UwcsZAulSxfnmyYSroPcOV2vAiVTHSGgevV70S4ZxUzylxjNqfNbj9MANHTPvJkvSsDbr9+A6qS4f1UpcvTP1DMfwUXyZeAtpXjVaS9SDVKJjVATh11hxQCY7bnXpv+9yPAIXQ+Ik/w8EgztiQI1fQaH1bmG7tQYZZHJaIE/ihxE8tNw30onyNOG7vUpTQiK0jzW6q3kOfyQ5Aq95/ZeyDKnAKXj85it1RBFKUHWZwMmmwhjWqQTq7NXm5/RV6+wQoooMsPbw50B5RBk2eToM/V2JqtuVGgO2P9SawXwjFLl8snLkHeWACCc0FFoHRFoF+wFrdJZHZWH2sTmw0rxh5OppJGvsetzowbibpMfl1iMUNG5q3OqjX7HtazEB4VKpMSKQDNEXogWTboamcgEKaTOaD5H1L1YbdH0EgdFFw01+JfaRJ3lEkcNmxD+fHb8X0nStHVd8VOPyaEYIOPws+416C1E5ZsyA2FYwumaN/lYQq71JRT9s5fIGXt5ZUmNHNXM9veYzhp9sHMTlaSjlL13fpmTLjXxKexejR6aTLbnBKqUKypEPOACIPkHnuXRJLNH6049vl5BhmPFvh4265hSkR59zxDfJPch4LavB2lf4ViSO0cIn7tqR3qH3dR98WKLiv16/TH5khOgY4JkVtsHYZCc4ypCZpKyfd5ELfKYtmse+dIGD9Z40hU+V4S5GUJe0KHLX5H+85NSvVLviVZOo+Q39tQEF6QJLqH4LwtcemVOALqi+vNAm+S5DAroDUIUDfCd/4hGFHoOs8UL7/l+pfaGtv6Rl7SQrBKsX+i3oqbRXlWRuiZLpyRIO6F87SqPJCmJ4CJ5a4TDOpTT/o62jMvnyjByroHXb1Mbo2uU4DWLQegOUk10Tr9KT4qOB5AJa77QWZyiY1EYZv4IlC+LfN/Zcd7bWytjbshHcHWxUqtg9ecwODPcsSLUr5S/KnTRlKx1Wubomua8RLoW4dit0JaaMV33gtOjLxxfE9AM7uozQfXTJ/LZE7cVeQ595fheArnQH3cZG5AdogkL7NON+wTUiahnmKddZAD5HYdmgpWoCV97ywlnU0a1gEpefuMjMi0bd49CQJ+fuqZsBTgi4UVs1GDipxVZ66ZMC9ahrGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01KLThKAkxCLHfcuwHEDVjwV",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 120,
+      "y": 30,
+      "bbox": [
+       80,
+       0,
+       172,
+       95
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": true
+     },
+     {
+      "x": 830,
+      "y": 410,
+      "bbox": [
+       742,
+       363,
+       886,
+       457
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 870,
+      "y": 820,
+      "bbox": [
+       762,
+       632,
+       986,
+       965
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 35,
+      "y": 655,
+      "bbox": [
+       0,
+       628,
+       74,
+       700
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 35,
+      "y": 870,
+      "bbox": [
+       0,
+       775,
+       115,
+       995
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

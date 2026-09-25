@@ -1,0 +1,102 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r1c3",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 4.92,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 400
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 100,
+    "y": 640,
+    "bbox": [
+     18,
+     533,
+     210,
+     820
+    ],
+    "name_as_printed": "Hals\u00fcr Tank",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 590,
+    "y": 580,
+    "bbox": [
+     505,
+     510,
+     640,
+     648
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQSyAcKEAgSGAI4AUIIdGhpbmtpbmcSDNJJLzWL2qUUQxmcxxoMb2/2qwvD+ltwzbneIjCETbsLyijfq548S4scGJvP2KoaaNkDrAkpPTzTLYmAGGCivVCNH7TawKa/jBDIjFYq5QbEVlbwjSng8PscQNNoJJFN/PuRP8Ua6qczAiwTzf1jvnzdCMIMlzxj/RuWw0/5NgQT+9nINrDQnafzWpUd1ULOubW5s1TEkt7PI3Yh0fWwcFnTIbvPjwgv7PJt0zV9V2bMjcOsf+C+mxNxckYdU+GUGcBrfvQb9A8YdILYoo04xzVp/yZYseE/Tr3H+OQbiTTR2oT4/7pY4MxTWncqFJTmHvGoYq9smXMf1KXPWIkBKuOeCNygDhEurq/cDlSNJEgBhbdUMDl1miCWjp6L3MuhfpKI6NwfcOUHmDge8BNWCdtkxv+q3vtztQYMN/yHg1609cqcWLliBa4FeOHw9k+hacepzmw9d0+5vP6v7rxH8bJn/KDPU1EyEwNdT8HfdCvRYpsmDr/og1+idCtRE9PUUaPlQYMvAaNFt69Jv/IQKnFjmHAooljXfpj2O0TRubWbh6AMJrjm1WaNd6N2tMelX8u88tpGHxWeAGVt6ybWB+K+bR9E88iXfMTX1ZRiheCNzHKNkvGoolHDKj11nlGEeaWZKFCL189k9lu2Szn4uNVhKTiQ6qOjmGrFYEfOzUi6hqKX6PECZivpVNSLWl8BmLJ4YQcDYDtUZ46fPFqF8wyIJqAwy4aHfkeKAnCr2JtIoap4Q1wgnyM+MgxsJQuOVvId3xCrkzC1lTJhnSR6rxaK2RU0Skf8+zb2Tla61kXBFj3nFA8nY+6Cu6KgtPWf7U3n80BuoJpUdICXEQF1Dc7FJvv4SAw9xDlc2ZXUBU2J/Aj2JL1t8mHR+TZ2ApR7lTZ+FSR1vAOupmaEthc89I8hVnOfJoMZw8uk3f34JmIkE4BgCT0iYOeiaPOWJTbdaK1xaGwsjKr88+U0R1kBBjBYZ0EXDhNvmieQIeU/AEsqnlExRcS12gfNZb9amlggENiIu7a5icBnpfh5Uo4fv2SQQmFySmz10RGxqrXXZBnFpiBePIgeIM3rKoNg/gfEg12T6U3rlWT1WR0vW1sK6Rpsgcnnt2kZifFqOX1Q7GJKOuQMZZZMADhF/OgmzV/onEgVS2SlfPf80uax2B9+lE6o2lJpVZxUFTgvTe5SeZinypWwO9q1mJCInOO6gusx5L9RIRtxewtl66CbAW/A4+TU/N4pW3i3/d1pkrHN2iM51nxZihgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01FSJWUbACfKTfq4LfFeQBTV",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 100,
+      "y": 640,
+      "bbox": [
+       18,
+       533,
+       210,
+       820
+      ],
+      "name_as_printed": "Hals\u00fcr Tank",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 590,
+      "y": 580,
+      "bbox": [
+       505,
+       510,
+       640,
+       648
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

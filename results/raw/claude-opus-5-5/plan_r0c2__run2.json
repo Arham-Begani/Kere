@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r0c2",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 5.24,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 298
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 65,
+    "y": 210,
+    "bbox": [
+     35,
+     95,
+     112,
+     285
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS+AYKEAgSGAI4AUIIdGhpbmtpbmcSDK7jZrrVuYgKNyHAqBoMmubsDbV7Q1x61aA4IjB/inHy3SDUAMRAdEDJYxukfIJ9r1fXRXDYfNEWXWSXQoRMMiEKONQL5FW1K5+ORBoqlQZbszf7cvbkbiz388sU04ooEPTZQzyFtzJTWAdPQtUZW/MppsxcBrw8aHajBthDDWcCFApkXRDA2C/fCPk7o8oox3mkdKO/CQkwekNG4vYQa71i2iJpVLAZBJuJRa5V+vtERTMbZMlTI6WdHiQHr1vb1WZdZgd+Mxz0N4UVNKFGSxszSu620HggokezKsEJ2987Th1K09X1p1pTjrOwHHnFe5S2jkZ5wRD+UQL/PO2zEkJQ2g0fqmeLAtJ5Sfn6PbJ3ztsD8nGfZqOhcxW2aH0iZKWK74NGDDRBiW+ER0mUxAhp4akwD/qSKtu894Gnyk5HN803BUxJ6FjQPCG3JWM3kS2fpQInzgRigcMB0owYLp45aDEGrCKc5xm08P8MicdmachguzCH6+tvzsof4G28v843F8GxUPSISYrDzUXDHunjujTYZfQP7KEOHtpOHvzsoAa4EueXSNpewEEQc5KgNcGw9BIAKJ+h11R0/k3EPlShOuHNxJrewA5glOTW0o7FqlrrI41vAuEbxZD9tM5zB/0Pi0/bZdH4gxas/wW8svbTpFRHYhUJaInh9abN2aNlKnT6xke6pS2HvmAcyDo65G9cNXhhFZr56DNqLAmr1HrDm8wqAu7NVhuTvvv1QPxM7pn6DdmEDLiIL3dmTatWNkdqKN0V+SOCfGKgS7dDuyA1TvJMRvExtrjDxeUtOaBXWM9/eeUwGL8xLOfEY3GdfgotBm6SPcjdJ50hHBJV3ToskqNgEyhhsQKp6nUoDiAStx1IEf4AptWAlqzonUxq1vVvOkMwdcAAXvBgI9Tbc0QMlL/66+a57tneHHb06JGVr383fX9lQ1nctcNx+EIEKmGKExxOvB+vwjHxuHamCUD1iVfDeEdzYWIZg1O1oBGUUisxUle7pbmgjkf91Rm/Y3E3dMBK/+MeGMvYQtemRRE01a4O+UOPURrcZ+i1C0gZEabrIg6jrFOGqYTX9yyVRkhQ0UDBI6DX8W4qe9L6p+DGv2e3b1ik8unDjSNzgbuQ9dvR/KdYEdjPTLmcyqtN4TGeb0QYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01AcRvHpcwXBwKz8bsExnSkc",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 65,
+      "y": 210,
+      "bbox": [
+       35,
+       95,
+       112,
+       285
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

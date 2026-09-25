@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r1c0",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 5.69,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 270
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 590,
+    "y": 265,
+    "bbox": [
+     536,
+     224,
+     660,
+     317
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAIS1AUKsQIIEhgCKkD9BcKAMooxX78mKjcPp0y57TVGDYdXE4HQKEmDRlfByvLtYaW2uNovjgj9L8aXoQLnJiKMZk3L0N1+eFn67MeJMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQwZWU2ZDEwMy1hZmFlLTQyOWEtODA4MC1kYWQ0ZTNiNDc0NDWoAaHI2tUGwgE9CAUQABoPAj1IA083BmxKBWHeBCatIAEyBBJxzyU6BDgzI4pCBAhibcZKBGSPsEpQAVoE2QXhVmACaAFwANoBYAoWcHJlZml4X2JlZm9yZV9ibG9ja192MRIg4zcihoxp441uPmU1H3RsdJRj7lxmZIYolfpaPV5WXwQiADIgwsATyGqckuIvlm89hhd2j4t6RMkCrcwJe/oeCYr7Th9IAxIMwab5KW01jSjuhDEUGgxkxCm2lJ0SLenDL4MiMKjLP6z2AO3bdsEbz050QQ60/XY+ujOKZCWMOUb4FvEqvEmsyQA0cr8q0ni/G+E1uirPApl+dh9VgmD1fFbTz3I7sFMEDmu7KUCYAniXsthquObmx27sZT/IFuhidiwffFofknWZwYCTawmoFSA7xXbl06/Vz3IBGtqvWtGiDDmbqKitGGVL2Q3BgSjGk6DboRYWrHTwHrLJ/yU2sQ5RmgztZQ2IPM/p9S5Yp8HPQ4sKor1blemf2gZQGHWFpjpTzyIimcspg02k+0wEMz8xvytXo4gqDdbH4fwvS6yy5LrR2/U0STI+lxcXWO1yAJRbDULgZY7cXbXsbhtxbNVaxstt+Snucuq2nBZZa2Wrcsb046iWXgi6jgJUZ+PAbIebc1t+NyOx3oCRBGsvQhUzqxb+ptDhR6yelwn2AnbjaHLUOtyu8r6bVfcNFAllVH4y4uX+Qa4TOCq55XsxxSxItFBWiWwvljvYxf0AFzg96hv0Q/wpa9b+WbQInajIHpgUNQ65GAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01HEgz4Up1aQJjUiXgLq73Bm",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 590,
+      "y": 265,
+      "bbox": [
+       536,
+       224,
+       660,
+       317
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

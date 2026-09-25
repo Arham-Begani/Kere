@@ -1,0 +1,206 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r1c1",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 16.4,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 1066
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 347,
+    "y": 43,
+    "bbox": [
+     335,
+     24,
+     360,
+     63
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 250,
+    "y": 510,
+    "bbox": [
+     225,
+     470,
+     276,
+     551
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 292,
+    "y": 830,
+    "bbox": [
+     243,
+     744,
+     343,
+     906
+    ],
+    "name_as_printed": "Dharm\u0101mbudni Tank",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 965,
+    "y": 468,
+    "bbox": [
+     928,
+     424,
+     1000,
+     516
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 749,
+    "y": 553,
+    "bbox": [
+     737,
+     541,
+     761,
+     566
+    ],
+    "name_as_printed": "Reservoir",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 637,
+    "y": 650,
+    "bbox": [
+     625,
+     638,
+     649,
+     663
+    ],
+    "name_as_printed": "Reservoir",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01JCY4CvzPbca8bw3T4u647b",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 347,
+      "y": 43,
+      "bbox": [
+       335,
+       24,
+       360,
+       63
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 250,
+      "y": 510,
+      "bbox": [
+       225,
+       470,
+       276,
+       551
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 292,
+      "y": 830,
+      "bbox": [
+       243,
+       744,
+       343,
+       906
+      ],
+      "name_as_printed": "Dharm\u0101mbudni Tank",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 965,
+      "y": 468,
+      "bbox": [
+       928,
+       424,
+       1000,
+       516
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 749,
+      "y": 553,
+      "bbox": [
+       737,
+       541,
+       761,
+       566
+      ],
+      "name_as_printed": "Reservoir",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 637,
+      "y": 650,
+      "bbox": [
+       625,
+       638,
+       649,
+       663
+      ],
+      "name_as_printed": "Reservoir",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

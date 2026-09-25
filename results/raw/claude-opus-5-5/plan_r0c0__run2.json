@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r0c0",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 6.04,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 358
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 578,
+    "y": 985,
+    "bbox": [
+     537,
+     952,
+     622,
+     1000
+    ],
+    "name_as_printed": null,
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQSlAgKEAgSGAI4AUIIdGhpbmtpbmcSDFUYz7dDSmO9KP7h4BoM+54y363u/kwyJ9VlIjAK+jHGPrEBjIgTvYIUispVmTqqUxu18g4F/PNrR0+pwUarmZ47vwIAelFU09SYsGQqsQdCSV3Nhv/o3123qr6YelZqMUcjzB29uBu0bZCXTRipGfelB9DrBs7wJFOx9TWNerrUnfTU/DWAtgPKsgV5cWdzqYcfKyYaUGytwxt7hBYN92ervgJEaJqyNJh3g7MnQHXPTvX2vcVjKOyff8kOy9CHy3LvKFnVWeG74s/p7wL9eMYfFGDAG69BrC3u8Mj2U/4en6wByloYLZZFU25KxT2Lvy7StR7oTXRStlhfiqmJtqLM541kKy8f9LBtVGSSn7MaOlaHD/x70Xbd+UuorjmIhVDhm0ANzxKU7kaM5Ax/Mv0EWsKxWxQcldCwgkbZhoFsNLp2WCocVos9vl8KCOhFMK8XqxAqdwhwW+KKRZrszdriTWXQ9J/AQtV6w5VJ6E13WLO9BrCSv+e4njTP9nS4ZJfHsFddEK/V9V6VSNBufND5roTKMXz5QeX5wWu3TH3n8HBkn/5vic4cqofjSvMq+jzGtH1lhzsZBW/M1NpwBvbqNVMcOARGOXnIviMbYDi3WRtDRMflEwaai8m5iriN7pfIqU0n/aJL+35qAQhRtPnrgLQK/vD/SPJ49JYrSwwKZEtTBdDsF47TG99ghdCziuZUndnB+AjxboOUy84Bu8O0AHwaHKm5UP3NdCtTRa621k52Sr23M5JLm0jU6xqLp7ZvR/L4vVaBM3Ot3OpCDH5yOD3mq6RaMFAM3hTky/0XT71djM0xMSbGwiRe1WomV36NLQEuN6eBEE/I4ReX9rtAKrbX0dJFQbhCiM3Vh7NzvSO74xmB601+B/jq7ZtNtBNDUyWe/2bsT+KetqzKMZR4nc+b7tXRDTa+lLPRI5l1Fv01rUni/5xINV3bY6m1asWirBzGUjIubSzsivMIpRovMEPyJAOrOHiMEAot7W0GxxxvY1XWZZVGaioDl2uCwtxfMCg509N/AcDmnChvgVuHC5eGLkzZ5DsSor60uhBtvjQ2S6aKOLmHweKoY/9fJw5IIa6WtaiiumEa/zjBD3D6nUkqMIY4YkUFIz+/ySJl6qZO5pujsbm4sHb2tPE51tWz68Bo9btvNrgB3+hM8vYSGjKNQg8ct9xNrIdE338J9SNBXTSTBYuyySF9PW6wVSL9bjvHCmAP+R3eJJdLQE9EcDq4RxUnpQKY2BVvzk/y2GT12+FT+M60vSpf4qhvN1fVdDA06NXhs5L/fSQTXYULuPjWxYaXC7hkPSP9ZGXuXcjw5N7Jv/CZwo3R/qL0JBZzB1qp86kKfmzIOux+2j4YAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01PntQsjeWyJYDMJJwAwbSnK",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 578,
+      "y": 985,
+      "bbox": [
+       537,
+       952,
+       622,
+       1000
+      ],
+      "name_as_printed": null,
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

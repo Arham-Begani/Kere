@@ -1,0 +1,76 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r0c1",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 12.4,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 772
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 350,
+    "y": 620,
+    "bbox": [
+     280,
+     514,
+     458,
+     712
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01SSfzrrWpFZCNMdb61iKUkk",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 350,
+      "y": 620,
+      "bbox": [
+       280,
+       514,
+       458,
+       712
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

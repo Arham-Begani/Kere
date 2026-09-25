@@ -1,0 +1,48 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r0c3",
+ "run": 2,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 3.64,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 222
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQSkgcKEAgSGAI4AUIIdGhpbmtpbmcSDCXNIu4hBhJwEMIEzBoMm9QiAwu+fU9OLAPvIjDI1PIUfvODp2sk6H5Xf16Vi/npVq5vQ1ZpIhTjudfYv5/1cVuy+s/G91vqQmBx3y0qrwaAoJ+QIuGI61K2wKoO6R2j5jE0GPADdrGcS4lcO/D1tkvODC1iZG1DgGXNwJm++SKGy6c9CVNtQ81B9Qj+AL5eAbKzVlxRBWhKl7FW0bZAGFCGMVWwhKDe6TGVgtWjGQqOVgW1c2Ms3qDLhE65EM2aGcJsb/oRW6PjQ49x+YYngBN6ZgpMvKPcCHKE2fNqND9D7rEihbelwAhN/oEIeC2Yu9KD/qX4fwRl2uDfyNM5Wax9A6YYjXKw3cxbta+uDf/zJc3Y/9aoSWTcK3abfmkJBjNCBAW0TD7bKmiuHdBlOMCEKY0h+5FUVBLTDNR0U9sTYrAsqSyK+MKIExXQEQR3Is2ebPILQh1jbRByG0GJxdYid5wjJ5REPKN7qJB/5CEWlHNhmrrl10GWucd0Ypz2f/HQaN7Mb2SjZ1f6HObHQKNQg6Oron6Esn4N/gyLTAiWKsJf+DLdzSYUsIZ8L/loITsGh77kqn6lkmCt5XL2rl7JUlmMFnRZPD+lFgJV5YXe8+6s1sb590xYhUzjFw24fwLO/m5WqVfG/SCeKIlBqcYw++Vt2s18sBtXp+j7c7Hll5lOb3ycjQNr3uDkekRCSbobxB+10I8cIf0EYpUZWKNwLdgA7pTYVaNzhfsYnoKcovXVmhkv6Rkz7/UJ4nz2TF+rqDxTUdtHKIcjq3P662Xy5Wfz5IohG/HTIKYGssZFVyjJkJWKyAM8JK86SpfsqtBE3oVK27sghPVlhwefDENpKQIgiAO0ujiK4wXPFKdLKpErukuUjci8N3yXdqefPlld7KAMdy4btI0KMGBbBy32ghwEMZabZMwNWZFM4YdjSHaCMRolxGZBa+GuUC/SNUBgMLaYQiNmQVvsSOW5FyxcLILkgtrp3vF2hYGi6Bq/JqbHQzNGU8xF2oPKBUNXJxmHfufg2uy1RJNgKBTXsPvXfty2K6T2fQ8rpJjdexZ+N6numi/GB39y6EDmLP0QmomjaigDss03glRoaKNgePgGKY4u9TrAXQBjT3Efx8qzcJTjxAaiR8utRCGzXRV/b5se8CiuJJbq1JRlVzvKxUHR5y/uPNTGmhvHQtzzvxgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01VkXdActytaWUtxsdJsrxBA",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

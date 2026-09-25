@@ -1,0 +1,154 @@
+{
+ "model": "claude-opus-5",
+ "tile": "plan_r2c0",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 11.94,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2428,
+  "output_tokens": 600
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 335,
+    "y": 372,
+    "bbox": [
+     288,
+     334,
+     377,
+     415
+    ],
+    "name_as_printed": null,
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 790,
+    "y": 395,
+    "bbox": [
+     733,
+     352,
+     882,
+     440
+    ],
+    "name_as_printed": "Agrah\u0101r Tank",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 690,
+    "y": 810,
+    "bbox": [
+     628,
+     718,
+     778,
+     886
+    ],
+    "name_as_printed": "Kemp\u0101mbudhi Tank",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 405,
+    "y": 812,
+    "bbox": [
+     369,
+     777,
+     472,
+     842
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAISpwcKsQIIEhgCKkC4W9lStJx/s83ofD/4wy0C0Z7Lga65Gf+sU7/sI+vp1uG5sr5W97uBhhsV+JEqs7h8fW1TIL77Z1X8ux5CG0AvMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQwZWU2ZDEwMy1hZmFlLTQyOWEtODA4MC1kYWQ0ZTNiNDc0NDWoAfrJ2tUGwgE9CAUQABoPAj1IA083BgqHBWHeBCatIAEyBBJxzyU6BDgzI4pCBAhibcZKBGSPsEpQAVoE2QXhVmACaAFwANoBYAoWcHJlZml4X2JlZm9yZV9ibG9ja192MRIgnC4JU7wl5HS8AdWhjxUjTb2EL4kFmQ4NKw/LtsFpDesiADIgwsATyGqckuIvlm89hhd2j4t6RMkCrcwJe/oeCYr7Th9IAxIMitR/8CAUJ1dVaPqHGgynYIIY7aEoo88iLOwiMBbnxDR4Vp+n9tDMPFxziyAEkEgc3kWvG4M8IF3SbbdGvppYYBi2F5nIwBRYHfuD1iqiBHODXOODfaG/7jdWSZdMrOnKWhfh87bYSPLPA7wVgKvNTez71p5VbE0sexAdJFZZYw490iyt5zrt3OtvI4ww++BS6UZ9Ppn7oXwL+0xSfiPPuJumtwRDaUi/BDhrE6KbzXySNpyAezBRrZiKvYTix0+UBU4uEpCXVv4zKyzJNnGNWqzS2bOFnlIWg80pmf4ywkJhNFXCe27IwIE84I32S3tApugC2uLDbjJ/am1R/TSu8RoA/NN6F1ktMbVGw3bgG45fr630FeG6tmuzh2qgli3qOeUJii2B4iyido1TXN9tYwQyTxKbDedxBvnioampnGikEv0BBFMDk8u7M3coKmM3DF9Ka9Spi0zA81QJQjn5VqucIi6D+OW5lJvVM//DiPQju/C5zceZFaK83aP4KUM/c0iGtz7tIUuHmnKLyl70YACwd5dA8YMBLVFk/sr4Hc4bFwokmmlerJ5ybPyOHGEHyAtCBLwTl/1RiUskxYmYl+iXuws2aAtQneXwdbbFHMA/7bc2OlE50QdQx0JjwuQwxmkcnAcBZd9W7Rv1q03IQFoiZVeZSNQsa898vOeGZb0i8f03qexU+agguC7gGik6gKG7/9wUlJaacF4BRzV+Zt2OCIlrg/APlauOjo0dOkrwTqIy4lXaCzegjzD90pt811PFX4Sn4SB8YLelYQFKyl+GDoBDk/hs4DaItTt1Gd4qk1LY+wQ2L3T/LPXTb+ZiVxgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_0183c1zq9sf5yqui5YC2si2S",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 335,
+      "y": 372,
+      "bbox": [
+       288,
+       334,
+       377,
+       415
+      ],
+      "name_as_printed": null,
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 790,
+      "y": 395,
+      "bbox": [
+       733,
+       352,
+       882,
+       440
+      ],
+      "name_as_printed": "Agrah\u0101r Tank",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 690,
+      "y": 810,
+      "bbox": [
+       628,
+       718,
+       778,
+       886
+      ],
+      "name_as_printed": "Kemp\u0101mbudhi Tank",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 405,
+      "y": 812,
+      "bbox": [
+       369,
+       777,
+       472,
+       842
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

@@ -1,0 +1,102 @@
+{
+ "model": "claude-opus-5-5",
+ "tile": "plan_r3c0",
+ "run": 3,
+ "prompt_version": "kere-tanks-v2",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 6.19,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2430,
+  "output_tokens": 435
+ },
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 1000,
+  "image_height": 1000,
+  "tanks": [
+   {
+    "x": 405,
+    "y": 78,
+    "bbox": [
+     374,
+     52,
+     474,
+     124
+    ],
+    "name_as_printed": null,
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 680,
+    "y": 75,
+    "bbox": [
+     633,
+     0,
+     781,
+     187
+    ],
+    "name_as_printed": "Kemp\u0101mbudhi Tank",
+    "style": "mixed",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQShAgKEAgSGAI4AUIIdGhpbmtpbmcSDH6jd74EmrwEAkkGWRoMtzNpWn0bHLW2keI8IjBrHJkvzDbhRVtH8c2ShV2W7rewFwbVnY+V4d7DAjNJyBQ2dBbKQgxvR9vgj00MdUsqoQdEi86om7msZSniXCLwkIvI1/6EbYrCNx29ZbA2T8B6XOY3MuyqkwLtl71lOCFiwU0u1KiLyk8UDrS4WtNxGJ66E7l3knbQusrdAM75I5ngWUiak7oHfhfjrhkdoXxScPqy8QOn3sW+dc4EctyOuCPHMwYUem88s8qWYCQJDTdSb6G2k6yfsI8kia1wNgqGTGYcEhQ/r5NqyXFJanJcVTK9mHLU3kyLTeLue1olwqfT9xk72OVTpXw9HRHluJMjcmpFOrjmrkKQksr3icmDGCbIghlu5gY3w1Vi3sVlbgPIZSHmRS/qOp40ZMq2lgAQY5bV5kzzWSNTZDxeSnx8VC4BINNzrgObiu0iR1YVcYx7Zc6MEG4O/ebJPVWMGsNioa7UnkEWJpmNW4w8d97yjtxrC6NbDpLkvBXUWU/4G64Ht2jcIX5Qy0V8aU1O69djFa+84NkHnrcDaAZSWFgrysYrmIvEatkKbxmyshGkXNfA50d6lzDBXO8aI7+lZFJmdQvcZeSMtOKFacQ+giDKurVF3Rn6E2PPDgZ7xqKlxfGvKhX/WNwjo86slXgXzdp9QkDHXMw1XKDWQ3H9DXnhtGzcjktQoIaQNkPjk7mfr7Md+skOwxfeRXvyGvvubazP2s6Fb76GwAJbgHjjlO9C7zWf+Onus6sr0Zk9Bvq8RgofF629qKZOcAlWhXuEEXYcac1Ljsxt6md6w76mJ8FimyjVjVbHmlOMfL38Dl9pr24S/H+CXu7Hr/ErUFbS6IyOz4g6Hkskz2vmsq+g43XxcY1BuEM2V2wd/KtNoReuIm6F7Xs3pu9nIhzaGAeENIy0fUdXvRBEuZMghmTGZacGE3IcM7jQhvif5x3yD+jsmp6x54Kxyh+3BJelsRDo5rID/n2ZyBJwEvYkw1kygBid65E2Q5lEXvhEJlr7IiAHdrmGey/kb51nc7D2bij4zk0Wch5+RXLc+4mG7bAGylEF3Lrs7dlYxgvrnJRd8u2J6KInL0OLO4OW+0E7oXByTu/42+j/MZrqVX37pshvDS1jig3zF3gTBmlUZk37frzHpzYp0yBhU7KTzB/HixKHkhLKX+LhplzGXa7lt7DnReA1bdFn3cfep5bew+pxmykhYnHt+phafDHiWZJjYJwCwtuZ4BKZZ40o0EGnbVHpnx4GG9vVs8lteRTN8rR08i9RM7CPX++YqjFv9Ouqse0XYcFqafQ2INLBcMIHw8N5YwuUr7pbOBgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_011k1HsansxUEJYvuGnQAcgQ",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 1000,
+    "image_height": 1000,
+    "tanks": [
+     {
+      "x": 405,
+      "y": 78,
+      "bbox": [
+       374,
+       52,
+       474,
+       124
+      ],
+      "name_as_printed": null,
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 680,
+      "y": 75,
+      "bbox": [
+       633,
+       0,
+       781,
+       187
+      ],
+      "name_as_printed": "Kemp\u0101mbudhi Tank",
+      "style": "mixed",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}
