@@ -52,6 +52,11 @@ the banner goes away on the next export — no app code changes needed.
 
 ![Kere: Shūle Tank at the Ashok Nagar football stadium, 1954 over 2026](docs/screenshots/b_stadium_1954_click.png)
 
+**P2 (optional, built): rain pooling.** `python pipeline/rain.py` fetches the same AWS Terrarium
+DEM tiles the app uses for 3D terrain and runs priority-flood depression filling to find where
+today's terrain traps water — unrelated to the 1954 lakes. A 5th drawer ("Rain pooling") reveals
+it over ~3s, always labelled "not a flood prediction". See `docs/screenshots/rain_*.png`.
+
 ## Scoreboard
 
 The table below is regenerated from `app/data/scoreboard.json` every time `eval/score.py` runs.
