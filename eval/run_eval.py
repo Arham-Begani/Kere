@@ -17,6 +17,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from prompt import PROMPT_VERSION, TOOL, build_prompt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if not os.environ.get("ANTHROPIC_API_KEY"):
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(ROOT, ".env"))
 TESTSET = os.path.join(ROOT, "testset")
 DEFAULT_MODELS = ["claude-opus-5", "claude-opus-5-5"]
 
