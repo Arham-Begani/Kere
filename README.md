@@ -27,6 +27,62 @@ python eval/add_manual.py --model claude-opus-5-5 --tile plan_r2c2 --file reply.
 python eval/score.py
 ```
 
+## Run the app
+
+```bash
+python pipeline/assemble.py --model claude-opus-5-5   # (or --results results_standin, see below)
+python pipeline/assemble.py --model claude-opus-5
+python pipeline/export.py                             # writes everything under app/data/
+python -m http.server -d app 8000                      # http://localhost:8000
+```
+
+`assemble.py` turns saved model answers (`results/raw/<model>/*.json`) into georeferenced tank
+outlines: it clusters points across tiles and runs, keeps a cluster only with 2-of-3-run
+consensus, and grows the outline from the scan's own pixels (`pipeline/grow.py`) — never from a
+model-drawn box. `export.py` builds everything else the static app reads: the sepia 1954 sheets,
+crops, flood points, the search gazetteer, and the scoreboard/backtest numbers.
+
+**No API key yet, or haven't run the eval?** `python scripts/make_standin_results.py` builds
+`results_standin/` from the hand-traced answer key (perfect, by construction) so the whole
+pipeline and app can be built and tested end to end before spending real API calls — run
+`assemble.py --results results_standin` instead. The app then reads `app/data/demo_data.json`
+and shows a red "DEMO DATA: answer key, not model output" banner automatically; nothing about the
+real eval is faked. As soon as `results/scoreboard.json` exists, `export.py` switches to it and
+the banner goes away on the next export — no app code changes needed.
+
+![Kere: Shūle Tank at the Ashok Nagar football stadium, 1954 over 2026](docs/screenshots/b_stadium_1954_click.png)
+
+## Scoreboard
+
+The table below is regenerated from `app/data/scoreboard.json` every time `eval/score.py` runs.
+**As shipped in this repo it reflects stand-in (answer-key) data for both model columns**, since
+the real Opus 5 / Opus 5.5 eval hasn't completed here yet — see "Known issues" below. Once
+`results/scoreboard.json` exists (`python eval/run_eval.py && python eval/score.py`), re-run
+`pipeline/export.py` and this table becomes a real comparison.
+
+| metric | Opus 5 | Opus 5.5 | Hand-traced |
+|---|---|---|---|
+| Plan: unique tanks found (of 18) | 18 | 18 | 18 |
+| Plan: invented tanks per run | 0 | 0 | 0 |
+| Plan: printed names read exactly | 100% | 100% | 100% |
+| Plan: extent (box IoU) | 1.00 | 1.00 | 1.00 |
+| Front: verified tanks found | 100% | 100% | 100% |
+
+## Known issues
+
+- **The real eval hasn't run in this environment.** The configured `ANTHROPIC_API_KEY` returns
+  `This API key is not scoped to a workspace` on every call. Until a workspace-scoped key (or an
+  `anthropic-workspace-id` header) is available, `app/data/` and the scoreboard above are built
+  from `results_standin/` (the hand-traced answer key standing in for both models), and the app
+  shows the red DEMO DATA banner accordingly.
+- **`pipeline/grow.py`'s front-sheet resolution limit.** `grow.py`'s thresholds (`MIN_AREA=150`
+  px, etc.) were tuned and validated only against the plan sheet (`tests/test_grow.py`). At the
+  front sheet's native 1:250,000 scan resolution, several of the 16 known front tanks have under
+  150 connected pixels of blue ink and are correctly refused as "too small" by the same,
+  unmodified threshold — a real scan-resolution limit, not a bug, and not something we tuned
+  (per CLAUDE.md, `grow.py`'s thresholds are frozen). These refusals show up honestly in the
+  Fence panel. See `tests/test_assemble.py` for the exact accounting.
+
 ## How it works
 
 ```mermaid

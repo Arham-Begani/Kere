@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kere — the lakes Bengaluru forgot</title>
+<meta name="description" content="Claude Opus 5.5 reads a 1954 US Army map of Bangalore and rebuilds the lakes the city built over.">
+<link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5/dist/maplibre-gl.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Rule: model output that stands in for the real eval must be unmissable. -->
+  <div id="demo-banner" class="demo-banner" role="alert" hidden>
+    <svg class="demo-banner__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 1 17h18L10 2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 8v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14.6" r="0.9" fill="currentColor"/></svg>
+    <span id="demo-banner-text"></span>
+  </div>
+
+  <div id="sky-backdrop" aria-hidden="true"></div>
+  <div id="map" class="map"></div>
+  <div id="tank-label-layer" class="tank-label-layer" aria-hidden="true"></div>
+
+  <div id="loading" class="loading">
+    <div class="loading__mark">ಕೆರೆ</div>
+    <p>Reading the 1954 plan&hellip;</p>
+  </div>
+
+  <header class="intro" id="intro">
+    <p class="intro__kicker">Kere <span lang="kn">ಕೆರೆ</span> — 1954 tanks over 2026 Bengaluru</p>
+    <h1 class="intro__line">The lakes Bengaluru forgot, read off a 1954 map by <em>Claude&nbsp;Opus&nbsp;5.5</em>.</h1>
+  </header>
+
+  <nav class="rail" aria-label="Panels">
+    <button class="rail__btn" data-drawer="flood" aria-pressed="false" title="Flood points &amp; backtest">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2c3 4 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-7 6-11Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span>Flood</span>
+    </button>
+    <button class="rail__btn" data-drawer="scoreboard" aria-pressed="false" title="Scoreboard">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16V9M10 16V4M16 16v-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Score</span>
+    </button>
+    <button class="rail__btn" data-drawer="fence" aria-pressed="false" title="Fence: what the model was refused">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v9M7 6v11M13 6v11M17 8v9M2 8h4M6 6h8M16 8h2M2 12h16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>Fence</span>
+    </button>
+  </nav>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+
+  <aside class="drawer" id="drawer-source" aria-hidden="true">
+    <div class="drawer__inner" id="drawer-source-body"></div>
+  </aside>
+
+  <aside class="drawer" id="drawer-flood" aria-hidden="true">
+    <div class="drawer__inner" id="drawer-flood-body"></div>
+  </aside>
+
+  <aside class="drawer" id="drawer-scoreboard" aria-hidden="true">
+    <div class="drawer__inner" id="drawer-scoreboard-body"></div>
+  </aside>
+
+  <aside class="drawer" id="drawer-fence" aria-hidden="true">
+    <div class="drawer__inner" id="drawer-fence-body"></div>
+  </aside>
+
+  <footer class="bottom-bar" id="bottom-bar">
+    <div class="bottom-bar__row">
+      <div class="year-control">
+        <span class="year-control__label year-control__label--now" id="year-label-now">2026</span>
+        <input type="range" id="year-slider" min="0" max="1" step="0.001" value="0" aria-label="Blend the map from 2026 to the 1954 compilation">
+        <span class="year-control__label year-control__label--then" id="year-label-then">1954</span>
+      </div>
+
+      <div class="presets" role="group" aria-label="Camera presets">
+        <button class="presets__btn" data-preset="stadium" type="button">Stadium</button>
+        <button class="presets__btn" data-preset="city" type="button">City</button>
+        <button class="presets__btn" data-preset="hsr" type="button">HSR</button>
+      </div>
+
+      <div class="search">
+        <svg class="search__icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13.2 13.2 18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="search" id="search-input" placeholder="Type your neighbourhood…" autocomplete="off" aria-label="Search localities" aria-expanded="false" role="combobox" aria-controls="search-suggestions">
+        <ul class="search__suggestions" id="search-suggestions" hidden role="listbox"></ul>
+      </div>
+    </div>
+  </footer>
+
+  <footer class="credits" id="credits">
+    <span class="credits__item">US Army Map Service <span class="credits__via">via UT Austin PCL, public domain</span></span>
+    <span class="credits__sep">·</span>
+    <span class="credits__item">MOD Foundation, <em>Building a Resilient Bengaluru</em> <span class="credits__via">via soniadas123/bengaluru-water-map</span></span>
+    <span class="credits__sep">·</span>
+    <span class="credits__item">KGIS/BBMP flood lists <span class="credits__via">via OpenCity</span></span>
+    <span class="credits__sep">·</span>
+    <span class="credits__item">OpenFreeMap / OpenStreetMap contributors</span>
+    <span class="credits__sep">·</span>
+    <span class="credits__item">AWS Terrain Tiles</span>
+  </footer>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
