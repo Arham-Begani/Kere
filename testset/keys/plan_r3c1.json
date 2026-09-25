@@ -1,0 +1,111 @@
+{
+ "tile": "plan_r3c1",
+ "image": "tiles/plan_r3c1.png",
+ "sheet": "plan_25k",
+ "width": 1000,
+ "height": 1000,
+ "origin_in_sheet_px": [
+  1645,
+  2390
+ ],
+ "scale_in_sheet": 1.0,
+ "metres_per_px": 4.0,
+ "tanks": [
+  {
+   "id": "P11",
+   "status": "partial",
+   "fraction_in_tile": 0.24,
+   "polygon": [
+    [
+     19.0,
+     140.0
+    ],
+    [
+     29.0,
+     127.0
+    ],
+    [
+     37.0,
+     127.0
+    ],
+    [
+     44.0,
+     116.0
+    ],
+    [
+     48.0,
+     115.0
+    ],
+    [
+     48.0,
+     98.0
+    ],
+    [
+     36.0,
+     98.0
+    ],
+    [
+     26.0,
+     94.0
+    ],
+    [
+     20.0,
+     87.0
+    ],
+    [
+     22.0,
+     63.0
+    ],
+    [
+     27.0,
+     56.0
+    ],
+    [
+     43.0,
+     44.0
+    ],
+    [
+     42.0,
+     40.0
+    ],
+    [
+     36.0,
+     38.0
+    ],
+    [
+     0.0,
+     38.0
+    ],
+    [
+     0.0,
+     145.0
+    ],
+    [
+     19.0,
+     140.0
+    ]
+   ],
+   "centroid": [
+    17.5,
+    91.0
+   ],
+   "inside_point": [
+    11.5,
+    90.5
+   ],
+   "expected_name": "Kemp\u0101mbudhi Tank",
+   "printed_name_on_sheet": "Kemp\u0101mbudhi Tank",
+   "style": "mixed",
+   "mod_match": {
+    "name": "Kempambudhi Kere",
+    "layer": "existing",
+    "overlap": 0.98,
+    "last_mapped": null,
+    "current_use": null,
+    "status": "Developed Lake"
+   }
+  }
+ ],
+ "ambiguous": [],
+ "match_buffer_px": 15
+}

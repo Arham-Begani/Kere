@@ -1,0 +1,16 @@
+{
+ "tile": "plan_r0c2",
+ "image": "tiles/plan_r0c2.png",
+ "sheet": "plan_25k",
+ "width": 1000,
+ "height": 1000,
+ "origin_in_sheet_px": [
+  2375,
+  213
+ ],
+ "scale_in_sheet": 1.0,
+ "metres_per_px": 4.0,
+ "tanks": [],
+ "ambiguous": [],
+ "match_buffer_px": 15
+}

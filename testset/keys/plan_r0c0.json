@@ -1,0 +1,115 @@
+{
+ "tile": "plan_r0c0",
+ "image": "tiles/plan_r0c0.png",
+ "sheet": "plan_25k",
+ "width": 1000,
+ "height": 1000,
+ "origin_in_sheet_px": [
+  915,
+  213
+ ],
+ "scale_in_sheet": 1.0,
+ "metres_per_px": 4.0,
+ "tanks": [
+  {
+   "id": "P02",
+   "status": "partial",
+   "fraction_in_tile": 0.6,
+   "polygon": [
+    [
+     535.0,
+     981.0
+    ],
+    [
+     534.0,
+     998.0
+    ],
+    [
+     534.7,
+     1000.0
+    ],
+    [
+     627.0,
+     1000.0
+    ],
+    [
+     617.0,
+     986.0
+    ],
+    [
+     614.0,
+     959.0
+    ],
+    [
+     597.0,
+     957.0
+    ],
+    [
+     595.0,
+     949.0
+    ],
+    [
+     580.0,
+     949.0
+    ],
+    [
+     577.0,
+     956.0
+    ],
+    [
+     576.0,
+     970.0
+    ],
+    [
+     570.0,
+     970.0
+    ],
+    [
+     565.0,
+     966.0
+    ],
+    [
+     564.0,
+     955.0
+    ],
+    [
+     560.0,
+     953.0
+    ],
+    [
+     549.0,
+     956.0
+    ],
+    [
+     541.0,
+     964.0
+    ],
+    [
+     535.0,
+     981.0
+    ]
+   ],
+   "centroid": [
+    577.8,
+    979.0
+   ],
+   "inside_point": [
+    576.4,
+    975.5
+   ],
+   "expected_name": null,
+   "printed_name_on_sheet": null,
+   "style": "mixed",
+   "mod_match": {
+    "name": "Agasana Tank",
+    "layer": "lost",
+    "overlap": 0.9,
+    "last_mapped": "1897",
+    "current_use": "Mariyappna Palya Park",
+    "status": null
+   }
+  }
+ ],
+ "ambiguous": [],
+ "match_buffer_px": 15
+}

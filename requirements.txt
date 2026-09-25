@@ -1,0 +1,7 @@
+anthropic>=0.40
+numpy>=1.26
+opencv-python-headless>=4.9
+pillow>=10
+shapely>=2.0
+pyproj>=3.6
+pytest>=8

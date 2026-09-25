@@ -1,0 +1,94 @@
+{
+ "study_area": "gba",
+ "area_km2": 720.9,
+ "this_layer": {
+  "n_flood_points": 396,
+  "rows": [
+   {
+    "layer": "1954 plan tanks, answer key: lost",
+    "radius_m": 100,
+    "flood_points_within": 8,
+    "n": 396,
+    "share": 0.02,
+    "random_share": 0.006,
+    "lift": 3.54,
+    "p_one_sided": 0.0022
+   },
+   {
+    "layer": "1954 plan tanks, answer key: lost",
+    "radius_m": 250,
+    "flood_points_within": 19,
+    "n": 396,
+    "share": 0.048,
+    "random_share": 0.014,
+    "lift": 3.36,
+    "p_one_sided": 6.5e-06
+   },
+   {
+    "layer": "1954 plan tanks, answer key: surviving",
+    "radius_m": 100,
+    "flood_points_within": 0,
+    "n": 396,
+    "share": 0.0,
+    "random_share": 0.004,
+    "lift": 0.0,
+    "p_one_sided": 1.0
+   },
+   {
+    "layer": "1954 plan tanks, answer key: surviving",
+    "radius_m": 250,
+    "flood_points_within": 4,
+    "n": 396,
+    "share": 0.01,
+    "random_share": 0.007,
+    "lift": 1.42,
+    "p_one_sided": 0.31
+   }
+  ]
+ },
+ "reference_MOD_hand_traced": {
+  "n_flood_points": 396,
+  "rows": [
+   {
+    "layer": "MOD lost lakes (1854-1969 surveys)",
+    "radius_m": 100,
+    "flood_points_within": 39,
+    "n": 396,
+    "share": 0.098,
+    "random_share": 0.029,
+    "lift": 3.37,
+    "p_one_sided": 7.1e-11
+   },
+   {
+    "layer": "MOD lost lakes (1854-1969 surveys)",
+    "radius_m": 250,
+    "flood_points_within": 80,
+    "n": 396,
+    "share": 0.202,
+    "random_share": 0.079,
+    "lift": 2.55,
+    "p_one_sided": 1e-14
+   },
+   {
+    "layer": "MOD existing lakes",
+    "radius_m": 100,
+    "flood_points_within": 20,
+    "n": 396,
+    "share": 0.051,
+    "random_share": 0.077,
+    "lift": 0.66,
+    "p_one_sided": 0.99
+   },
+   {
+    "layer": "MOD existing lakes",
+    "radius_m": 250,
+    "flood_points_within": 52,
+    "n": 396,
+    "share": 0.131,
+    "random_share": 0.171,
+    "lift": 0.77,
+    "p_one_sided": 0.99
+   }
+  ]
+ }
+}

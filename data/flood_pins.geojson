@@ -1,0 +1,124 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.6842915,
+     12.9320495
+    ]
+   },
+   "properties": {
+    "locality": "Bellandur",
+    "date": "2026-09-21",
+    "osm": "relation/19884585",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://deccanherald.com/india/karnataka/bengaluru/bengaluru-20260921-2-905193552-4153311"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.7579489,
+     12.9957428
+    ]
+   },
+   "properties": {
+    "locality": "Whitefield",
+    "date": "2026-09-21",
+    "osm": "node/5760197744",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://deccanherald.com/india/karnataka/bengaluru/bengaluru-20260921-2-905193552-4153311"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.6388622,
+     12.9116225
+    ]
+   },
+   "properties": {
+    "locality": "HSR Layout",
+    "date": "2026-09-21",
+    "osm": "relation/17168010",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://deccanherald.com/india/karnataka/bengaluru/bengaluru-20260921-2-905193552-4153311"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.7047541,
+     12.9351457
+    ]
+   },
+   "properties": {
+    "locality": "Panathur",
+    "date": "2026-09-21",
+    "osm": "relation/19883259",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://deccanherald.com/india/karnataka/bengaluru/bengaluru-20260921-2-905193552-4153311"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.6984163,
+     12.9552572
+    ]
+   },
+   "properties": {
+    "locality": "Marathahalli",
+    "date": "2022-09",
+    "osm": "relation/19884550",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://www.newslaundry.com/2022/09/13/bengaluru-floods-anatomy-of-a-drainage-system-gone-horribly-wrong"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.6805505,
+     12.9454643
+    ]
+   },
+   "properties": {
+    "locality": "Yemalur",
+    "date": "2022-09",
+    "osm": "node/4332530092",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://www.newslaundry.com/2022/09/13/bengaluru-floods-anatomy-of-a-drainage-system-gone-horribly-wrong"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.6895136,
+     12.9268618
+    ]
+   },
+   "properties": {
+    "locality": "Devarabeesanahalli",
+    "date": "2022-09",
+    "osm": "node/11292971679",
+    "geocoder": "Nominatim (OSM), locality centroid",
+    "source": "https://www.newslaundry.com/2022/09/13/bengaluru-floods-anatomy-of-a-drainage-system-gone-horribly-wrong"
+   }
+  }
+ ]
+}

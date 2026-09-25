@@ -1,0 +1,194 @@
+{
+ "created": "2026-09-25",
+ "tiles": [
+  {
+   "tile": "plan_r0c0",
+   "image": "tiles/plan_r0c0.png",
+   "key": "keys/plan_r0c0.json",
+   "sheet": "plan_25k",
+   "tanks_full": 0,
+   "tanks_partial": 1,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r0c1",
+   "image": "tiles/plan_r0c1.png",
+   "key": "keys/plan_r0c1.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 0,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r0c2",
+   "image": "tiles/plan_r0c2.png",
+   "key": "keys/plan_r0c2.json",
+   "sheet": "plan_25k",
+   "tanks_full": 0,
+   "tanks_partial": 0,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r0c3",
+   "image": "tiles/plan_r0c3.png",
+   "key": "keys/plan_r0c3.json",
+   "sheet": "plan_25k",
+   "tanks_full": 0,
+   "tanks_partial": 0,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r1c0",
+   "image": "tiles/plan_r1c0.png",
+   "key": "keys/plan_r1c0.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 1,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r1c1",
+   "image": "tiles/plan_r1c1.png",
+   "key": "keys/plan_r1c1.json",
+   "sheet": "plan_25k",
+   "tanks_full": 4,
+   "tanks_partial": 0,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r1c2",
+   "image": "tiles/plan_r1c2.png",
+   "key": "keys/plan_r1c2.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 0,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r1c3",
+   "image": "tiles/plan_r1c3.png",
+   "key": "keys/plan_r1c3.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 0,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r2c0",
+   "image": "tiles/plan_r2c0.png",
+   "key": "keys/plan_r2c0.json",
+   "sheet": "plan_25k",
+   "tanks_full": 4,
+   "tanks_partial": 1,
+   "printed_names_expected": 2
+  },
+  {
+   "tile": "plan_r2c1",
+   "image": "tiles/plan_r2c1.png",
+   "key": "keys/plan_r2c1.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 1,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r2c2",
+   "image": "tiles/plan_r2c2.png",
+   "key": "keys/plan_r2c2.json",
+   "sheet": "plan_25k",
+   "tanks_full": 4,
+   "tanks_partial": 1,
+   "printed_names_expected": 2
+  },
+  {
+   "tile": "plan_r2c3",
+   "image": "tiles/plan_r2c3.png",
+   "key": "keys/plan_r2c3.json",
+   "sheet": "plan_25k",
+   "tanks_full": 3,
+   "tanks_partial": 2,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r3c0",
+   "image": "tiles/plan_r3c0.png",
+   "key": "keys/plan_r3c0.json",
+   "sheet": "plan_25k",
+   "tanks_full": 2,
+   "tanks_partial": 0,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r3c1",
+   "image": "tiles/plan_r3c1.png",
+   "key": "keys/plan_r3c1.json",
+   "sheet": "plan_25k",
+   "tanks_full": 0,
+   "tanks_partial": 1,
+   "printed_names_expected": 1
+  },
+  {
+   "tile": "plan_r3c2",
+   "image": "tiles/plan_r3c2.png",
+   "key": "keys/plan_r3c2.json",
+   "sheet": "plan_25k",
+   "tanks_full": 1,
+   "tanks_partial": 0,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "plan_r3c3",
+   "image": "tiles/plan_r3c3.png",
+   "key": "keys/plan_r3c3.json",
+   "sheet": "plan_25k",
+   "tanks_full": 1,
+   "tanks_partial": 1,
+   "printed_names_expected": 0
+  },
+  {
+   "tile": "front_se",
+   "image": "tiles/front_se.png",
+   "key": "keys/front_se.json",
+   "sheet": "front_250k",
+   "tanks_full": 16,
+   "tanks_partial": 0,
+   "printed_names_expected": 0
+  }
+ ],
+ "plan_georef": {
+  "method": "affine, least squares",
+  "gcps": {
+   "P06": "Ulsoor Kere",
+   "P11": "Kempambudhi Kere",
+   "P01": "Sankey Kere",
+   "P13": "Shoolay Tank",
+   "P05": "Dharmambudh Tank",
+   "P09": "Agrahar Hosa Kere"
+  },
+  "A": [
+   [
+    27135.958420053284,
+    -77.67065472156804
+   ],
+   [
+    63.16062693987624,
+    -27770.55244861187
+   ],
+   [
+    -2103879.807231086,
+    368171.78270265245
+   ]
+  ],
+  "residual_px": [
+   7.3,
+   12.4,
+   8.6,
+   6.5,
+   25.3,
+   3.3
+  ],
+  "rms_px": 12.7,
+  "metres_per_px": 4.0,
+  "rms_m": 51
+ }
+}
