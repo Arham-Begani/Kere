@@ -25,6 +25,7 @@ const FLOOD_SWATCH = {
 
 const state = {
   floodVisible: false,
+  rainVisible: false,
   map: null,
   activeDrawer: null,
 };
@@ -290,6 +291,203 @@ function setFloodVisible(v) {
   (state.newsMarkerEls || []).forEach((el) => el.classList.toggle('is-hidden', !v));
 }
 
+/* -------------------------------------------------------------------------
+   Rain pooling (CLAUDE.md P2) — "where water would pool on today's
+   terrain", built from the SAME AWS Terrarium tiles already used for the
+   3D terrain above, run through priority-flood depression filling by
+   pipeline/rain.py. Ships as app/data/rain.json + rain_depth.png. This is
+   an additional, off-by-default layer: it never replaces or conflicts with
+   the 1954 sheets/tanks/flood layers, and every number shown about it
+   (max depth, pooling %) is read from rain.json at runtime, never
+   hardcoded here.
+
+   Rule: never call or imply this is a flood prediction, anywhere in copy.
+
+   Approach chosen: a MapLibre `canvas` source (as CLAUDE.md specifies)
+   feeding an ordinary `raster` layer — the same layer *type* already used
+   successfully for the 1954 sheets. That's a meaningful difference from
+   the earlier "sky" investigation in setupTerrainAndSky() above: `sky` was
+   rejected because it's a style *layer type* missing from this build's
+   validator enum, whereas `canvas` is a *source* type consumed by a
+   `raster` layer, which this build already proves out. Testing confirmed
+   addSource({type:'canvas', ...}) works here. Using a canvas source (and
+   not a plain `image` source) is what lets the reveal do a genuine depth
+   threshold sweep client-side — redraw the canvas's pixels each animation
+   frame, call source.play()/triggerRepaint(), and deeper pools cross the
+   falling threshold before shallow fringes do, rather than everything
+   fading in together. If addSource/addLayer ever throws in some other
+   environment, ensureRainLayer() below falls back to a static `image`
+   source (pre-tinted once via canvas.toDataURL()) and playRainReveal()
+   just fades raster-opacity 0 → target over the same 3s — no threshold
+   sweep, but same layer type, same corners, same disclaimer.
+   ------------------------------------------------------------------------- */
+
+const RAIN_REVEAL_MS = 3000;
+const RAIN_TINT = [47, 111, 159]; // --water, #2f6f9f — same water colour family as tanks/flood
+const RAIN_MAX_ALPHA = 217; // ~0.85 * 255 — matches the spec's "water is #2f6f9f at 0.85"
+
+function loadImageEl(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed to load ${src}`));
+    img.src = src;
+  });
+}
+
+// Renders one animation frame of the threshold sweep into the live render
+// canvas that backs the MapLibre canvas source. `progress` is 0..1 across
+// RAIN_REVEAL_MS. The threshold falls from ~max depth to 0 as progress
+// advances, so only the deepest depressions (highest pixel value) pass it
+// early on; shallow fringes (low but nonzero value) only cross it near the
+// end — the "water rising" look the spec asks for.
+function drawRainThresholdFrame(progress) {
+  const depth = state.rainDepth, ctx = state.rainRenderCtx, meta = state.rain;
+  if (!depth || !ctx || !meta) return;
+  const w = meta.width, h = meta.height;
+  const out = ctx.createImageData(w, h);
+  const eased = 1 - Math.pow(1 - progress, 2); // ease-out: quick to start, settles at the end
+  const threshold = 255 * (1 - eased);
+  const feather = 24; // soft edge in 8-bit pixel-value units, avoids a hard binary edge
+  for (let i = 0; i < depth.length; i += 4) {
+    const v = depth[i]; // rain_depth.png is greyscale: R === G === B
+    let a = 0;
+    if (v > 0) {
+      let reveal = (v - threshold + feather) / feather;
+      if (reveal < 0) reveal = 0; else if (reveal > 1) reveal = 1;
+      a = reveal * (0.35 + 0.65 * (v / 255)) * RAIN_MAX_ALPHA; // deeper pixels read more opaque too
+    }
+    out.data[i] = RAIN_TINT[0];
+    out.data[i + 1] = RAIN_TINT[1];
+    out.data[i + 2] = RAIN_TINT[2];
+    out.data[i + 3] = a;
+  }
+  ctx.putImageData(out, 0, 0);
+}
+
+// Lazy: only decode rain_depth.png and touch the map once the layer is
+// first switched on, so the off-by-default toggle costs nothing at boot.
+async function ensureRainLayer(map) {
+  if (state.rainReady) return state.rainMode;
+  const meta = state.rain;
+  if (!meta) throw new Error('rain.json not loaded');
+
+  const img = await loadImageEl(DATA + meta.image);
+  const off = document.createElement('canvas');
+  off.width = meta.width; off.height = meta.height;
+  const offCtx = off.getContext('2d');
+  offCtx.drawImage(img, 0, 0, meta.width, meta.height);
+  state.rainDepth = offCtx.getImageData(0, 0, meta.width, meta.height).data;
+
+  const renderCanvas = document.createElement('canvas');
+  renderCanvas.width = meta.width; renderCanvas.height = meta.height;
+  state.rainRenderCtx = renderCanvas.getContext('2d');
+  state.rainRenderCanvas = renderCanvas;
+
+  try {
+    map.addSource('rain', { type: 'canvas', canvas: renderCanvas, coordinates: meta.corners, animate: false });
+    map.addLayer({
+      id: 'rain-layer',
+      type: 'raster',
+      source: 'rain',
+      layout: { visibility: 'none' },
+      paint: { 'raster-opacity': 0 },
+    }, state.rainBeforeId);
+    state.rainMode = 'canvas';
+  } catch (err) {
+    console.warn('Canvas source unavailable for the rain layer; falling back to a static tinted raster.', err);
+    try { if (map.getLayer('rain-layer')) map.removeLayer('rain-layer'); } catch (e) { /* no-op */ }
+    try { if (map.getSource('rain')) map.removeSource('rain'); } catch (e) { /* no-op */ }
+    drawRainThresholdFrame(1); // pre-tint the fallback at full reveal; only raster-opacity animates from here
+    map.addSource('rain', { type: 'image', url: renderCanvas.toDataURL(), coordinates: meta.corners });
+    map.addLayer({
+      id: 'rain-layer',
+      type: 'raster',
+      source: 'rain',
+      layout: { visibility: 'none' },
+      paint: { 'raster-opacity': 0 },
+    }, state.rainBeforeId);
+    state.rainMode = 'image';
+  }
+
+  state.rainReady = true;
+  return state.rainMode;
+}
+
+function stopRainAnimation() {
+  if (state.rainAnimId) cancelAnimationFrame(state.rainAnimId);
+  state.rainAnimId = null;
+}
+
+function playRainReveal(map) {
+  stopRainAnimation();
+  if (!map.getLayer('rain-layer')) return;
+  map.setLayoutProperty('rain-layer', 'visibility', 'visible');
+
+  if (state.rainMode === 'canvas') {
+    const src = map.getSource('rain');
+    if (src && typeof src.play === 'function') src.play();
+    map.setPaintProperty('rain-layer', 'raster-opacity', 0.92);
+    const start = performance.now();
+    let lastDraw = 0;
+    const step = (now) => {
+      if (!state.rainVisible) return; // toggled off mid-animation
+      const progress = Math.min(1, (now - start) / RAIN_REVEAL_MS);
+      if (now - lastDraw > 45 || progress >= 1) {
+        drawRainThresholdFrame(progress);
+        lastDraw = now;
+        map.triggerRepaint();
+      }
+      if (progress < 1) {
+        state.rainAnimId = requestAnimationFrame(step);
+      } else {
+        const s = map.getSource('rain');
+        if (s && typeof s.pause === 'function') s.pause();
+      }
+    };
+    state.rainAnimId = requestAnimationFrame(step);
+  } else {
+    // Fallback path: fade raster-opacity 0 -> target over the same 3s.
+    const start = performance.now();
+    const target = 0.85;
+    const step = (now) => {
+      if (!state.rainVisible) return;
+      const progress = Math.min(1, (now - start) / RAIN_REVEAL_MS);
+      const eased = 1 - Math.pow(1 - progress, 2);
+      map.setPaintProperty('rain-layer', 'raster-opacity', eased * target);
+      if (progress < 1) state.rainAnimId = requestAnimationFrame(step);
+    };
+    state.rainAnimId = requestAnimationFrame(step);
+  }
+}
+
+function hideRainLayer(map) {
+  stopRainAnimation();
+  if (map.getLayer('rain-layer')) {
+    map.setLayoutProperty('rain-layer', 'visibility', 'none');
+    map.setPaintProperty('rain-layer', 'raster-opacity', 0);
+  }
+  if (state.rainMode === 'canvas') {
+    const src = map.getSource('rain');
+    if (src && typeof src.pause === 'function') src.pause();
+  }
+}
+
+async function setRainVisible(map, v) {
+  state.rainVisible = v;
+  if (!v) { hideRainLayer(map); return; }
+  try {
+    await ensureRainLayer(map);
+    playRainReveal(map);
+  } catch (err) {
+    console.error('Rain layer failed to load', err);
+    toast('Rain layer failed to load — check the console.');
+    state.rainVisible = false;
+    const input = document.getElementById('rain-toggle-input');
+    if (input) input.checked = false;
+  }
+}
+
 // Tank name labels: HTML overlays in italic serif, positioned via
 // map.project(). openfreemap's "liberty" style ships its own glyph PBFs
 // (Noto Sans family) for symbol-layer text; it does not carry an italic
@@ -388,7 +586,7 @@ function wirePresets(map) {
    Drawers
    ------------------------------------------------------------------------- */
 
-const DRAWER_NAMES = ['source', 'flood', 'scoreboard', 'fence'];
+const DRAWER_NAMES = ['source', 'flood', 'scoreboard', 'fence', 'rain'];
 
 function closeDrawer() {
   state.activeDrawer = null;
@@ -664,6 +862,42 @@ function populateFenceDrawer() {
   body.innerHTML = html;
 }
 
+/* --- Rain drawer -------------------------------------------------------------
+   Everything below is read straight from state.rain (app/data/rain.json) at
+   render time — the max depth and the pooling share are never retyped as
+   literals here, and the disclaimer text is the file's own wording, not a
+   paraphrase, per the "never a flood prediction" rule. */
+
+function populateRainDrawer() {
+  const body = document.getElementById('drawer-rain-body');
+  const meta = state.rain;
+  const disclaimer = (meta && meta.disclaimer) || '';
+
+  const railBtn = document.querySelector('.rail__btn[data-drawer="rain"]');
+  if (railBtn && disclaimer) railBtn.title = disclaimer;
+
+  let html = `<div class="panel-head"><div><h2>Rain pooling</h2>`
+    + `<p>${escapeHtml(disclaimer)}</p></div>${closeButtonHTML()}</div>`;
+
+  html += `<div class="flood-toggle"><span class="flood-toggle__label">Show on map`
+    + `<span class="flood-toggle__hint">Reveals over ~3s — deepest pools first, shallow fringes last</span></span>`
+    + `<label class="switch"><input type="checkbox" id="rain-toggle-input" ${state.rainVisible ? 'checked' : ''}><span class="switch__track"></span></label></div>`;
+
+  if (meta) {
+    const pct = meta.total_cells ? (meta.pooling_cells / meta.total_cells) * 100 : null;
+    const pctStr = pct == null ? '—' : (pct < 10 ? pct.toFixed(1) : Math.round(pct));
+    html += `<div class="legend-block"><p class="legend-block__stat">Up to <strong>${meta.max_depth_m}&nbsp;m</strong> of standing depth on today's terrain model — `
+      + `<strong>${pctStr}%</strong> of the study grid (${meta.pooling_cells.toLocaleString()} of ${meta.total_cells.toLocaleString()} cells, zoom ${meta.zoom}) would pool.</p>`
+      + `<p class="legend-block__source">${escapeHtml(meta.source || '')} · pipeline/rain.py → app/data/rain.json</p></div>`;
+  }
+
+  html += `<p class="card-footnote">${escapeHtml(disclaimer || 'Where water would pool on today\'s terrain — not a flood prediction.')}</p>`;
+
+  body.innerHTML = html;
+  const toggle = document.getElementById('rain-toggle-input');
+  if (toggle) toggle.addEventListener('change', (e) => setRainVisible(state.map, e.target.checked));
+}
+
 /* -------------------------------------------------------------------------
    Search — client-side gazetteer match only, no geocoding, ever
    ------------------------------------------------------------------------- */
@@ -756,7 +990,7 @@ function finishLoading() {
 
 async function main() {
   try {
-    const [sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, demoData] = await Promise.all([
+    const [sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, demoData, rain] = await Promise.all([
       fetchJSON(`${DATA}sheets.json`),
       fetchJSON(`${DATA}tanks_claude-opus-5-5.geojson`),
       fetchJSON(`${DATA}tanks_claude-opus-5.geojson`),
@@ -768,10 +1002,11 @@ async function main() {
       fetchJSON(`${DATA}backtest.json`),
       fetchJSON(`${DATA}plan_georef.json`),
       fetchJSON(`${DATA}demo_data.json`),
+      fetchJSON(`${DATA}rain.json`),
     ]);
 
     Object.assign(state, {
-      sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef,
+      sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, rain,
       tanksWithCentroid: tanks55.features.map((f) => ({ props: f.properties, centroid: polygonCentroid(f.geometry) })),
     });
 
@@ -792,6 +1027,7 @@ async function main() {
     const tankBeforeId = analysis.buildingsLayerId || analysis.rasterBeforeId;
     addTankLayers(map, tanks55, tankBeforeId);
     addFloodLayers(map, floodPoints, tankBeforeId);
+    state.rainBeforeId = tankBeforeId; // rain layer added lazily on first toggle; see ensureRainLayer()
     setupLabels(map, tanks55);
 
     map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
@@ -806,6 +1042,7 @@ async function main() {
     populateFloodDrawer();
     populateScoreboardDrawer();
     populateFenceDrawer();
+    populateRainDrawer();
 
     applyYearBlend(0);
     finishLoading();
