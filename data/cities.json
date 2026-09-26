@@ -1,0 +1,101 @@
+{
+  "_comment": "Config for pipeline/cities.py + pipeline/read_city.py. Sheet corners (lon/lat) and the compilation note are read verbatim off each sheet's own printed margin by eye (checked against the U502 series' 1 deg lat x 1.5 deg lon span); pixel positions of the neatline are auto-detected at run time by scripts/georef.find_sheet_neatline on the downloaded scan, not hardcoded here.",
+  "series": "U502 (India and Pakistan 1:250,000)",
+  "source": "US Army Map Service via Perry-Castaneda Library, UT Austin (https://maps.lib.utexas.edu/maps/ams/india/)",
+  "cities": [
+    {
+      "key": "bengaluru",
+      "name": "Bengaluru",
+      "sheet": "ND 44-13",
+      "note": "Built separately (city plan 1:25,000 + front sheet 1:250,000); see CLAUDE.md. Not processed by pipeline/cities.py.",
+      "hand_traced": true
+    },
+    {
+      "key": "chennai",
+      "name": "Chennai",
+      "sheet_title": "Madras",
+      "sheet": "ND 44-10",
+      "file": "nd-44-10a.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/nd-44-10a.jpg",
+      "edition": "Edition 1-AMS (First Printing, 12-57)",
+      "bounds_lonlat": { "lon_w": 79.0, "lon_e": 80.5, "lat_n": 14.0, "lat_s": 13.0 },
+      "compiled_note": "Prepared by the Army Map Service (LD), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from: One-Inch Series, 1:63,360, Directorate of Military Survey, revised 1941; Half-Inch Series, 1:126,720, Survey of India, surveyed 1916-17; Half-Inch Series, 1:126,720, Directorate of Military Survey, revised 1943; USHO Charts 2433, 2434, 1948. Road classification should be referred to with caution. Railroads shown are affiliated with the Southern Railway System. Vegetation information is generally unreliable. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
+      "city_center_lonlat": [80.2707, 13.0827],
+      "window_deg": 0.15,
+      "reference_lakes_hint": ["Chembarambakkam Lake", "Puzhal Lake (Red Hills)", "Pulicat Lake"]
+    },
+    {
+      "key": "hyderabad",
+      "name": "Hyderabad",
+      "sheet_title": "Hyderabad",
+      "sheet": "NE 44-9",
+      "file": "ne-44-09a.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/ne-44-09a.jpg",
+      "edition": "Edition 1-AMS (First Printing, 7-63)",
+      "bounds_lonlat": { "lon_w": 78.0, "lon_e": 79.5, "lat_n": 18.0, "lat_s": 17.0 },
+      "compiled_note": "Prepared by the Army Map Service (LUBM), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from: India, 1:25,000, Directorate of Military Survey, Sheets 1, 2, 3, and 4, 1945; Half-inch Series, 1:126,720, Survey of India, Calcutta, 1917-44. Additional planimetric detail from: Hyderabad City and Suburbs, 1:38,400, Zindatilismat Fine Art Litho Works, Hyderabad, 1937; One Inch Series, 1:63,360; Survey of India, 56 K5, 1944; Half-inch Series, 1:126,720, Survey of India, 1917-45. Road classification should be referred to with caution. Vegetation information is generally unreliable. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
+      "city_center_lonlat": [78.4867, 17.3850],
+      "window_deg": 0.15,
+      "reference_lakes_hint": ["Hussain Sagar", "Himayat Sagar", "Osman Sagar"]
+    },
+    {
+      "key": "mumbai",
+      "name": "Mumbai",
+      "sheet_title": "Bombay",
+      "sheet": "NE 43-5",
+      "file": "ne-43-05a.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/ne-43-05a.jpg",
+      "edition": "Edition 1-AMS",
+      "bounds_lonlat": { "lon_w": 72.0, "lon_e": 73.5, "lat_n": 19.0, "lat_s": 18.0 },
+      "compiled_note": "Prepared by the Army Map Service (GURC), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from: One-Inch Series, 1:63,360, Directorate of Military Survey, 1926-44; Half-Inch Series, 1:126,720, Survey of India, 1929-30; British Admiralty Chart 738, 1907-08; USHO Chart 2460, 1939; French Hydrographic Chart 5261, 1905. Planimetric detail revised by photo-planimetric methods. Road classification should be referred to with caution. The reliability of vegetation information is undetermined. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
+      "city_center_lonlat": [72.8777, 19.0760],
+      "window_deg": 0.15,
+      "note_on_window": "Mumbai's real centre (19.076N) sits just north of this sheet's 19.0N neatline; the window is clipped to the sheet, which still covers the harbour and peninsula shown on it.",
+      "reference_lakes_hint": ["Vihar Lake", "Tulsi Lake", "Powai Lake"]
+    },
+    {
+      "key": "pune",
+      "name": "Pune",
+      "sheet_title": "Poona",
+      "sheet": "NE 43-6",
+      "file": "ne-43-06a.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/ne-43-06a.jpg",
+      "edition": "Edition 1-AMS (First Printing, 5-60)",
+      "bounds_lonlat": { "lon_w": 73.5, "lon_e": 75.0, "lat_n": 19.0, "lat_s": 18.0 },
+      "compiled_note": "Prepared by the Army Map Service (RC), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from Half-Inch Series, 1:126,720, Survey of India, 1925-28. Planimetric detail revised by photo-planimetric methods. Road classification should be referred to with caution. Numerous wells exist in this area and only the most important have been shown. The reliability of vegetation information is undetermined. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
+      "city_center_lonlat": [73.8567, 18.5204],
+      "window_deg": 0.15,
+      "reference_lakes_hint": ["Khadakwasla Lake", "Pashan Lake", "Katraj Lake"]
+    },
+    {
+      "key": "mysuru",
+      "name": "Mysuru",
+      "sheet_title": "Mysore",
+      "sheet": "ND 43-16",
+      "file": "nd-43-16.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/nd-43-16.jpg",
+      "edition": "Edition 1-AMS (First Printing, 11-59)",
+      "bounds_lonlat": { "lon_w": 76.0, "lon_e": 77.5, "lat_n": 13.0, "lat_s": 12.0 },
+      "compiled_note": "Prepared by the Army Map Service (GDRC), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from: One-Inch Series, 1:63,360, Survey of India, 1910-25; Half-Inch Series, 1:126,720, Survey of India, 1913-25. Planimetric detail partially revised by photo-planimetric methods. Road classification should be referred to with caution. The reliability of vegetation information is undetermined. Railroads shown are affiliated with the Southern Railway System. Names for symbolized populated places are omitted where information is not available or density of detail does not permit their inclusion.",
+      "city_center_lonlat": [76.6394, 12.2958],
+      "window_deg": 0.15,
+      "reference_lakes_hint": ["Kukkarahalli Lake", "Karanji Lake", "Chamarajendra reservoir"]
+    },
+    {
+      "key": "kolkata",
+      "name": "Kolkata",
+      "sheet_title": "Calcutta",
+      "sheet": "NF 45-7",
+      "file": "nf-45-07a.jpg",
+      "url": "https://maps.lib.utexas.edu/maps/ams/india/nf-45-07a.jpg",
+      "edition": "Edition 1-AMS",
+      "bounds_lonlat": { "lon_w": 87.0, "lon_e": 88.5, "lat_n": 23.0, "lat_s": 22.0 },
+      "compiled_note": "Prepared by the Army Map Service (NSS&H), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1955 from: Half-Inch Series, 1:126,720, Survey of India, 1922-43; USHO Chart 3700, 1951. Planimetric detail revised by photo-planimetric methods. Road classification should be referred to with caution. The reliability of vegetation information is undetermined. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
+      "city_center_lonlat": [88.3639, 22.5726],
+      "window_deg": 0.15,
+      "reference_lakes_hint": ["Rabindra Sarobar", "Salt Lake wetlands / East Kolkata Wetlands"]
+    }
+  ],
+  "demo_city": "chennai",
+  "demo_tile_hint": "the first tile covering the city centre, see pipeline/cities.py tile ordering"
+}
