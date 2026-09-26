@@ -153,7 +153,9 @@ function applyDemoBanner(demoData) {
    Map bootstrap
    ------------------------------------------------------------------------- */
 
-function initMap(container = 'map', camera = PRESETS.stadium, withControls = true) {
+// readyEvent: the main map waits for 'load' (first complete render). Versus' second map only needs
+// 'style.load' -- enough to add sources/layers -- so a slow sprite or tile never leaves it blank.
+function initMap(container = 'map', camera = PRESETS.stadium, withControls = true, readyEvent = 'load') {
   if (typeof maplibregl === 'undefined') {
     return Promise.reject(new Error('MapLibre GL JS did not load from the CDN.'));
   }
@@ -174,8 +176,7 @@ function initMap(container = 'map', camera = PRESETS.stadium, withControls = tru
       map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
       map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
     }
-    window.__kereMaps = (window.__kereMaps || []).concat([map]); // DEBUG
-    map.on('load', () => { if (!settled) { settled = true; resolve(map); } });
+    map.once(readyEvent, () => { if (!settled) { settled = true; resolve(map); } });
     map.on('error', (e) => {
       console.error('MapLibre error', e && e.error);
       if (!settled) { settled = true; reject((e && e.error) || new Error('MapLibre failed to load the style.')); }
@@ -1573,24 +1574,33 @@ function styleTextFont(map) {
 }
 
 // Highlights go on top of everything (no beforeId) so they read over the sheet and the terrain.
+// Labels sit on one centroid point per lake: a polygon source labels every tile the polygon
+// crosses, which repeats the label on the big tanks.
 function addVersusLayers(map, onlyHere, missedHere, ownLabel) {
+  const centroids = (fs) => featureCollection(fs.map((f) => ({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: polygonCentroid(f.geometry) } })));
   map.addSource('versus-only', { type: 'geojson', data: featureCollection(onlyHere) });
   map.addSource('versus-missed', { type: 'geojson', data: featureCollection(missedHere) });
+  map.addSource('versus-only-pt', { type: 'geojson', data: centroids(onlyHere) });
+  map.addSource('versus-missed-pt', { type: 'geojson', data: centroids(missedHere) });
   const font = styleTextFont(map);
   const labelLayout = (text) => ({
     'text-field': text, 'text-font': font, 'text-size': 12.5, 'text-letter-spacing': 0.04,
-    'text-allow-overlap': true, 'text-ignore-placement': true,
+    'text-allow-overlap': true, 'text-ignore-placement': true, 'text-offset': [0, -1.6],
   });
+  // Zoomed out, a 1:250k tank is ~25 px across: widen the strokes so the difference still reads.
+  const byZoom = (far, near) => ['interpolate', ['linear'], ['zoom'], 11, far, 15, near];
   [
+    { id: 'versus-missed-fill', type: 'fill', source: 'versus-missed',
+      paint: { 'fill-color': VERSUS_MISSED_COLOR, 'fill-opacity': 0.16 } },
     { id: 'versus-only-glow', type: 'line', source: 'versus-only',
-      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': 10, 'line-blur': 7, 'line-opacity': 0.6 } },
+      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': byZoom(16, 10), 'line-blur': byZoom(10, 7), 'line-opacity': 0.7 } },
     { id: 'versus-only-line', type: 'line', source: 'versus-only',
-      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': 2.5 } },
+      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': byZoom(3.5, 2.5) } },
     { id: 'versus-missed-line', type: 'line', source: 'versus-missed',
-      paint: { 'line-color': VERSUS_MISSED_COLOR, 'line-width': 2, 'line-dasharray': [1.2, 1.4], 'line-opacity': 0.95 } },
-    { id: 'versus-only-label', type: 'symbol', source: 'versus-only', layout: labelLayout(`only ${ownLabel}`),
+      paint: { 'line-color': VERSUS_MISSED_COLOR, 'line-width': byZoom(3, 2.5), 'line-dasharray': [1.4, 1.2] } },
+    { id: 'versus-only-label', type: 'symbol', source: 'versus-only-pt', layout: labelLayout(`only ${ownLabel}`),
       paint: { 'text-color': '#fbe3bd', 'text-halo-color': 'rgba(10,8,6,0.9)', 'text-halo-width': 1.6 } },
-    { id: 'versus-missed-label', type: 'symbol', source: 'versus-missed', layout: labelLayout(`missed by ${ownLabel}`),
+    { id: 'versus-missed-label', type: 'symbol', source: 'versus-missed-pt', layout: labelLayout(`missed by ${ownLabel}`),
       paint: { 'text-color': VERSUS_MISSED_COLOR, 'text-halo-color': 'rgba(10,8,6,0.9)', 'text-halo-width': 1.6 } },
   ].forEach((l) => {
     try { map.addLayer(l); } catch (e) { console.warn('Versus layer failed', l.id, e); }
@@ -1598,7 +1608,7 @@ function addVersusLayers(map, onlyHere, missedHere, ownLabel) {
 }
 
 function setVersusLayersVisible(map, on) {
-  ['versus-only-glow', 'versus-only-line', 'versus-missed-line', 'versus-only-label', 'versus-missed-label'].forEach((id) => {
+  ['versus-missed-fill', 'versus-only-glow', 'versus-only-line', 'versus-missed-line', 'versus-only-label', 'versus-missed-label'].forEach((id) => {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
   });
 }
@@ -1623,7 +1633,7 @@ async function ensureCompareMap() {
   if (state.compareMap) return state.compareMap;
   if (!state.compareMapLoading) {
     state.compareMapLoading = (async () => {
-      const cm = await initMap('map-compare', cameraOf(state.map), false);
+      const cm = await initMap('map-compare', cameraOf(state.map), false, 'style.load');
       setupTerrainAndSky(cm);
       if (state.streetTerrain) { try { cm.setTerrain(null); } catch (e) { /* no-op */ } }
       const analysis = analyzeStyleLayers(cm);
@@ -1703,15 +1713,17 @@ function versusCaption() {
     + `The dashed outlines on the ${l.label} side are ${l.missed} lake${l.missed === 1 ? '' : 's'} on the sheet that only ${r.label} found.`;
 }
 
-// Frame every lake the two models disagree on, so the difference is on screen the moment it opens.
+// Frame the larger group of lakes the two models disagree on, so the difference is on screen
+// the moment Versus opens (chosen from the data, not a hand-picked camera).
 function versusCamera(map) {
   const diff = computeVersusDiff();
-  const rings = diff.onlyLeft.concat(diff.onlyRight).flatMap((f) => outerRings(f.geometry));
+  const group = diff.onlyRight.length >= diff.onlyLeft.length ? diff.onlyRight : diff.onlyLeft;
+  const rings = group.flatMap((f) => outerRings(f.geometry));
   if (!rings.length) return { ...PRESETS.city };
   const bb = ringsBBox(rings);
-  const cam = map.cameraForBounds([[bb[0], bb[1]], [bb[2], bb[3]]], { padding: { top: 220, bottom: 200, left: 120, right: 160 } });
+  const cam = map.cameraForBounds([[bb[0], bb[1]], [bb[2], bb[3]]], { padding: { top: 240, bottom: 180, left: 90, right: 130 }, bearing: 0 });
   if (!cam) return { ...PRESETS.city };
-  return { center: cam.center, zoom: Math.min(cam.zoom, 14) - 0.3, pitch: 50, bearing: -12 };
+  return { center: cam.center, zoom: Math.min(cam.zoom, 14), pitch: 45, bearing: 0 };
 }
 
 async function enterVersus() {

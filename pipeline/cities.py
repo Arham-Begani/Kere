@@ -186,8 +186,14 @@ def _relation_polygon(el):
     return unary_union(polys)
 
 
-def osm_water_polygons(window_lonlat):
-    data = overpass_query(window_lonlat)
+def osm_water_polygons(window_lonlat, cache_path=None):
+    if cache_path and os.path.exists(cache_path):
+        data = json.load(open(cache_path))
+    else:
+        data = overpass_query(window_lonlat)
+        if cache_path:
+            os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+            json.dump(data, open(cache_path, "w"))
     feats = []
     for el in data.get("elements", []):
         if el.get("type") == "relation":
@@ -207,26 +213,34 @@ def osm_water_polygons(window_lonlat):
     return feats
 
 
-def osm_named_features(window_lonlat, tags=("leisure", "landuse", "amenity", "building", "natural", "place")):
+def osm_named_features(window_lonlat, tags=("leisure", "landuse", "amenity", "building", "natural", "place"),
+                        cache_path=None):
     """Overpass query for named features (park, stadium, bus station, etc.), used to label what
     stands on a lost tank today. Separate from osm_water_polygons since it's a much broader query."""
-    lon0, lat0, lon1, lat1 = window_lonlat
-    clauses = "".join(f"way[\"{t}\"][\"name\"]({lat0},{lon0},{lat1},{lon1});"
-                       f"relation[\"{t}\"][\"name\"]({lat0},{lon0},{lat1},{lon1});" for t in tags)
-    q = f"[out:json][timeout:40];({clauses});out geom;"
-    mirrors = ["https://overpass-api.de/api/interpreter", "https://lz4.overpass-api.de/api/interpreter"]
-    for url in mirrors:
-        try:
-            req = urllib.request.Request(url, data=("data=" + q).encode(),
-                                          headers={"User-Agent": "kere-hackathon-project/1.0 "
-                                                                  "(contact: arhambegani2@gmail.com)"})
-            with urllib.request.urlopen(req, timeout=50) as r:
-                data = json.loads(r.read())
-            break
-        except Exception:
-            data = None
-    if data is None:
-        return []
+    if cache_path and os.path.exists(cache_path):
+        data = json.load(open(cache_path))
+    else:
+        lon0, lat0, lon1, lat1 = window_lonlat
+        clauses = "".join(f"way[\"{t}\"][\"name\"]({lat0},{lon0},{lat1},{lon1});"
+                           f"relation[\"{t}\"][\"name\"]({lat0},{lon0},{lat1},{lon1});" for t in tags)
+        q = f"[out:json][timeout:40];({clauses});out geom;"
+        mirrors = ["https://overpass-api.de/api/interpreter", "https://lz4.overpass-api.de/api/interpreter"]
+        data = None
+        for url in mirrors:
+            try:
+                req = urllib.request.Request(url, data=("data=" + q).encode(),
+                                              headers={"User-Agent": "kere-hackathon-project/1.0 "
+                                                                      "(contact: arhambegani2@gmail.com)"})
+                with urllib.request.urlopen(req, timeout=50) as r:
+                    data = json.loads(r.read())
+                break
+            except Exception:
+                data = None
+        if data is None:
+            return []
+        if cache_path:
+            os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+            json.dump(data, open(cache_path, "w"))
     feats = []
     for el in data.get("elements", []):
         if el.get("type") == "relation":
@@ -324,7 +338,8 @@ def assemble_city(city, osm_water=None):
 
     if osm_water is None:
         try:
-            osm_water = osm_water_polygons(window_lonlat)
+            osm_water = osm_water_polygons(window_lonlat,
+                                            cache_path=os.path.join(RESULTS_DIR, city["key"], "osm_water.json"))
         except Exception as e:
             print(f"  warning: OSM water query failed ({e}); all tanks will be marked status=unknown")
             osm_water = []
@@ -334,7 +349,8 @@ def assemble_city(city, osm_water=None):
     water_union_m = to_m(water_union) if water_union and not water_union.is_empty else None
 
     try:
-        named_feats = osm_named_features(window_lonlat)
+        named_feats = osm_named_features(window_lonlat,
+                                          cache_path=os.path.join(RESULTS_DIR, city["key"], "osm_named.json"))
     except Exception:
         named_feats = []
 
@@ -662,8 +678,15 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True)
     ap.add_argument("--step", default="all", choices=["download", "tile", "assemble", "qa", "export", "all"])
+    ap.add_argument("--refresh-osm", action="store_true",
+                     help="ignore cached Overpass responses (results/cities/<city>/osm_*.json) and re-fetch")
     args = ap.parse_args()
     city = city_config(args.city)
+    if args.refresh_osm:
+        for fn in ("osm_water.json", "osm_named.json"):
+            cache_path = os.path.join(RESULTS_DIR, city["key"], fn)
+            if os.path.exists(cache_path):
+                os.remove(cache_path)
     if args.step == "download":
         download(city)
     elif args.step == "tile":

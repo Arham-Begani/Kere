@@ -71,11 +71,7 @@ def export_front_sheet():
                 corner_order="TL,TR,BR,BL", px_area=[x0, y0, x1, y1])
 
 
-def _crop_and_save(sheet, bbox_px, out_path):
-    if sheet == "plan_25k":
-        src = np.array(Image.open(P("data", "raw", "plan_25k_autocontrast.png")).convert("RGB"))
-    else:
-        src = cv2.cvtColor(cv2.imread(P("data", "raw", "nd-44-13a_front_250k.jpg")), cv2.COLOR_BGR2RGB)
+def _crop_and_save(src, bbox_px, out_path):
     H, W = src.shape[:2]
     x0, y0, x1, y1 = bbox_px
     x0, x1 = sorted((x0, x1)); y0, y1 = sorted((y0, y1))
@@ -92,16 +88,20 @@ def _crop_and_save(sheet, bbox_px, out_path):
 
 
 def export_crops():
+    sheets = {
+        "plan_25k": np.array(Image.open(P("data", "raw", "plan_25k_autocontrast.png")).convert("RGB")),
+        "front_250k": cv2.cvtColor(cv2.imread(P("data", "raw", "nd-44-13a_front_250k.jpg")), cv2.COLOR_BGR2RGB),
+    }
     n = 0
     for model in MODELS:
         fc = json.load(open(os.path.join(OUT, f"tanks_{model}.geojson")))
         for f in fc["features"]:
             p = f["properties"]
-            if _crop_and_save(p["sheet"], p["bbox_px"], os.path.join(OUT, "crops", os.path.basename(p["crop"]))):
+            if _crop_and_save(sheets[p["sheet"]], p["bbox_px"], os.path.join(OUT, "crops", os.path.basename(p["crop"]))):
                 n += 1
         refused = json.load(open(os.path.join(OUT, f"refused_{model}.json")))
         for r in refused:
-            if _crop_and_save(r["sheet"], r["bbox_px"], os.path.join(OUT, "crops", os.path.basename(r["crop"]))):
+            if _crop_and_save(sheets[r["sheet"]], r["bbox_px"], os.path.join(OUT, "crops", os.path.basename(r["crop"]))):
                 n += 1
     return n
 
