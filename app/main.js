@@ -28,7 +28,30 @@ const state = {
   rainVisible: false,
   map: null,
   activeDrawer: null,
+  cityMode: false,   // true for any city other than bengaluru (no flood/scoreboard/rain data)
+  cityKey: 'bengaluru',
+  lastSearchPoint: null, // { lon, lat, name } — drives the "lost lakes near you" drawer
 };
+
+const CITY_PRESETS = {
+  chennai:   { zoom: 12.6, pitch: 45 },
+  hyderabad: { zoom: 12.4, pitch: 45 },
+  pune:      { zoom: 12.6, pitch: 45 },
+  kolkata:   { zoom: 12.4, pitch: 45 },
+};
+
+function urlParams() { return new URLSearchParams(window.location.search); }
+
+// Bengaluru's assets live under data/; every other city's under data/cities/<key>/ — this is
+// the one place that distinction is resolved, so template code just calls assetBase().
+function assetBase() { return state.cityMode ? `${DATA}cities/${state.cityKey}/` : DATA; }
+
+function currentCityKey(citiesIndex) {
+  const fromUrl = urlParams().get('city');
+  const known = new Set((citiesIndex.cities || []).map((c) => c.key));
+  if (fromUrl && known.has(fromUrl)) return fromUrl;
+  return 'bengaluru';
+}
 
 /* -------------------------------------------------------------------------
    Small utilities
@@ -84,7 +107,22 @@ function nearestTank(lon, lat) {
   return best ? { props: best.props, distance: bestDist } : null;
 }
 
-function sheetLabel(sheet) {
+// "Lost lakes near you" — every lost tank within radiusM, nearest first. Distance-and-record
+// only, per CLAUDE.md rule 6 ("never predict flooding for an address").
+function nearbyLostTanks(lon, lat, radiusM) {
+  return (state.tanksWithCentroid || [])
+    .filter((t) => t.props.status === 'lost')
+    .map((t) => ({ props: t.props, distance: distanceMeters(lon, lat, t.centroid[0], t.centroid[1]) }))
+    .filter((t) => t.distance <= radiusM)
+    .sort((a, b) => a.distance - b.distance);
+}
+
+function tankDisplayName(props) {
+  return props.name_as_printed || props.display_name || props.mod_name || 'Unnamed tank';
+}
+
+function sheetLabel(sheet, meta) {
+  if (meta) return `1954 sheet · 1:250,000 · ${meta.sheet_title || meta.sheet || ''}`;
   if (sheet === 'plan_25k') return '1954 city plan · 1:25,000';
   if (sheet === 'front_250k') return '1954 front sheet · 1:250,000';
   return sheet || '';
@@ -586,7 +624,7 @@ function wirePresets(map) {
    Drawers
    ------------------------------------------------------------------------- */
 
-const DRAWER_NAMES = ['source', 'flood', 'scoreboard', 'fence', 'rain'];
+const DRAWER_NAMES = ['source', 'flood', 'scoreboard', 'fence', 'rain', 'nearby'];
 
 function closeDrawer() {
   state.activeDrawer = null;
@@ -604,6 +642,9 @@ function closeDrawer() {
 
 function openDrawer(name) {
   state.activeDrawer = name;
+  // Every other drawer is populated once at boot from static data; "nearby" depends on wherever
+  // the user last searched, which can change after boot, so it re-renders on every open.
+  if (name === 'nearby') populateNearbyDrawer();
   DRAWER_NAMES.forEach((n) => {
     const el = document.getElementById(`drawer-${n}`);
     const open = n === name;
@@ -625,13 +666,56 @@ function toggleDrawer(name) {
 
 function wireRailAndDrawers() {
   document.querySelectorAll('.rail__btn').forEach((btn) => {
+    // Flood/Score/Rain are Bengaluru-only data (build-2 rule 2: no flood claims for other
+    // cities; scoreboard and rain are Bengaluru-eval/terrain-specific outputs that don't exist
+    // for other cities either) — hide those rail entries entirely rather than show empty panels.
+    if (btn.dataset.cityOnly === 'bengaluru' && state.cityMode) { btn.hidden = true; return; }
     btn.addEventListener('click', () => toggleDrawer(btn.dataset.drawer));
   });
   document.addEventListener('click', (e) => {
     if (e.target.closest('.panel-close')) closeDrawer();
+    const copyBtn = e.target.closest('#copy-link-btn');
+    if (copyBtn) copyShareLink(copyBtn.dataset.lon, copyBtn.dataset.lat);
+    const shareBtn = e.target.closest('#native-share-btn');
+    if (shareBtn) nativeShare(shareBtn.dataset.lon, shareBtn.dataset.lat, shareBtn.dataset.label);
+    const nearbyItem = e.target.closest('.nearby-item');
+    if (nearbyItem && nearbyItem.dataset.id) flyToTankId(nearbyItem.dataset.id);
   });
   document.getElementById('drawer-backdrop').addEventListener('click', closeDrawer);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+}
+
+function shareURLFor(lon, lat) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('city', state.cityKey);
+  url.searchParams.set('at', `${parseFloat(lat).toFixed(6)},${parseFloat(lon).toFixed(6)}`);
+  return url.toString();
+}
+
+async function copyShareLink(lon, lat) {
+  const url = shareURLFor(lon, lat);
+  try {
+    await navigator.clipboard.writeText(url);
+    toast('Link copied.');
+  } catch (err) {
+    toast(url);
+  }
+}
+
+async function nativeShare(lon, lat, label) {
+  const url = shareURLFor(lon, lat);
+  if (navigator.share) {
+    try { await navigator.share({ title: `Kere — ${label || 'a location'}`, url }); } catch (err) { /* user cancelled */ }
+  } else {
+    copyShareLink(lon, lat);
+  }
+}
+
+function flyToTankId(id) {
+  const entry = (state.tanksWithCentroid || []).find((t) => t.props.id === id);
+  if (!entry) return;
+  state.map.flyTo({ center: entry.centroid, zoom: 15.5, pitch: 52, essential: true, duration: 1400 });
+  openSourceDrawer(entry.props);
 }
 
 function closeButtonHTML() {
@@ -646,25 +730,46 @@ function openSourceDrawer(props, searchCtx) {
   openDrawer('source');
 }
 
+function shareRowHTML(lon, lat, label) {
+  return `<div class="share-row">`
+    + `<button class="share-btn" id="copy-link-btn" type="button" data-lon="${lon}" data-lat="${lat}">`
+    + `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5 9.5 6.5M6 4.5 7 3.5a2.4 2.4 0 0 1 3.4 3.4L9.3 8M10 11.5 9 12.5a2.4 2.4 0 0 1-3.4-3.4L6.7 8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Copy link</button>`
+    + `<button class="share-btn" id="native-share-btn" type="button" data-lon="${lon}" data-lat="${lat}" data-label="${escapeHtml(label || '')}">`
+    + `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0-8L5.5 4.5M8 2l2.5 2.5M3 9v3.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Share</button>`
+    + `</div>`;
+}
+
+// Bengaluru's tank properties (MOD-sourced name/current_use/redated, georef.json for alignment)
+// and a city's (display_name/now_osm/nearest_place_as_printed, meta.json for alignment) shape
+// differently -- this reads whichever set of fields the current tank actually has, never
+// invents a name or a source (CLAUDE.md rule 3).
 function buildSourceCardHTML(props, searchCtx) {
   const hasPrinted = !!props.name_as_printed;
   const hasModName = !!props.mod_name;
-  const heading = hasPrinted ? props.name_as_printed : (hasModName ? props.mod_name : 'Unnamed tank');
-  const nameSource = hasPrinted ? 'printed on the 1954 sheet' : (hasModName ? 'MOD Foundation record' : 'no name recorded — geometry only');
+  const heading = tankDisplayName(props);
+  let nameSource;
+  if (hasPrinted) nameSource = 'printed on the 1954 sheet';
+  else if (hasModName) nameSource = 'MOD Foundation record';
+  else if (props.nearest_place_as_printed) nameSource = `not printed for this tank — nearest place printed on the sheet is "${props.nearest_place_as_printed}"`;
+  else nameSource = 'no name recorded — geometry only';
   const statusLabel = props.status === 'surviving' ? 'Surviving' : 'Lost';
   const georef = state.georef;
   const gcpCount = georef && georef.gcps ? Object.keys(georef.gcps).length : null;
+  const meta = state.cityMeta;
 
   let html = '';
-  html += `<div class="panel-head"><div><h2>${escapeHtml(heading)}</h2><p>${sheetLabel(props.sheet)}</p></div>${closeButtonHTML()}</div>`;
+  html += `<div class="panel-head"><div><h2>${escapeHtml(heading)}</h2><p>${sheetLabel(props.sheet, meta)}</p></div>${closeButtonHTML()}</div>`;
 
   if (searchCtx) {
     html += `<div class="card-search-context">Nearest 1954 tank to <strong>${escapeHtml(searchCtx.queryName)}</strong>: `
       + `${Math.round(searchCtx.distanceM).toLocaleString()} m away. Distance and record only — never a flood prediction.</div>`;
+    if (searchCtx.lon != null && searchCtx.lat != null) {
+      html += shareRowHTML(searchCtx.lon, searchCtx.lat, searchCtx.queryName);
+    }
   }
 
   if (props.crop) {
-    html += `<div class="card-crop"><img src="${DATA}${props.crop}" alt="Crop of the 1954 sheet around ${escapeHtml(heading)}" loading="lazy"></div>`;
+    html += `<div class="card-crop"><img src="${assetBase()}${props.crop}" alt="Crop of the 1954 sheet around ${escapeHtml(heading)}" loading="lazy"></div>`;
   }
 
   html += `<p class="card-meta">Name source</p><p class="card-name-source">${escapeHtml(nameSource)}</p>`;
@@ -679,8 +784,16 @@ function buildSourceCardHTML(props, searchCtx) {
     html += `<div class="fact fact--redated"><p class="fact__label">Still drawn in 1954</p>`
       + `<p class="fact__value">Last surveyed by MOD: ${escapeHtml(props.mod_last_mapped)}, still drawn on the 1954 compilation.</p></div>`;
   }
-  html += `<div class="fact"><p class="fact__label">What's there now</p>`
-    + `<p class="fact__value">${props.mod_current_use ? `${escapeHtml(props.mod_current_use)} (MOD Foundation)` : 'not recorded by MOD'}</p></div>`;
+  if (props.mod_current_use) {
+    html += `<div class="fact"><p class="fact__label">What's there now</p>`
+      + `<p class="fact__value">${escapeHtml(props.mod_current_use)} (MOD Foundation)</p></div>`;
+  } else if (props.now_osm && props.now_osm.name) {
+    html += `<div class="fact"><p class="fact__label">What's there now</p>`
+      + `<p class="fact__value">${escapeHtml(props.now_osm.name)}${props.now_osm.type ? ` (${escapeHtml(props.now_osm.type)})` : ''} — ${escapeHtml(props.now_osm.source)}</p></div>`;
+  } else if (props.status === 'lost') {
+    html += `<div class="fact"><p class="fact__label">What's there now</p>`
+      + `<p class="fact__value">not recorded${meta ? ' by OpenStreetMap' : ' by MOD'}</p></div>`;
+  }
   if (hasModName && hasPrinted) {
     html += `<div class="fact"><p class="fact__label">MOD record</p>`
       + `<p class="fact__value">${escapeHtml(props.mod_name)}${props.mod_last_mapped ? ` · last surveyed ${escapeHtml(props.mod_last_mapped)}` : ''}</p></div>`;
@@ -691,10 +804,14 @@ function buildSourceCardHTML(props, searchCtx) {
   }
   html += '</div>';
 
-  if (props.sheet === 'plan_25k' && georef && georef.rms_m != null && gcpCount != null) {
-    html += `<p class="card-footnote">Aligned ±${georef.rms_m} m using ${gcpCount} tanks.</p>`;
+  if (meta) {
+    const compiledYear = /Compiled in 1955/.test(meta.compiled_note || '') ? '1955' : '1954';
+    html += `<p class="card-footnote">On a map compiled in ${compiledYear} (${escapeHtml(meta.sheet_title || '')}, ${escapeHtml(meta.sheet || '')}), `
+      + `aligned to ±${meta.alignment_median_offset_m}&nbsp;m using its own printed neatline corners.</p>`;
+  } else if (props.sheet === 'plan_25k' && georef && georef.rms_m != null && gcpCount != null) {
+    html += `<p class="card-footnote">On the 1954 compilation, aligned ±${georef.rms_m} m using ${gcpCount} tanks.</p>`;
   } else if (props.sheet === 'front_250k') {
-    html += '<p class="card-footnote">From the 1954 front sheet (1:250,000), aligned to its printed neatline corners.</p>';
+    html += '<p class="card-footnote">From the 1954 front sheet (1:250,000; front sheet: Survey of India 1945–46), aligned to its printed neatline corners.</p>';
   }
 
   return html;
@@ -801,6 +918,12 @@ function populateScoreboardDrawer() {
   let html = `<div class="panel-head"><div><h2>Scoreboard</h2>`
     + `<p>Same prompt, same effort, both models — scored against a hand-traced answer key by eval/score.py.</p></div>${closeButtonHTML()}</div>`;
 
+  const nar = state.narrative;
+  if (nar && nar.headline) {
+    html += `<div class="legend-block"><p class="legend-block__stat">${escapeHtml(nar.headline)}</p>`
+      + `<p class="legend-block__source">${escapeHtml(nar.subhead || '')}</p></div>`;
+  }
+
   html += '<table class="score-table"><thead><tr><th></th>';
   cols.forEach((c) => { html += `<th class="${c.headline ? 'col-headline' : ''}">${c.label}</th>`; });
   html += '</tr></thead><tbody>';
@@ -832,10 +955,9 @@ function populateScoreboardDrawer() {
 
 function populateFenceDrawer() {
   const body = document.getElementById('drawer-fence-body');
-  const groups = [
-    { label: 'Opus 5.5', items: state.refused55 || [] },
-    { label: 'Opus 5', items: state.refused5 || [] },
-  ];
+  const groups = state.cityMode
+    ? [{ label: 'Opus 5.5', items: state.cityRefused || [] }]
+    : [{ label: 'Opus 5.5', items: state.refused55 || [] }, { label: 'Opus 5', items: state.refused5 || [] }];
   const total = groups.reduce((n, g) => n + g.items.length, 0);
 
   let html = `<div class="panel-head"><div><h2>The Fence</h2><p>&ldquo;The model pointed here. The map says no.&rdquo;</p></div>${closeButtonHTML()}</div>`;
@@ -851,14 +973,46 @@ function populateFenceDrawer() {
       const runs = item.runs || [];
       const tiles = item.tile || [];
       html += '<div class="fence-item">'
-        + `<div class="fence-item__crop"><img src="${DATA}${item.crop}" alt="" loading="lazy"></div>`
+        + `<div class="fence-item__crop"><img src="${assetBase()}${item.crop}" alt="" loading="lazy"></div>`
         + `<div><p class="fence-item__reason">${escapeHtml(item.reason)}</p>`
-        + `<p class="fence-item__meta">${escapeHtml(sheetLabel(item.sheet))} · tiles: ${tiles.map(escapeHtml).join(', ')} · seen in ${runs.length} run${runs.length === 1 ? '' : 's'}</p></div>`
+        + `<p class="fence-item__meta">${escapeHtml(sheetLabel(item.sheet, state.cityMeta))} · tiles: ${tiles.map(escapeHtml).join(', ')} · seen in ${runs.length} run${runs.length === 1 ? '' : 's'}</p></div>`
         + '</div>';
     });
     html += '</div>';
   });
 
+  body.innerHTML = html;
+}
+
+/* --- Nearby drawer ("Lost lakes near you") ---------------------------------- */
+
+const NEARBY_RADIUS_M = 2000;
+
+function populateNearbyDrawer() {
+  const body = document.getElementById('drawer-nearby-body');
+  const pt = state.lastSearchPoint;
+  let html = `<div class="panel-head"><div><h2>Lost lakes near you</h2>`
+    + `<p>Every lost tank within 2&nbsp;km of your last search, nearest first. Distance and record only.</p></div>${closeButtonHTML()}</div>`;
+
+  if (!pt) {
+    html += '<p class="empty-note">Search an address or locality first — this list fills in from that point.</p>';
+    body.innerHTML = html;
+    return;
+  }
+  const nearby = nearbyLostTanks(pt.lon, pt.lat, NEARBY_RADIUS_M);
+  html += `<p class="card-search-context">Around <strong>${escapeHtml(pt.name)}</strong>: ${nearby.length} lost lake${nearby.length === 1 ? '' : 's'} within ${NEARBY_RADIUS_M / 1000}&nbsp;km.</p>`;
+  if (!nearby.length) {
+    html += '<p class="empty-note">No lost tank found within 2 km of this point in the current data.</p>';
+  } else {
+    nearby.forEach((t) => {
+      const p = t.props;
+      const now = p.mod_current_use || (p.now_osm && p.now_osm.name) || 'not recorded';
+      html += `<button class="nearby-item" type="button" data-id="${escapeHtml(p.id)}">`
+        + `<div><p class="nearby-item__name">${escapeHtml(tankDisplayName(p))}</p>`
+        + `<p class="nearby-item__meta">now: ${escapeHtml(now)}</p></div>`
+        + `<span class="nearby-item__dist">${Math.round(t.distance)}&nbsp;m</span></button>`;
+    });
+  }
   body.innerHTML = html;
 }
 
@@ -902,11 +1056,29 @@ function populateRainDrawer() {
    Search — client-side gazetteer match only, no geocoding, ever
    ------------------------------------------------------------------------- */
 
+// Photon (https://photon.komoot.io), biased to the current city — only ever called as a
+// fallback when the local gazetteer comes up short, never during demo mode (build-2 rule:
+// "no geocoding calls during the demo"; the gazetteer is tried first always).
+async function photonSearch(query, biasLon, biasLat) {
+  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&lat=${biasLat}&lon=${biasLon}&limit=5`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Photon ${res.status}`);
+  const data = await res.json();
+  return (data.features || []).map((f) => ({
+    name: [f.properties.name, f.properties.city, f.properties.state].filter(Boolean).join(', ') || query,
+    lon: f.geometry.coordinates[0],
+    lat: f.geometry.coordinates[1],
+    fromPhoton: true,
+  }));
+}
+
 function wireSearch(map) {
   const input = document.getElementById('search-input');
   const list = document.getElementById('search-suggestions');
   let activeIndex = -1;
   let currentMatches = [];
+  let photonTimer = null;
+  let photonQueryToken = 0;
 
   function renderMatches(matches, query) {
     currentMatches = matches;
@@ -919,12 +1091,13 @@ function wireSearch(map) {
     }
     const lower = query.toLowerCase();
     list.innerHTML = matches.map((m, i) => {
+      const suffix = m.fromPhoton ? ' <span style="color:var(--text-tertiary);font-size:11px;">· web</span>' : '';
       const idx = m.name.toLowerCase().indexOf(lower);
-      if (idx < 0) return `<li role="option" data-index="${i}">${escapeHtml(m.name)}</li>`;
+      if (idx < 0) return `<li role="option" data-index="${i}">${escapeHtml(m.name)}${suffix}</li>`;
       const before = escapeHtml(m.name.slice(0, idx));
       const mid = escapeHtml(m.name.slice(idx, idx + query.length));
       const after = escapeHtml(m.name.slice(idx + query.length));
-      return `<li role="option" data-index="${i}">${before}<mark>${mid}</mark>${after}</li>`;
+      return `<li role="option" data-index="${i}">${before}<mark>${mid}</mark>${after}${suffix}</li>`;
     }).join('');
     list.hidden = false;
     input.setAttribute('aria-expanded', 'true');
@@ -938,26 +1111,50 @@ function wireSearch(map) {
     input.value = entry.name;
     list.hidden = true;
     map.flyTo({ center: [entry.lon, entry.lat], zoom: 15.2, pitch: 52, bearing: 0, essential: true, duration: 1600 });
+    state.lastSearchPoint = { lon: entry.lon, lat: entry.lat, name: entry.name };
+    const url = new URL(window.location.href);
+    url.searchParams.set('city', state.cityKey);
+    url.searchParams.set('at', `${entry.lat.toFixed(6)},${entry.lon.toFixed(6)}`);
+    window.history.replaceState({}, '', url.toString());
     const nearest = nearestTank(entry.lon, entry.lat);
     if (nearest) {
-      openSourceDrawer(nearest.props, { queryName: entry.name, distanceM: nearest.distance });
+      openSourceDrawer(nearest.props, { queryName: entry.name, distanceM: nearest.distance, lon: entry.lon, lat: entry.lat });
     } else {
       toast('No tank data available yet.');
     }
+    if (state.activeDrawer === 'nearby') populateNearbyDrawer();
   }
+  state.selectSearchResult = select; // used by ?at= handling on boot
 
-  input.addEventListener('input', () => {
-    const q = input.value.trim();
-    if (q.length < 1) { renderMatches([], ''); return; }
-    const lower = q.toLowerCase();
+  function localMatches(query) {
+    const lower = query.toLowerCase();
     const starts = [], contains = [];
-    for (const entry of state.gazetteer) {
+    for (const entry of (state.gazetteer || [])) {
       const nl = entry.name.toLowerCase();
       if (nl.startsWith(lower)) starts.push(entry);
       else if (nl.includes(lower)) contains.push(entry);
       if (starts.length + contains.length > 80) break;
     }
-    renderMatches(starts.concat(contains).slice(0, 8), q);
+    return starts.concat(contains).slice(0, 8);
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim();
+    clearTimeout(photonTimer);
+    if (q.length < 1) { renderMatches([], ''); return; }
+    const local = localMatches(q);
+    renderMatches(local, q);
+    if (q.length >= 3 && local.length < 3) {
+      const myToken = ++photonQueryToken;
+      const bias = state.cityCenter || [0, 0];
+      photonTimer = setTimeout(() => {
+        photonSearch(q, bias[0], bias[1]).then((webMatches) => {
+          if (myToken !== photonQueryToken || input.value.trim() !== q) return; // stale
+          const merged = local.concat(webMatches.filter((w) => !local.some((l) => l.name === w.name))).slice(0, 8);
+          renderMatches(merged, q);
+        }).catch(() => { /* Photon unavailable — local matches (if any) still stand */ });
+      }, 350);
+    }
   });
 
   input.addEventListener('keydown', (e) => {
@@ -977,6 +1174,16 @@ function wireSearch(map) {
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.search')) list.hidden = true;
   });
+
+  // ?at=lat,lon on load: fly straight there and open its nearest-tank card, no typing needed —
+  // this is what makes a "Copy link"/shared result reproducible for whoever opens it.
+  const atParam = urlParams().get('at');
+  if (atParam) {
+    const parts = atParam.split(',').map((s) => parseFloat(s.trim()));
+    if (parts.length === 2 && parts.every((n) => Number.isFinite(n))) {
+      select({ name: 'this location', lon: parts[1], lat: parts[0] });
+    }
+  }
 }
 
 /* -------------------------------------------------------------------------
@@ -988,63 +1195,216 @@ function finishLoading() {
   el.classList.add('is-done');
 }
 
+/* -------------------------------------------------------------------------
+   City picker + downloads — shared by both boot paths
+   ------------------------------------------------------------------------- */
+
+function wireCityPicker(citiesIndex) {
+  const select = document.getElementById('city-select');
+  select.innerHTML = citiesIndex.cities.map((c) =>
+    `<option value="${escapeHtml(c.key)}"${c.key === state.cityKey ? ' selected' : ''}>${escapeHtml(c.name)}</option>`).join('');
+  select.addEventListener('change', () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('city', select.value);
+    url.searchParams.delete('at');
+    window.location.href = url.toString();
+  });
+
+  const entry = citiesIndex.cities.find((c) => c.key === state.cityKey);
+  const badge = document.getElementById('city-badge');
+  if (entry) {
+    badge.textContent = entry.hand_traced ? 'Checked against a hand-traced map' : 'Read by Opus 5.5 · not yet checked by hand';
+    badge.classList.toggle('is-verified', !!entry.hand_traced);
+    badge.classList.toggle('is-unverified', !entry.hand_traced);
+  }
+}
+
+function tanksToCSV(fc) {
+  const cols = ['id', 'display_name', 'status', 'now_text', 'now_source', 'area_m2', 'runs_found', 'model', 'prompt_version', 'crop'];
+  const csvEscape = (v) => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+  const rows = [cols.join(',')];
+  fc.features.forEach((f) => {
+    const p = f.properties;
+    const now = p.mod_current_use || (p.now_osm && p.now_osm.name) || '';
+    const nowSource = p.mod_current_use ? 'MOD Foundation' : (p.now_osm ? p.now_osm.source : '');
+    rows.push([
+      p.id, tankDisplayName(p), p.status, now, nowSource, p.area_m2 || '',
+      (p.runs_found || []).length, state.cityMode ? 'claude-opus-5-5' : 'claude-opus-5-5 / claude-opus-5',
+      state.cityMode ? 'kere-city-v1' : 'kere-tanks-v2', p.crop || '',
+    ].map(csvEscape).join(','));
+  });
+  return rows.join('\n');
+}
+
+function downloadBlob(filename, content, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+function wireDownloads() {
+  const btn = document.getElementById('download-btn');
+  const menu = document.getElementById('download-menu-list');
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const willOpen = menu.hidden;
+    menu.hidden = !willOpen;
+    btn.setAttribute('aria-expanded', String(willOpen));
+  });
+  document.addEventListener('click', () => { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); });
+  menu.addEventListener('click', (e) => {
+    const fmtBtn = e.target.closest('button[data-format]');
+    if (!fmtBtn) return;
+    const fc = state.currentTanksGeoJSON;
+    if (!fc) { toast('No lake data loaded yet.'); return; }
+    if (fmtBtn.dataset.format === 'geojson') {
+      downloadBlob(`kere-${state.cityKey}-tanks.geojson`, JSON.stringify(fc, null, 1), 'application/geo+json');
+    } else {
+      downloadBlob(`kere-${state.cityKey}-tanks.csv`, tanksToCSV(fc), 'text/csv');
+    }
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Boot — Bengaluru (the full, scored build) vs any other city (read by
+   Opus 5.5 only, no flood layer, no scoreboard, no rain — build-2 rules)
+   ------------------------------------------------------------------------- */
+
+async function bootBengaluru() {
+  const [sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, demoData, rain, narrative] = await Promise.all([
+    fetchJSON(`${DATA}sheets.json`),
+    fetchJSON(`${DATA}tanks_claude-opus-5-5.geojson`),
+    fetchJSON(`${DATA}tanks_claude-opus-5.geojson`),
+    fetchJSON(`${DATA}refused_claude-opus-5-5.json`),
+    fetchJSON(`${DATA}refused_claude-opus-5.json`),
+    fetchJSON(`${DATA}flood_points.geojson`),
+    fetchJSON(`${DATA}gazetteer.json`),
+    fetchJSON(`${DATA}scoreboard.json`),
+    fetchJSON(`${DATA}backtest.json`),
+    fetchJSON(`${DATA}plan_georef.json`),
+    fetchJSON(`${DATA}demo_data.json`),
+    fetchJSON(`${DATA}rain.json`),
+    fetchJSON(`${DATA}narrative.json`).catch(() => null),
+  ]);
+
+  Object.assign(state, {
+    sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, rain, narrative,
+    cityMode: false, cityKey: 'bengaluru', cityCenter: PRESETS.city.center,
+    currentTanksGeoJSON: tanks55,
+    tanksWithCentroid: tanks55.features.map((f) => ({ props: f.properties, centroid: polygonCentroid(f.geometry) })),
+  });
+
+  applyDemoBanner(demoData);
+
+  const map = await initMap();
+  state.map = map;
+
+  setupTerrainAndSky(map);
+  const analysis = analyzeStyleLayers(map);
+  state.buildingsLayerId = analysis.buildingsLayerId;
+  state.symbolLayerIds = analysis.symbolLayerIds;
+  if (!analysis.buildingsLayerId) {
+    console.warn('No fill-extrusion buildings layer found in the style; the year slider will still fade the sheets and tanks.');
+  }
+
+  addSheetLayers(map, sheets, analysis.rasterBeforeId);
+  const tankBeforeId = analysis.buildingsLayerId || analysis.rasterBeforeId;
+  addTankLayers(map, tanks55, tankBeforeId);
+  addFloodLayers(map, floodPoints, tankBeforeId);
+  state.rainBeforeId = tankBeforeId; // rain layer added lazily on first toggle; see ensureRainLayer()
+  setupLabels(map, tanks55);
+
+  map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
+  map.on('mouseenter', 'tanks-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'tanks-fill', () => { map.getCanvas().style.cursor = ''; });
+
+  wireSlider();
+  wirePresets(map);
+  wireRailAndDrawers();
+  wireSearch(map);
+  wireDownloads();
+
+  populateFloodDrawer();
+  populateScoreboardDrawer();
+  populateFenceDrawer();
+  populateRainDrawer();
+  populateNearbyDrawer();
+
+  applyYearBlend(0);
+}
+
+async function bootCity(cityKey, indexEntry) {
+  const base = `${DATA}cities/${cityKey}/`;
+  const [corners, tanks, refused, meta, gazetteer] = await Promise.all([
+    fetchJSON(`${base}corners.json`),
+    fetchJSON(`${base}tanks.geojson`),
+    fetchJSON(`${base}refused.json`),
+    fetchJSON(`${base}meta.json`),
+    fetchJSON(`${base}gazetteer.json`).catch(() => []),
+  ]);
+
+  Object.assign(state, {
+    cityMode: true, cityKey, cityMeta: meta, cityRefused: refused, gazetteer,
+    georef: null, floodPoints: { type: 'FeatureCollection', features: [] },
+    cityCenter: (indexEntry && indexEntry.city_center_lonlat) || [meta.window_lonlat[0], meta.window_lonlat[1]],
+    currentTanksGeoJSON: tanks,
+    tanksWithCentroid: tanks.features.map((f) => ({ props: f.properties, centroid: polygonCentroid(f.geometry) })),
+  });
+
+  applyDemoBanner(null); // no stand-in path for cities: they only ever ship once real, QA-passed data exists
+
+  const map = await initMap();
+  state.map = map;
+  map.jumpTo({ center: state.cityCenter, zoom: (CITY_PRESETS[cityKey] || {}).zoom || 12.5,
+               pitch: (CITY_PRESETS[cityKey] || {}).pitch || 45, bearing: 0 });
+
+  setupTerrainAndSky(map);
+  const analysis = analyzeStyleLayers(map);
+  state.buildingsLayerId = analysis.buildingsLayerId;
+  state.symbolLayerIds = analysis.symbolLayerIds;
+
+  // Reuses the 'plan' sheet-layer id (see addSheetLayers) so the existing year-slider logic in
+  // applyYearBlend() needs no city-mode branch of its own — one sheet layer, same id, same fade.
+  addSheetLayers(map, { plan: { image: `cities/${cityKey}/sheet.jpg`, corners: corners.corners } }, analysis.rasterBeforeId);
+  const tankBeforeId = analysis.buildingsLayerId || analysis.rasterBeforeId;
+  addTankLayers(map, tanks, tankBeforeId);
+  setupLabels(map, tanks);
+
+  map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
+  map.on('mouseenter', 'tanks-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'tanks-fill', () => { map.getCanvas().style.cursor = ''; });
+
+  wireSlider();
+  document.querySelector('.presets').hidden = true; // Bengaluru-specific camera presets
+  wireRailAndDrawers();
+  wireSearch(map);
+  wireDownloads();
+
+  populateFenceDrawer();
+  populateNearbyDrawer();
+
+  applyYearBlend(0);
+}
+
 async function main() {
   try {
-    const [sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, demoData, rain] = await Promise.all([
-      fetchJSON(`${DATA}sheets.json`),
-      fetchJSON(`${DATA}tanks_claude-opus-5-5.geojson`),
-      fetchJSON(`${DATA}tanks_claude-opus-5.geojson`),
-      fetchJSON(`${DATA}refused_claude-opus-5-5.json`),
-      fetchJSON(`${DATA}refused_claude-opus-5.json`),
-      fetchJSON(`${DATA}flood_points.geojson`),
-      fetchJSON(`${DATA}gazetteer.json`),
-      fetchJSON(`${DATA}scoreboard.json`),
-      fetchJSON(`${DATA}backtest.json`),
-      fetchJSON(`${DATA}plan_georef.json`),
-      fetchJSON(`${DATA}demo_data.json`),
-      fetchJSON(`${DATA}rain.json`),
-    ]);
+    const citiesIndex = await fetchJSON(`${DATA}cities.json`).catch(() => ({ cities: [{ key: 'bengaluru', name: 'Bengaluru', hand_traced: true }] }));
+    const cityKey = currentCityKey(citiesIndex);
+    const entry = citiesIndex.cities.find((c) => c.key === cityKey);
+    state.cityKey = cityKey;
 
-    Object.assign(state, {
-      sheets, tanks55, tanks5, refused55, refused5, floodPoints, gazetteer, scoreboard, backtest, georef, rain,
-      tanksWithCentroid: tanks55.features.map((f) => ({ props: f.properties, centroid: polygonCentroid(f.geometry) })),
-    });
-
-    applyDemoBanner(demoData);
-
-    const map = await initMap();
-    state.map = map;
-
-    setupTerrainAndSky(map);
-    const analysis = analyzeStyleLayers(map);
-    state.buildingsLayerId = analysis.buildingsLayerId;
-    state.symbolLayerIds = analysis.symbolLayerIds;
-    if (!analysis.buildingsLayerId) {
-      console.warn('No fill-extrusion buildings layer found in the style; the year slider will still fade the sheets and tanks.');
+    wireCityPicker(citiesIndex);
+    if (cityKey === 'bengaluru') {
+      await bootBengaluru();
+    } else {
+      document.getElementById('intro-kicker').textContent = `Kere — 1954 tanks over 2026 ${entry ? entry.name : cityKey}`;
+      document.getElementById('intro-line').innerHTML = `The lakes ${escapeHtml(entry ? entry.name : cityKey)} forgot, read off a 1954 map by <em>Claude&nbsp;Opus&nbsp;5.5</em>.`;
+      document.title = `Kere — the lakes ${entry ? entry.name : cityKey} forgot`;
+      await bootCity(cityKey, entry);
     }
-
-    addSheetLayers(map, sheets, analysis.rasterBeforeId);
-    const tankBeforeId = analysis.buildingsLayerId || analysis.rasterBeforeId;
-    addTankLayers(map, tanks55, tankBeforeId);
-    addFloodLayers(map, floodPoints, tankBeforeId);
-    state.rainBeforeId = tankBeforeId; // rain layer added lazily on first toggle; see ensureRainLayer()
-    setupLabels(map, tanks55);
-
-    map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
-    map.on('mouseenter', 'tanks-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', 'tanks-fill', () => { map.getCanvas().style.cursor = ''; });
-
-    wireSlider();
-    wirePresets(map);
-    wireRailAndDrawers();
-    wireSearch(map);
-
-    populateFloodDrawer();
-    populateScoreboardDrawer();
-    populateFenceDrawer();
-    populateRainDrawer();
-
-    applyYearBlend(0);
     finishLoading();
   } catch (err) {
     console.error('Kere failed to start', err);

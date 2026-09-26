@@ -559,6 +559,27 @@ def export_city(city):
     json.dump(refused, open(os.path.join(out_dir, "refused.json"), "w"), indent=1)
     json.dump(qa, open(os.path.join(out_dir, "qa.json"), "w"), indent=1)
 
+    # gazetteer for the search box: place names the model itself read off the sheet, anchored to
+    # the tank they were read next to (no separate geocoding call -- CLAUDE.md "no geocoding
+    # calls during the demo"), plus the city name itself for a zero-effort first search.
+    seen, gaz = set(), []
+
+    def add_place(name, lon, lat):
+        if not name or name.strip().lower() in seen:
+            return
+        seen.add(name.strip().lower())
+        gaz.append(dict(name=name.strip(), lon=round(float(lon), 6), lat=round(float(lat), 6)))
+
+    add_place(city["name"], *city["city_center_lonlat"])
+    for f in fc["features"]:
+        p = f["properties"]
+        if p.get("nearest_place_as_printed"):
+            ring = f["geometry"]["coordinates"][0]
+            lon = sum(pt[0] for pt in ring) / len(ring)
+            lat = sum(pt[1] for pt in ring) / len(ring)
+            add_place(p["nearest_place_as_printed"], lon, lat)
+    json.dump(gaz, open(os.path.join(out_dir, "gazetteer.json"), "w"), indent=1)
+
     cost = 0.0
     for f in glob.glob(os.path.join(RESULTS_DIR, city["key"], "raw", "*.json")):
         cost += json.load(open(f)).get("cost_usd", 0.0)
@@ -595,8 +616,46 @@ def update_cities_index():
     os.makedirs(P("app", "data"), exist_ok=True)
     json.dump(dict(cities=entries, demo_city=json.load(open(CITIES_JSON)).get("demo_city")),
                open(P("app", "data", "cities.json"), "w"), indent=1)
+    write_license_data()
     print(f"app/data/cities.json: {len(entries)} cities listed ({sum(1 for e in entries if not e.get('hand_traced'))} model-read)")
     return entries
+
+
+LICENSE_DATA_TEXT = """Kere -- data credits and licence
+
+Every downloaded file traces back to these sources. Keep this file with any copy of the data.
+
+US Army Map Service, Series U502 "India and Pakistan 1:250,000" -- public domain (US government
+work), scans via the Perry-Castaneda Library Map Collection, University of Texas at Austin
+(https://maps.lib.utexas.edu/maps/ams/india/). This is the 1954-55 historical map every tank
+outline is traced from.
+
+Bengaluru only: MOD Foundation, "Building a Resilient Bengaluru", via
+github.com/soniadas123/bengaluru-water-map -- used for MOD-sourced names, current-use records,
+and the hand-traced answer key that scores the Opus 5 vs Opus 5.5 comparison.
+
+Bengaluru only: KGIS / BBMP flood-point lists, via OpenCity (public domain).
+
+All cities except Bengaluru: OpenStreetMap contributors, (c) OpenStreetMap contributors,
+licensed under the Open Database License (ODbL) -- https://www.openstreetmap.org/copyright.
+Used for today's water bodies (surviving/lost classification) and for naming what stands on a
+lost tank today ("now_osm" fields, labelled "OpenStreetMap").
+
+Model: Claude Opus 5.5 (Anthropic) points at a water body and reads any printed name or nearby
+place name; it never draws the outline. The outline in every downloaded feature comes from
+pipeline/grow.py running on the scan's own pixels, never from the model's box.
+
+Each feature in the download carries: id, its 1954 outline, status (lost/surviving), a name (as
+printed on the sheet, from MOD, or "Unnamed tank near <place>"), what stands there now and its
+source, the model and prompt version that read it, how many of 3 runs agreed, and the city's
+measured alignment error. See JUDGE_QA.md and the app's Source card for how to read these.
+"""
+
+
+def write_license_data():
+    os.makedirs(P("app", "data"), exist_ok=True)
+    with open(P("app", "data", "LICENSE-DATA.txt"), "w", encoding="utf-8") as f:
+        f.write(LICENSE_DATA_TEXT)
 
 
 if __name__ == "__main__":
