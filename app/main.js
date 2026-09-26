@@ -10,6 +10,8 @@
 
 const DATA = 'data/';
 
+const TERRAIN_EXAGGERATION = 4; // Bengaluru is flat (870-920 m); exaggerate so the relief reads
+
 const PRESETS = {
   stadium: { center: [77.6117, 12.9686], zoom: 16.5, pitch: 60, bearing: -20 },
   city:    { center: [77.60,   12.97],   zoom: 12.3, pitch: 45, bearing: 0 },
@@ -151,24 +153,28 @@ function applyDemoBanner(demoData) {
    Map bootstrap
    ------------------------------------------------------------------------- */
 
-function initMap() {
+function initMap(container = 'map', camera = PRESETS.stadium, withControls = true) {
   if (typeof maplibregl === 'undefined') {
     return Promise.reject(new Error('MapLibre GL JS did not load from the CDN.'));
   }
   return new Promise((resolve, reject) => {
     let settled = false;
     const map = new maplibregl.Map({
-      container: 'map',
+      container,
       style: 'https://tiles.openfreemap.org/styles/liberty',
-      center: PRESETS.stadium.center,
-      zoom: PRESETS.stadium.zoom,
-      pitch: PRESETS.stadium.pitch,
-      bearing: PRESETS.stadium.bearing,
+      center: camera.center,
+      zoom: camera.zoom,
+      pitch: camera.pitch,
+      bearing: camera.bearing,
       attributionControl: false,
       antialias: true,
+      maxPitch: 85, // default is 60; "Stand here" needs a near-horizontal street-level view
     });
-    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
-    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+    if (withControls) {
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
+      map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+    }
+    window.__kereMaps = (window.__kereMaps || []).concat([map]); // DEBUG
     map.on('load', () => { if (!settled) { settled = true; resolve(map); } });
     map.on('error', (e) => {
       console.error('MapLibre error', e && e.error);
@@ -188,7 +194,7 @@ function setupTerrainAndSky(map) {
       maxzoom: 15,
       encoding: 'terrarium',
     });
-    map.setTerrain({ source: 'terrain-dem', exaggeration: 4 });
+    map.setTerrain({ source: 'terrain-dem', exaggeration: TERRAIN_EXAGGERATION });
   } catch (err) {
     console.warn('Terrain unavailable', err);
   }
@@ -575,16 +581,34 @@ function safeSetPaint(map, id, prop, val) {
   if (map.getLayer(id)) { try { map.setPaintProperty(id, prop, val); } catch (e) { /* no-op */ } }
 }
 
+// The slider blends two real snapshots (2026 basemap, 1954 compilation); there is no data for
+// the years in between, so the readout names the snapshot and the blend share -- it never
+// shows an interpolated year like "1990", which would claim knowledge we don't have (rule 5).
+function updateYearReadout(t) {
+  const el = document.getElementById('year-readout');
+  if (!el) return;
+  let text;
+  if (t <= 0.02) text = '2026 · today';
+  else if (t >= 0.98) text = '1954 map';
+  else text = `Blending · ${Math.round(t * 100)}% 1954`;
+  el.textContent = text;
+  el.style.left = `${t * 100}%`;
+  el.classList.toggle('is-then', t >= 0.5);
+}
+
 function applyYearBlend(t) {
+  t = Math.min(1, Math.max(0, Number(t) || 0));
   document.documentElement.style.setProperty('--t', String(t));
   const now = document.getElementById('year-label-now');
   const then = document.getElementById('year-label-then');
   if (now) now.style.opacity = String(1 - t * 0.6);
   if (then) then.style.opacity = String(0.4 + t * 0.6);
+  updateYearReadout(t);
 
-  const map = state.map;
-  if (!map) return;
+  [state.map, state.compareMap].forEach((map) => { if (map) applyYearBlendToMap(map, t); });
+}
 
+function applyYearBlendToMap(map, t) {
   safeSetPaint(map, 'sheet-plan-layer', 'raster-opacity', t);
   safeSetPaint(map, 'sheet-front-layer', 'raster-opacity', t);
   safeSetPaint(map, 'tanks-fill', 'fill-opacity', 0.15 + 0.7 * t);
@@ -606,6 +630,9 @@ function applyYearBlend(t) {
 function wireSlider() {
   const slider = document.getElementById('year-slider');
   slider.addEventListener('input', () => applyYearBlend(parseFloat(slider.value)));
+  // Tapping either end label animates the blend there -- easier than dragging on a phone.
+  document.getElementById('year-label-now').addEventListener('click', () => tweenSlider(0, 1200));
+  document.getElementById('year-label-then').addEventListener('click', () => tweenSlider(1, 1200));
 }
 
 function wirePresets(map) {
@@ -633,7 +660,7 @@ function closeDrawer() {
     el.classList.remove('is-open');
     el.setAttribute('aria-hidden', 'true');
   });
-  document.querySelectorAll('.rail__btn').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+  document.querySelectorAll('.rail__btn[data-drawer]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
   const bd = document.getElementById('drawer-backdrop');
   bd.classList.remove('is-open');
   bd.hidden = true;
@@ -651,7 +678,7 @@ function openDrawer(name) {
     el.classList.toggle('is-open', open);
     el.setAttribute('aria-hidden', String(!open));
   });
-  document.querySelectorAll('.rail__btn').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.drawer === name)));
+  document.querySelectorAll('.rail__btn[data-drawer]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.drawer === name)));
   const bd = document.getElementById('drawer-backdrop');
   bd.hidden = false;
   requestAnimationFrame(() => bd.classList.add('is-open'));
@@ -670,6 +697,7 @@ function wireRailAndDrawers() {
     // cities; scoreboard and rain are Bengaluru-eval/terrain-specific outputs that don't exist
     // for other cities either) — hide those rail entries entirely rather than show empty panels.
     if (btn.dataset.cityOnly === 'bengaluru' && state.cityMode) { btn.hidden = true; return; }
+    if (btn.dataset.mode === 'versus') { btn.addEventListener('click', () => (state.versusOn ? exitVersus() : enterVersus())); return; }
     btn.addEventListener('click', () => toggleDrawer(btn.dataset.drawer));
   });
   document.addEventListener('click', (e) => {
@@ -680,6 +708,11 @@ function wireRailAndDrawers() {
     if (shareBtn) nativeShare(shareBtn.dataset.lon, shareBtn.dataset.lat, shareBtn.dataset.label);
     const nearbyItem = e.target.closest('.nearby-item');
     if (nearbyItem && nearbyItem.dataset.id) flyToTankId(nearbyItem.dataset.id);
+    const standBtn = e.target.closest('#stand-here-btn');
+    if (standBtn) {
+      const t = (state.tanksWithCentroid || []).find((x) => x.props.id === standBtn.dataset.id);
+      if (t) { closeDrawer(); standHere(t.centroid); }
+    }
   });
   document.getElementById('drawer-backdrop').addEventListener('click', closeDrawer);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
@@ -780,6 +813,19 @@ function buildSourceCardHTML(props, searchCtx) {
 
   if (props.crop) {
     html += `<div class="card-crop"><img src="${assetBase()}${props.crop}" alt="Crop of the 1954 sheet around ${escapeHtml(heading)}" loading="lazy"></div>`;
+  }
+
+  const entry = (state.tanksWithCentroid || []).find((t) => t.props.id === props.id);
+  if (entry) {
+    const [lon, lat] = entry.centroid;
+    html += '<div class="share-row">'
+      + `<button class="share-btn share-btn--accent" id="stand-here-btn" type="button" data-id="${escapeHtml(props.id)}">`
+      + '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="3.6" r="1.8" fill="currentColor"/><path d="M8 6.4v4.4M5.6 14l2.4-3.2 2.4 3.2M5.2 8.4h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + 'Stand here</button>'
+      + `<a class="share-btn" href="${streetViewURL(lon, lat)}" target="_blank" rel="noopener" title="Google Street View of this spot today (opens Google Maps)">`
+      + '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M11.5 9.5v3.5a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1H7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + 'Street View today</a>'
+      + '</div>';
   }
 
   html += `<p class="card-meta">Name source</p><p class="card-name-source">${escapeHtml(nameSource)}</p>`;
@@ -1380,6 +1426,7 @@ async function bootBengaluru() {
   wireRailAndDrawers();
   wireSearch(map);
   wireDownloads();
+  wireVersus();
 
   populateFloodDrawer();
   populateScoreboardDrawer();
@@ -1444,14 +1491,297 @@ async function bootCity(cityKey, indexEntry) {
 }
 
 /* -------------------------------------------------------------------------
-   Demo mode (?demo=1) — a scripted, rehearsable 2-minute flow. Fully inert
-   unless the URL param is present, so the deployed link everyone else opens
-   never runs any of this. Digit keys jump steps; typing in the search box is
-   never intercepted (guarded below).
+   Guided tour — a scripted, rehearsable flow with on-screen Back/Next, step
+   dots and a caption. Available to everyone (a judge browsing alone gets the
+   same walkthrough the presenter does). Digit keys jump to a step, arrows and
+   Space step through, Esc ends it; typing in the search box is never
+   intercepted. ?demo=1 (or ?tour=1) starts it automatically on load.
+   Every caption reads its numbers from app/data/* at runtime (rule 4).
    ------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------
+   Versus — Opus 5 and Opus 5.5 side by side on the same 3D map.
+   A second MapLibre map carrying Opus 5's tanks sits over the main map
+   (Opus 5.5's), clipped to the left of a draggable divider, with the two
+   cameras locked together. Each side draws only the grow() polygons from its
+   own tanks_<model>.geojson (rule 1). "Only this model drew it" / "missed"
+   come from an outline-overlap test between the two files at runtime, and
+   the side stats from those files plus scoreboard.json (rule 4).
+   ------------------------------------------------------------------------- */
+
+const VERSUS_ONLY_COLOR = '#d9a154';   // accent: a lake only this model drew
+const VERSUS_MISSED_COLOR = '#f1ece1'; // paper white, dashed: the other model drew it, this one didn't
+const VERSUS_MODELS = {
+  left:  { key: 'claude-opus-5',   label: 'Opus 5' },
+  right: { key: 'claude-opus-5-5', label: 'Opus 5.5' },
+};
+
+function outerRings(geom) {
+  if (!geom) return [];
+  if (geom.type === 'Polygon') return [geom.coordinates[0]];
+  if (geom.type === 'MultiPolygon') return geom.coordinates.map((poly) => poly[0]);
+  return [];
+}
+
+function ringsBBox(rings) {
+  const bb = [Infinity, Infinity, -Infinity, -Infinity];
+  rings.forEach((r) => r.forEach(([x, y]) => {
+    if (x < bb[0]) bb[0] = x;
+    if (y < bb[1]) bb[1] = y;
+    if (x > bb[2]) bb[2] = x;
+    if (y > bb[3]) bb[3] = y;
+  }));
+  return bb;
+}
+
+function pointInRing([x, y], ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+// Two outlines overlap if any vertex of one lies inside the other. grow() outlines are compact
+// blobs traced from the same scan, so for these sheets this agrees with a full polygon test.
+function outlinesOverlap(a, b) {
+  if (a.bb[2] < b.bb[0] || b.bb[2] < a.bb[0] || a.bb[3] < b.bb[1] || b.bb[3] < a.bb[1]) return false;
+  const anyIn = (from, to) => from.some((r) => r.some((pt) => to.some((ring) => pointInRing(pt, ring))));
+  return anyIn(a.rings, b.rings) || anyIn(b.rings, a.rings);
+}
+
+function computeVersusDiff() {
+  if (state.versusDiff) return state.versusDiff;
+  const prep = (fc) => fc.features.map((f) => {
+    const rings = outerRings(f.geometry);
+    return { f, rings, bb: ringsBBox(rings) };
+  });
+  const left = prep(state.tanks5);
+  const right = prep(state.tanks55);
+  const unmatched = (xs, ys) => xs.filter((x) => !ys.some((y) => outlinesOverlap(x, y))).map((x) => x.f);
+  state.versusDiff = { onlyLeft: unmatched(left, right), onlyRight: unmatched(right, left) };
+  return state.versusDiff;
+}
+
+function featureCollection(features) { return { type: 'FeatureCollection', features }; }
+
+function styleTextFont(map) {
+  const sym = ((map.getStyle() || {}).layers || []).find((l) => l.type === 'symbol' && l.layout && Array.isArray(l.layout['text-font']));
+  return sym ? sym.layout['text-font'] : ['Noto Sans Regular'];
+}
+
+// Highlights go on top of everything (no beforeId) so they read over the sheet and the terrain.
+function addVersusLayers(map, onlyHere, missedHere, ownLabel) {
+  map.addSource('versus-only', { type: 'geojson', data: featureCollection(onlyHere) });
+  map.addSource('versus-missed', { type: 'geojson', data: featureCollection(missedHere) });
+  const font = styleTextFont(map);
+  const labelLayout = (text) => ({
+    'text-field': text, 'text-font': font, 'text-size': 12.5, 'text-letter-spacing': 0.04,
+    'text-allow-overlap': true, 'text-ignore-placement': true,
+  });
+  [
+    { id: 'versus-only-glow', type: 'line', source: 'versus-only',
+      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': 10, 'line-blur': 7, 'line-opacity': 0.6 } },
+    { id: 'versus-only-line', type: 'line', source: 'versus-only',
+      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': 2.5 } },
+    { id: 'versus-missed-line', type: 'line', source: 'versus-missed',
+      paint: { 'line-color': VERSUS_MISSED_COLOR, 'line-width': 2, 'line-dasharray': [1.2, 1.4], 'line-opacity': 0.95 } },
+    { id: 'versus-only-label', type: 'symbol', source: 'versus-only', layout: labelLayout(`only ${ownLabel}`),
+      paint: { 'text-color': '#fbe3bd', 'text-halo-color': 'rgba(10,8,6,0.9)', 'text-halo-width': 1.6 } },
+    { id: 'versus-missed-label', type: 'symbol', source: 'versus-missed', layout: labelLayout(`missed by ${ownLabel}`),
+      paint: { 'text-color': VERSUS_MISSED_COLOR, 'text-halo-color': 'rgba(10,8,6,0.9)', 'text-halo-width': 1.6 } },
+  ].forEach((l) => {
+    try { map.addLayer(l); } catch (e) { console.warn('Versus layer failed', l.id, e); }
+  });
+}
+
+function setVersusLayersVisible(map, on) {
+  ['versus-only-glow', 'versus-only-line', 'versus-missed-line', 'versus-only-label', 'versus-missed-label'].forEach((id) => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+  });
+}
+
+function cameraOf(map) {
+  return { center: map.getCenter(), zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() };
+}
+
+function lockCameras(a, b) {
+  let syncing = false;
+  const follow = (from, to) => () => {
+    if (syncing || !state.versusOn) return;
+    syncing = true;
+    to.jumpTo(cameraOf(from));
+    syncing = false;
+  };
+  a.on('move', follow(a, b));
+  b.on('move', follow(b, a));
+}
+
+async function ensureCompareMap() {
+  if (state.compareMap) return state.compareMap;
+  if (!state.compareMapLoading) {
+    state.compareMapLoading = (async () => {
+      const cm = await initMap('map-compare', cameraOf(state.map), false);
+      setupTerrainAndSky(cm);
+      if (state.streetTerrain) { try { cm.setTerrain(null); } catch (e) { /* no-op */ } }
+      const analysis = analyzeStyleLayers(cm);
+      addSheetLayers(cm, state.sheets, analysis.rasterBeforeId);
+      addTankLayers(cm, state.tanks5, analysis.buildingsLayerId || analysis.rasterBeforeId);
+      const diff = computeVersusDiff();
+      addVersusLayers(cm, diff.onlyLeft, diff.onlyRight, VERSUS_MODELS.left.label);
+      cm.on('click', 'tanks-fill', (e) => onTankClick(cm, e));
+      cm.on('mouseenter', 'tanks-fill', () => { cm.getCanvas().style.cursor = 'pointer'; });
+      cm.on('mouseleave', 'tanks-fill', () => { cm.getCanvas().style.cursor = ''; });
+      if (state.stopOrbitOnInput) state.stopOrbitOnInput(cm.getCanvasContainer());
+      lockCameras(state.map, cm);
+      state.compareMap = cm;
+      applyYearBlend(parseFloat(document.getElementById('year-slider').value));
+      return cm;
+    })();
+    state.compareMapLoading.catch(() => { state.compareMapLoading = null; });
+  }
+  return state.compareMapLoading;
+}
+
+function ensureMainVersusLayers() {
+  const map = state.map;
+  if (map.getSource('versus-only')) { setVersusLayersVisible(map, true); return; }
+  const diff = computeVersusDiff();
+  addVersusLayers(map, diff.onlyRight, diff.onlyLeft, VERSUS_MODELS.right.label);
+}
+
+function setVersusSplit(v) {
+  v = Math.min(0.92, Math.max(0.08, v));
+  state.versusSplit = v;
+  document.documentElement.style.setProperty('--split', String(v));
+  const div = document.getElementById('versus-divider');
+  if (div) div.setAttribute('aria-valuenow', String(Math.round(v * 100)));
+}
+
+function versusSide(side) {
+  const diff = computeVersusDiff();
+  const m = VERSUS_MODELS[side];
+  const fc = side === 'left' ? state.tanks5 : state.tanks55;
+  return {
+    ...m,
+    drawn: fc.features.length,
+    only: (side === 'left' ? diff.onlyLeft : diff.onlyRight).length,
+    missed: (side === 'left' ? diff.onlyRight : diff.onlyLeft).length,
+    sb: ((state.scoreboard && state.scoreboard.scoreboard) || {})[m.key] || {},
+  };
+}
+
+function versusChipHTML(side) {
+  const s = versusSide(side);
+  const front = s.sb.front_250k || {};
+  const plan = s.sb.plan_25k || {};
+  const lakes = (n) => `${n} lake${n === 1 ? '' : 's'}`;
+  let html = `<p class="versus__model">${escapeHtml(s.label)}</p>`
+    + `<p class="versus__big"><strong>${s.drawn}</strong> lakes drawn</p>`
+    + '<ul class="versus__keys">'
+    + `<li><span class="versus__key versus__key--only"></span>${lakes(s.only)} only ${escapeHtml(s.label)} drew</li>`
+    + `<li><span class="versus__key versus__key--missed"></span>${lakes(s.missed)} it missed</li>`
+    + '</ul>';
+  const facts = [];
+  if (front.recall) facts.push(`colour sheet found <strong>${fPct(front.recall)}</strong>`);
+  if (front.invented_per_run) facts.push(`invented <strong>${round1(front.invented_per_run[0])}</strong>/run`);
+  if (plan.unique_tanks_found_of_18) facts.push(`plan <strong>${plan.unique_tanks_found_of_18[0]}</strong>/18`);
+  if (facts.length) {
+    html += `<p class="versus__score">${facts.join(' · ')}</p>`
+      + '<p class="versus__source">vs the hand-traced answer key</p>';
+  }
+  return html;
+}
+
+function versusCaption() {
+  if (!state.tanks5 || !state.tanks55) return '';
+  const l = versusSide('left');
+  const r = versusSide('right');
+  return `Drag the divider. Same sheet, same prompt: ${r.label} drew ${r.drawn} lakes, ${l.label} drew ${l.drawn}. `
+    + `The dashed outlines on the ${l.label} side are ${l.missed} lake${l.missed === 1 ? '' : 's'} on the sheet that only ${r.label} found.`;
+}
+
+// Frame every lake the two models disagree on, so the difference is on screen the moment it opens.
+function versusCamera(map) {
+  const diff = computeVersusDiff();
+  const rings = diff.onlyLeft.concat(diff.onlyRight).flatMap((f) => outerRings(f.geometry));
+  if (!rings.length) return { ...PRESETS.city };
+  const bb = ringsBBox(rings);
+  const cam = map.cameraForBounds([[bb[0], bb[1]], [bb[2], bb[3]]], { padding: { top: 220, bottom: 200, left: 120, right: 160 } });
+  if (!cam) return { ...PRESETS.city };
+  return { center: cam.center, zoom: Math.min(cam.zoom, 14) - 0.3, pitch: 50, bearing: -12 };
+}
+
+async function enterVersus() {
+  if (state.cityMode || state.versusOn || !state.map) return;
+  state.versusOn = true;
+  document.body.classList.add('versus-on');
+  document.querySelectorAll('.rail__btn[data-mode="versus"]').forEach((b) => b.setAttribute('aria-pressed', 'true'));
+  document.getElementById('versus-chip-left').innerHTML = versusChipHTML('left');
+  document.getElementById('versus-chip-right').innerHTML = versusChipHTML('right');
+  setVersusSplit(state.versusSplit || 0.5);
+  document.getElementById('versus').hidden = false;
+  document.getElementById('map-compare').hidden = false;
+  ensureMainVersusLayers();
+
+  let cm;
+  try {
+    cm = await ensureCompareMap();
+  } catch (err) {
+    console.error('Versus map failed', err);
+    toast('Could not load the Opus 5 map.');
+    exitVersus();
+    return;
+  }
+  if (!state.versusOn) return; // exited while the second map was loading
+  cm.resize();
+  cm.jumpTo(cameraOf(state.map));
+  if (parseFloat(document.getElementById('year-slider').value) < 0.99) tweenSlider(1, 1600);
+  state.map.flyTo({ ...versusCamera(state.map), essential: true, duration: 2200 });
+}
+
+function exitVersus() {
+  if (!state.versusOn) return;
+  state.versusOn = false;
+  document.body.classList.remove('versus-on');
+  document.querySelectorAll('.rail__btn[data-mode="versus"]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+  document.getElementById('versus').hidden = true;
+  document.getElementById('map-compare').hidden = true;
+  if (state.map) setVersusLayersVisible(state.map, false);
+}
+
+function wireVersus() {
+  const div = document.getElementById('versus-divider');
+  if (!div) return;
+  div.addEventListener('pointerdown', (e) => {
+    div.setPointerCapture(e.pointerId);
+    div.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  div.addEventListener('pointermove', (e) => {
+    if (div.hasPointerCapture(e.pointerId)) setVersusSplit(e.clientX / window.innerWidth);
+  });
+  const release = (e) => {
+    if (div.hasPointerCapture(e.pointerId)) div.releasePointerCapture(e.pointerId);
+    div.classList.remove('is-dragging');
+  };
+  div.addEventListener('pointerup', release);
+  div.addEventListener('pointercancel', release);
+  div.addEventListener('keydown', (e) => {
+    // Handled here so the tour's document-level arrow keys don't also fire.
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      e.stopPropagation();
+      setVersusSplit((state.versusSplit || 0.5) + (e.key === 'ArrowLeft' ? -0.05 : 0.05));
+    }
+  });
+  document.getElementById('versus-exit').addEventListener('click', exitVersus);
+}
+
 const SHULE_TANK_ID = 'claude-opus-5-5_plan_011'; // "Shūle Tank" -- the Ashok Nagar stadium story
-const CITY_DEMO_TANK = { chennai: 'chennai_000' }; // "Pulal Tank", surviving, named -- strongest 2nd-city beat
+const CITY_TOUR_TANK = { chennai: 'chennai_000' }; // "Pulal Tank" -- named on the sheet, still there
 
 function tweenSlider(target, ms) {
   return new Promise((resolve) => {
@@ -1461,9 +1791,8 @@ function tweenSlider(target, ms) {
     function step(now) {
       // Clamp p to [0,1]: requestAnimationFrame's timestamp can predate the performance.now()
       // captured just before scheduling it by a fraction of a ms, which without this clamp
-      // makes p (and then eased, and then v) briefly negative on the first frame -- enough for
-      // MapLibre's paint-property validator to reject an out-of-[0,1]-range opacity and log an
-      // error on every single reveal.
+      // makes p (and then v) briefly negative on the first frame -- enough for MapLibre's
+      // paint-property validator to reject an out-of-range opacity and log an error.
       const p = Math.min(1, Math.max(0, (now - t0) / ms));
       const eased = 1 - (1 - p) * (1 - p); // ease-out
       const v = Math.min(1, Math.max(0, start + (target - start) * eased));
@@ -1475,13 +1804,72 @@ function tweenSlider(target, ms) {
   });
 }
 
-function demoFindTank(id) {
-  const entry = (state.tanksWithCentroid || []).find((t) => t.props.id === id);
-  return entry || (state.tanksWithCentroid || [])[0] || null;
+function findTank(id) {
+  return (state.tanksWithCentroid || []).find((t) => t.props.id === id) || null;
 }
+
+// A lost tank with a named present-day occupant, biggest first -- the strongest "stand here"
+// story a city's own data can tell, picked from the data rather than hand-chosen.
+function bestLostStoryTank() {
+  const withNow = (state.tanksWithCentroid || []).filter((t) => t.props.status === 'lost'
+    && (t.props.mod_current_use || (t.props.now_osm && t.props.now_osm.name)));
+  withNow.sort((a, b) => (b.props.area_m2 || 0) - (a.props.area_m2 || 0));
+  return withNow[0] || null;
+}
+
+/* --- Stand here: a street-level orbit at a tank's edge ------------------- */
+
+// MapLibre's _elevateCameraIfInsideTerrain() forcibly lowers the pitch whenever it judges the
+// camera to be below the (4x exaggerated) terrain -- at street level that flattened the view to
+// ~9 degrees. Relief is invisible at that zoom anyway, so terrain is switched off while standing
+// and restored as soon as the camera pulls back up (see the moveend hook in wireTour()).
+function setStreetTerrain(on) {
+  if (!state.map || !state.map.getSource('terrain-dem') || state.streetTerrain === on) return;
+  state.streetTerrain = on;
+  [state.map, state.compareMap].forEach((map) => {
+    if (!map || !map.getSource('terrain-dem')) return;
+    try { map.setTerrain(on ? null : { source: 'terrain-dem', exaggeration: TERRAIN_EXAGGERATION }); } catch (e) { /* no-op */ }
+  });
+}
+
+function stopOrbit() {
+  if (state.orbitId) cancelAnimationFrame(state.orbitId);
+  state.orbitId = null;
+}
+
+function startOrbit() {
+  stopOrbit();
+  const map = state.map;
+  let last = performance.now();
+  const step = (now) => {
+    const dt = Math.min(64, Math.max(0, now - last));
+    last = now;
+    map.setBearing((map.getBearing() + dt * 0.005) % 360); // ~5 degrees a second
+    state.orbitId = requestAnimationFrame(step);
+  };
+  state.orbitId = requestAnimationFrame(step);
+}
+
+function standHere(center) {
+  stopOrbit();
+  const map = state.map;
+  const token = (state.standToken = (state.standToken || 0) + 1);
+  setStreetTerrain(true);
+  map.flyTo({ center, zoom: 17.4, pitch: 76, bearing: map.getBearing() - 40, duration: 2600, essential: true });
+  map.once('moveend', () => { if (token === state.standToken) startOrbit(); });
+}
+
+function streetViewURL(lon, lat) {
+  // Google Maps URLs API: keyless, opens Google's own Street View in a new tab. Embedding it
+  // in-page needs an API key (Google refuses keyless iframes), which this static site won't ship.
+  return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat.toFixed(6)},${lon.toFixed(6)}`;
+}
+
+/* --- End card ------------------------------------------------------------ */
 
 function showEndCard() {
   closeDrawer();
+  stopOrbit();
   const card = document.getElementById('end-card');
   const urlEl = document.getElementById('end-card-url');
   if (urlEl) urlEl.textContent = (state.deployUrl || window.location.origin + window.location.pathname);
@@ -1495,81 +1883,277 @@ function hideEndCard() {
   setTimeout(() => { card.hidden = true; }, 260);
 }
 
-const DEMO_STEPS_BENGALURU = [
-  // 1: opening shot
-  () => {
-    closeDrawer();
-    hideEndCard();
-    document.getElementById('year-slider').value = '0';
-    applyYearBlend(0);
-    state.map.flyTo({ ...PRESETS.stadium, essential: true, duration: 1400 });
-  },
-  // 2: the reveal — 1954 sheet fades in, Shūle Tank fills in, source card opens
-  async () => {
-    closeDrawer();
-    await tweenSlider(1, 2600);
-    const t = demoFindTank(SHULE_TANK_ID);
-    if (t) openSourceDrawer(t.props);
-  },
-  // 3: pull back over the city, flood points on
-  () => {
-    closeDrawer();
-    state.map.flyTo({ ...PRESETS.city, essential: true, duration: 1800 });
-    setFloodVisible(true);
-    const input = document.getElementById('flood-toggle-input');
-    if (input) input.checked = true;
-  },
-  // 4: hand off to search — prefilled, not auto-submitted
-  () => {
-    closeDrawer();
-    const input = document.getElementById('search-input');
-    input.value = 'HSR Layout';
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    input.focus();
-  },
-  // 5: scoreboard, with the chart and the narrative line
-  () => { openDrawer('scoreboard'); },
-  // 6: hand off to a second city — proves this generalizes beyond Bengaluru
-  () => { window.location.href = '?city=chennai&demo=1'; },
-];
+/* --- Tour steps ---------------------------------------------------------- */
 
-const DEMO_STEPS_CITY = [
-  // 1: the named, surviving tank in the second city
-  () => {
-    closeDrawer();
-    const id = CITY_DEMO_TANK[state.cityKey];
-    const t = id ? demoFindTank(id) : (state.tanksWithCentroid || [])[0];
-    if (!t) return;
-    state.map.flyTo({ center: t.centroid, zoom: 15.5, pitch: 52, essential: true, duration: 1600 });
-    openSourceDrawer(t.props);
-  },
-  // 2: the fence — refusals shown, not hidden
-  () => { openDrawer('fence'); },
-  // 3: end card
-  () => { showEndCard(); },
-];
+function backtestLine() {
+  const bt = state.backtest;
+  if (!bt || !bt.this_layer) return '';
+  const rows = bt.this_layer.rows.filter((r) => r.radius_m === 250);
+  const lost = rows.find((r) => /lost/i.test(r.layer));
+  const surv = rows.find((r) => /surviving/i.test(r.layer));
+  if (!lost || !surv) return '';
+  const l = formatBacktestRow(lost);
+  const s = formatBacktestRow(surv);
+  return `${l.pct}% of ${bt.this_layer.n_flood_points} official flood points in the core sit within 250 m of a lake the city lost, against ${l.randomPct}% of random points. Near lakes it kept: ${s.pct}% vs ${s.randomPct}%.`;
+}
 
-function wireDemoMode() {
-  if (!state.demoMode) return;
-  const steps = state.cityMode ? DEMO_STEPS_CITY : DEMO_STEPS_BENGALURU;
+function bengaluruTourSteps() {
+  const shule = () => findTank(SHULE_TANK_ID);
+  const modelCities = ((state.citiesIndex && state.citiesIndex.cities) || []).filter((c) => !c.hand_traced);
+  return [
+    {
+      title: 'Ashok Nagar, Bengaluru — today',
+      caption: () => 'A football stadium in the middle of the city, in 3D, as it stands in 2026.',
+      run: () => {
+        closeDrawer(); hideEndCard(); stopOrbit();
+        document.getElementById('year-slider').value = '0';
+        applyYearBlend(0);
+        state.map.flyTo({ ...PRESETS.stadium, essential: true, duration: 1600 });
+      },
+    },
+    {
+      title: 'The same ground on the 1954 map',
+      caption: () => {
+        const t = shule();
+        if (!t) return "The 1954 US Army map, read by Claude Opus 5.5, draped under today's city.";
+        const p = t.props;
+        return `The buildings sink and the 1954 US Army map comes up: it draws "${p.name_as_printed}" right here.`
+          + (p.mod_current_use ? ` What stands there now: ${p.mod_current_use} (MOD Foundation).` : '');
+      },
+      run: async () => {
+        closeDrawer(); stopOrbit();
+        state.map.flyTo({ ...PRESETS.stadium, essential: true, duration: 900 });
+        await tweenSlider(1, 2600);
+        const t = shule();
+        if (t) openSourceDrawer(t.props);
+      },
+    },
+    {
+      title: 'Stand where the water was drawn',
+      caption: () => "Street level at the tank's edge, the 1954 sheet underfoot. Drag or scroll any time to take over the camera.",
+      run: () => {
+        closeDrawer();
+        const t = shule();
+        if (!t) return;
+        if (parseFloat(document.getElementById('year-slider').value) < 0.99) tweenSlider(1, 1200);
+        standHere(t.centroid);
+      },
+    },
+    {
+      title: 'The whole city: where it floods',
+      caption: () => backtestLine() || "The city's own flood-point lists, over the lakes it lost and kept.",
+      run: () => {
+        closeDrawer(); stopOrbit();
+        state.map.flyTo({ ...PRESETS.city, essential: true, duration: 2200 });
+        setFloodVisible(true);
+        const input = document.getElementById('flood-toggle-input');
+        if (input) input.checked = true;
+      },
+    },
+    {
+      title: 'Check any address',
+      caption: () => 'Type a neighbourhood and press Enter: the nearest 1954 tank, how far, what stands there now. Distance and record only — never a flood prediction.',
+      run: () => {
+        closeDrawer(); stopOrbit();
+        const input = document.getElementById('search-input');
+        input.value = 'HSR Layout';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.focus();
+      },
+    },
+    {
+      title: 'Opus 5 vs Opus 5.5, same map, same prompt',
+      caption: () => versusCaption() || (state.narrative && state.narrative.subhead) || 'Both models, scored against a hand-traced answer key.',
+      versus: true,
+      run: () => { closeDrawer(); stopOrbit(); return enterVersus(); },
+    },
+    {
+      title: 'Beyond Bengaluru',
+      caption: () => (modelCities.length
+        ? `The same pipeline, on ${modelCities.length} more cities that have no hand-traced lake record at all: ${modelCities.map((c) => c.name).join(', ')}. Next: Chennai.`
+        : 'The same pipeline runs on any sheet of the 1954 series.'),
+      run: () => { stopOrbit(); openDrawer('fence'); },
+      next: () => { window.location.href = '?city=chennai&tour=1'; },
+    },
+  ];
+}
+
+function cityTourSteps() {
+  const meta = state.cityMeta || {};
+  const counts = meta.counts || {};
+  const named = () => {
+    const id = CITY_TOUR_TANK[state.cityKey];
+    const all = state.tanksWithCentroid || [];
+    return (id && findTank(id)) || all.find((t) => t.props.name_as_printed) || all[0];
+  };
+  return [
+    {
+      title: () => { const t = named(); return t ? `${meta.display_name || ''}: ${tankDisplayName(t.props)}` : (meta.display_name || ''); },
+      caption: () => `Read off the 1954 ${meta.sheet_title || ''} sheet by Opus 5.5 alone — nobody has hand-traced this city. `
+        + (counts.tanks != null ? `Of the ${counts.tanks} tanks it found, ${counts.lost} are gone from today's map.` : ''),
+      run: async () => {
+        closeDrawer(); hideEndCard(); stopOrbit();
+        const t = named();
+        if (!t) return;
+        state.map.flyTo({ center: t.centroid, zoom: 14.2, pitch: 55, bearing: -15, essential: true, duration: 2000 });
+        await tweenSlider(1, 2400);
+        openSourceDrawer(t.props);
+      },
+    },
+    {
+      title: 'Stand on a lost one',
+      caption: () => {
+        const t = bestLostStoryTank();
+        if (!t) return 'Street level at a tank that is gone today.';
+        const now = t.props.now_osm ? t.props.now_osm.name : t.props.mod_current_use;
+        return `The 1954 sheet draws "${tankDisplayName(t.props)}" here. OpenStreetMap today: ${now}.`;
+      },
+      run: () => {
+        closeDrawer();
+        const t = bestLostStoryTank() || named();
+        if (!t) return;
+        standHere(t.centroid);
+      },
+    },
+    {
+      title: 'The fence',
+      caption: () => {
+        const n = (state.cityRefused || []).length;
+        return `${n} point${n === 1 ? '' : 's'} the model pointed at had no water under them on the scan, so the outline grower refused them. Shown here, not hidden.`;
+      },
+      run: () => { stopOrbit(); openDrawer('fence'); },
+    },
+    {
+      title: 'Try your city',
+      caption: () => 'Every Indian city was mapped this way in 1954. Bengaluru is the one we could check.',
+      run: () => { showEndCard(); },
+    },
+  ];
+}
+
+/* --- Tour controller ----------------------------------------------------- */
+
+function stepText(v) { return typeof v === 'function' ? v() : (v || ''); }
+
+function renderTour() {
+  const tour = state.tour;
+  const step = tour.steps[tour.index];
+  const last = tour.index === tour.steps.length - 1;
+  document.getElementById('tour-count').textContent = `${tour.index + 1} / ${tour.steps.length}`;
+  document.getElementById('tour-title').textContent = stepText(step.title);
+  document.getElementById('tour-caption').textContent = stepText(step.caption);
+  document.getElementById('tour-keymax').textContent = String(tour.steps.length);
+  document.getElementById('tour-prev').disabled = tour.index === 0;
+  document.getElementById('tour-next').textContent = last ? (step.next ? 'Next city →' : 'Finish') : 'Next →';
+  document.getElementById('tour-dots').innerHTML = tour.steps
+    .map((_, i) => `<span class="tour__dot${i === tour.index ? ' is-active' : ''}${i < tour.index ? ' is-done' : ''}"></span>`).join('');
+}
+
+function goTourStep(i) {
+  const tour = state.tour;
+  if (!tour || i < 0 || i >= tour.steps.length) return;
+  tour.index = i;
+  showTourPanel();
+  renderTour();
+  setStreetTerrain(false); // steps that stand at street level switch it back off themselves
+  if (!tour.steps[i].versus) exitVersus();
+  Promise.resolve(tour.steps[i].run()).then(() => { if (state.tour.index === i) renderTour(); });
+}
+
+function tourNext() {
+  const tour = state.tour;
+  const step = tour.steps[tour.index];
+  if (tour.index < tour.steps.length - 1) goTourStep(tour.index + 1);
+  else if (step.next) step.next();
+  else endTour();
+}
+
+function showTourPanel() {
+  const panel = document.getElementById('tour');
+  if (panel.hidden) {
+    panel.hidden = false;
+    requestAnimationFrame(() => panel.classList.add('is-visible'));
+    document.body.classList.add('tour-active');
+    document.getElementById('tour-launch').setAttribute('aria-pressed', 'true');
+    if (state.map && state.map.keyboard) state.map.keyboard.disable(); // arrows drive the tour, not the map
+  }
+  state.tourActive = true;
+}
+
+function endTour() {
+  stopOrbit();
+  const panel = document.getElementById('tour');
+  panel.classList.remove('is-visible');
+  setTimeout(() => { if (!state.tourActive) panel.hidden = true; }, 220);
+  document.body.classList.remove('tour-active');
+  document.getElementById('tour-launch').setAttribute('aria-pressed', 'false');
+  if (state.map && state.map.keyboard) state.map.keyboard.enable();
+  state.tourActive = false;
+}
+
+function wireTour() {
+  state.tour = { steps: state.cityMode ? cityTourSteps() : bengaluruTourSteps(), index: 0 };
+
+  document.getElementById('tour-launch').addEventListener('click', () => {
+    if (state.tourActive) endTour(); else goTourStep(0);
+  });
+  document.getElementById('tour-next').addEventListener('click', tourNext);
+  document.getElementById('tour-prev').addEventListener('click', () => goTourStep(state.tour.index - 1));
+  document.getElementById('tour-close').addEventListener('click', endTour);
+  document.getElementById('end-card-close').addEventListener('click', hideEndCard);
+
   document.addEventListener('keydown', (e) => {
     const active = document.activeElement;
-    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
     const n = parseInt(e.key, 10);
-    if (!Number.isNaN(n) && n >= 1 && n <= steps.length) steps[n - 1]();
+    if (!Number.isNaN(n) && n >= 1 && n <= state.tour.steps.length) { e.preventDefault(); goTourStep(n - 1); return; }
+    if (!state.tourActive) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); tourNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTourStep(state.tour.index - 1); }
+    else if (e.key === 'Escape') endTour();
   });
-  document.getElementById('end-card-close').addEventListener('click', hideEndCard);
-  if (state.cityMode) steps[0](); // auto-resume the flow on the far side of the city-switch reload
+
+  // Any hands-on camera move ends a street-level orbit, so the viewer is never fighting it.
+  const container = state.map.getCanvasContainer();
+  ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => container.addEventListener(ev, stopOrbit, { passive: true }));
+  state.stopOrbitOnInput = (c) => ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => c.addEventListener(ev, stopOrbit, { passive: true }));
+  // Bring 3D terrain back once the camera has left street level, however it left.
+  state.map.on('moveend', () => { if (state.streetTerrain && state.map.getPitch() < 66) setStreetTerrain(false); });
+
+  const params = urlParams();
+  if (params.get('tour') === '1' || params.get('demo') === '1') goTourStep(0);
+}
+
+/* --- Intro card: collapsible headline ------------------------------------ */
+
+function wireIntroToggle() {
+  const intro = document.getElementById('intro');
+  const btn = document.getElementById('intro-toggle');
+  const apply = (collapsed) => {
+    intro.classList.toggle('is-collapsed', collapsed);
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.title = collapsed ? 'Show the headline' : 'Hide the headline';
+  };
+  let collapsed = false;
+  try { collapsed = window.localStorage.getItem('kere-intro-collapsed') === '1'; } catch (e) { /* storage blocked */ }
+  apply(collapsed);
+  btn.addEventListener('click', () => {
+    collapsed = !collapsed;
+    apply(collapsed);
+    try { window.localStorage.setItem('kere-intro-collapsed', collapsed ? '1' : '0'); } catch (e) { /* storage blocked */ }
+  });
 }
 
 async function main() {
   try {
-    state.demoMode = urlParams().get('demo') === '1';
     const citiesIndex = await fetchJSON(`${DATA}cities.json`).catch(() => ({ cities: [{ key: 'bengaluru', name: 'Bengaluru', hand_traced: true }] }));
     const cityKey = currentCityKey(citiesIndex);
     const entry = citiesIndex.cities.find((c) => c.key === cityKey);
     state.cityKey = cityKey;
+    state.citiesIndex = citiesIndex;
 
+    wireIntroToggle();
     wireCityPicker(citiesIndex);
     if (cityKey === 'bengaluru') {
       await bootBengaluru();
@@ -1579,7 +2163,7 @@ async function main() {
       document.title = `Kere — the lakes ${entry ? entry.name : cityKey} forgot`;
       await bootCity(cityKey, entry);
     }
-    wireDemoMode();
+    wireTour();
     finishLoading();
   } catch (err) {
     console.error('Kere failed to start', err);
