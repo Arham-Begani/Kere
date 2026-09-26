@@ -27,7 +27,20 @@
 
   <div id="loading" class="loading">
     <div class="loading__mark">ಕೆರೆ</div>
-    <p>Reading the 1954 plan&hellip;</p>
+    <p id="loading-text">Reading the 1954 plan&hellip;</p>
+    <script>
+      // Inline and synchronous on purpose: set the city-aware loading line before main.js's
+      // async boot even starts, so a city switch (full-page reload) reads as an intentional
+      // "reading the sheet for <city>" transition, not a generic reload flash.
+      (function () {
+        var m = /[?&]city=([^&]+)/.exec(window.location.search);
+        var names = { chennai: 'Chennai', hyderabad: 'Hyderabad', pune: 'Pune', kolkata: 'Kolkata' };
+        var key = m && decodeURIComponent(m[1]);
+        if (key && names[key]) {
+          document.getElementById('loading-text').textContent = 'Reading the 1954 sheet for ' + names[key] + '…';
+        }
+      })();
+    </script>
   </div>
 
   <header class="intro" id="intro">
@@ -123,6 +136,17 @@
       </div>
     </div>
   </footer>
+
+  <div class="end-card" id="end-card" hidden>
+    <div class="end-card__inner">
+      <p class="end-card__kicker">Kere <span lang="kn">ಕೆರೆ</span></p>
+      <h2 class="end-card__line">Every Indian city was mapped this way in 1954.<br>Bengaluru is the one we could check.</h2>
+      <img class="end-card__qr" id="end-card-qr" src="data/qr.png" alt="QR code to open Kere" width="180" height="180">
+      <p class="end-card__url" id="end-card-url"></p>
+      <p class="end-card__hint">Try your city — scan or open the link.</p>
+      <button class="end-card__close panel-close" id="end-card-close" aria-label="Close end card"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
 
   <footer class="credits" id="credits">
     <span class="credits__item">US Army Map Service <span class="credits__via">via UT Austin PCL, public domain</span></span>

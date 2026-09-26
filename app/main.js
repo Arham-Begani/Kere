@@ -730,6 +730,16 @@ function openSourceDrawer(props, searchCtx) {
   openDrawer('source');
 }
 
+// Clicking a tank should feel responsive on a big screen, not just open a panel with no camera
+// motion — a short fly-in toward whatever was clicked, then the source card.
+function onTankClick(map, e) {
+  const f = e.features && e.features[0];
+  if (!f) return;
+  const center = polygonCentroid(f.geometry);
+  map.flyTo({ center, zoom: Math.max(map.getZoom(), 15), essential: true, duration: 900 });
+  openSourceDrawer(f.properties);
+}
+
 function shareRowHTML(lon, lat, label) {
   return `<div class="share-row">`
     + `<button class="share-btn" id="copy-link-btn" type="button" data-lon="${lon}" data-lat="${lat}">`
@@ -906,6 +916,49 @@ const SCORE_ROWS = [
   { label: 'Mean latency per call', get: (e) => fSecs(e.mean_latency_s) },
 ];
 
+// The Breakthrough finding as a chart, not a table row: Opus 5 invents far more phantom tanks
+// per run on the hard sheet, and finds far fewer of the real ones. Two bars per metric, direct
+// value labels (no color-only identity, no hover needed for a two-series static comparison),
+// one categorical hue per model reused from the model's OWN meaning elsewhere in this app
+// (--accent already marks Opus 5.5 as the headline column in the table above).
+function breakthroughChartHTML(nar) {
+  const fs = nar && nar.supporting_numbers && nar.supporting_numbers.front_250k;
+  if (!fs) return '';
+  const W = 380, barH = 14, gap = 6, groupGap = 26, labelW = 150, valueW = 46;
+  const trackW = W - labelW - valueW;
+  const metrics = [
+    { key: 'invented_per_run', label: 'Invented tanks / run (front sheet)', max: 12, fmt: (v) => v.toFixed(1) },
+    { key: 'recall', label: 'Verified tanks found (front sheet)', max: 1, fmt: (v) => `${Math.round(v * 100)}%` },
+  ];
+  const models = [
+    { key: 'opus-5', label: 'Opus 5', color: 'var(--text-tertiary)' },
+    { key: 'opus-5-5', label: 'Opus 5.5', color: 'var(--accent)' },
+  ];
+  let y = 28; // room for the legend row
+  const bars = [];
+  metrics.forEach((m) => {
+    bars.push(`<text x="0" y="${y - 6}" class="chart-metric-label">${escapeHtml(m.label)}</text>`);
+    y += 4;
+    models.forEach((model) => {
+      const v = fs[m.key] && fs[m.key][model.key] ? fs[m.key][model.key][0] : 0;
+      const w = Math.max(2, (v / m.max) * trackW);
+      bars.push(
+        `<rect x="${labelW}" y="${y}" width="${trackW}" height="${barH}" rx="3" class="chart-track"/>`
+        + `<rect x="${labelW}" y="${y}" width="${w}" height="${barH}" rx="3" fill="${model.color}"/>`
+        + `<text x="${labelW - 8}" y="${y + barH - 3}" text-anchor="end" class="chart-model-label">${model.label}</text>`
+        + `<text x="${labelW + trackW + 8}" y="${y + barH - 3}" class="chart-value-label">${m.fmt(v)}</text>`
+      );
+      y += barH + gap;
+    });
+    y += groupGap - gap;
+  });
+  const legend = models.map((m) => `<span class="chart-legend__item"><span class="chart-legend__swatch" style="background:${m.color}"></span>${m.label}</span>`).join('');
+  return `<div class="breakthrough-chart">
+    <div class="chart-legend">${legend}</div>
+    <svg viewBox="0 0 ${W} ${y}" role="img" aria-label="Opus 5 vs Opus 5.5 on the front sheet: invented tanks per run and recall">${bars.join('')}</svg>
+  </div>`;
+}
+
 function populateScoreboardDrawer() {
   const body = document.getElementById('drawer-scoreboard-body');
   const sb = state.scoreboard.scoreboard;
@@ -922,6 +975,7 @@ function populateScoreboardDrawer() {
   if (nar && nar.headline) {
     html += `<div class="legend-block"><p class="legend-block__stat">${escapeHtml(nar.headline)}</p>`
       + `<p class="legend-block__source">${escapeHtml(nar.subhead || '')}</p></div>`;
+    html += breakthroughChartHTML(nar);
   }
 
   html += '<table class="score-table"><thead><tr><th></th>';
@@ -1317,7 +1371,7 @@ async function bootBengaluru() {
   state.rainBeforeId = tankBeforeId; // rain layer added lazily on first toggle; see ensureRainLayer()
   setupLabels(map, tanks55);
 
-  map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
+  map.on('click', 'tanks-fill', (e) => onTankClick(map, e));
   map.on('mouseenter', 'tanks-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
   map.on('mouseleave', 'tanks-fill', () => { map.getCanvas().style.cursor = ''; });
 
@@ -1373,7 +1427,7 @@ async function bootCity(cityKey, indexEntry) {
   addTankLayers(map, tanks, tankBeforeId);
   setupLabels(map, tanks);
 
-  map.on('click', 'tanks-fill', (e) => { if (e.features && e.features[0]) openSourceDrawer(e.features[0].properties); });
+  map.on('click', 'tanks-fill', (e) => onTankClick(map, e));
   map.on('mouseenter', 'tanks-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
   map.on('mouseleave', 'tanks-fill', () => { map.getCanvas().style.cursor = ''; });
 
@@ -1389,8 +1443,128 @@ async function bootCity(cityKey, indexEntry) {
   applyYearBlend(0);
 }
 
+/* -------------------------------------------------------------------------
+   Demo mode (?demo=1) — a scripted, rehearsable 2-minute flow. Fully inert
+   unless the URL param is present, so the deployed link everyone else opens
+   never runs any of this. Digit keys jump steps; typing in the search box is
+   never intercepted (guarded below).
+   ------------------------------------------------------------------------- */
+
+const SHULE_TANK_ID = 'claude-opus-5-5_plan_011'; // "Shūle Tank" -- the Ashok Nagar stadium story
+const CITY_DEMO_TANK = { chennai: 'chennai_000' }; // "Pulal Tank", surviving, named -- strongest 2nd-city beat
+
+function tweenSlider(target, ms) {
+  return new Promise((resolve) => {
+    const slider = document.getElementById('year-slider');
+    const start = parseFloat(slider.value);
+    const t0 = performance.now();
+    function step(now) {
+      // Clamp p to [0,1]: requestAnimationFrame's timestamp can predate the performance.now()
+      // captured just before scheduling it by a fraction of a ms, which without this clamp
+      // makes p (and then eased, and then v) briefly negative on the first frame -- enough for
+      // MapLibre's paint-property validator to reject an out-of-[0,1]-range opacity and log an
+      // error on every single reveal.
+      const p = Math.min(1, Math.max(0, (now - t0) / ms));
+      const eased = 1 - (1 - p) * (1 - p); // ease-out
+      const v = Math.min(1, Math.max(0, start + (target - start) * eased));
+      slider.value = String(v);
+      applyYearBlend(v);
+      if (p < 1) requestAnimationFrame(step); else resolve();
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+function demoFindTank(id) {
+  const entry = (state.tanksWithCentroid || []).find((t) => t.props.id === id);
+  return entry || (state.tanksWithCentroid || [])[0] || null;
+}
+
+function showEndCard() {
+  closeDrawer();
+  const card = document.getElementById('end-card');
+  const urlEl = document.getElementById('end-card-url');
+  if (urlEl) urlEl.textContent = (state.deployUrl || window.location.origin + window.location.pathname);
+  card.hidden = false;
+  requestAnimationFrame(() => card.classList.add('is-visible'));
+}
+
+function hideEndCard() {
+  const card = document.getElementById('end-card');
+  card.classList.remove('is-visible');
+  setTimeout(() => { card.hidden = true; }, 260);
+}
+
+const DEMO_STEPS_BENGALURU = [
+  // 1: opening shot
+  () => {
+    closeDrawer();
+    hideEndCard();
+    document.getElementById('year-slider').value = '0';
+    applyYearBlend(0);
+    state.map.flyTo({ ...PRESETS.stadium, essential: true, duration: 1400 });
+  },
+  // 2: the reveal — 1954 sheet fades in, Shūle Tank fills in, source card opens
+  async () => {
+    closeDrawer();
+    await tweenSlider(1, 2600);
+    const t = demoFindTank(SHULE_TANK_ID);
+    if (t) openSourceDrawer(t.props);
+  },
+  // 3: pull back over the city, flood points on
+  () => {
+    closeDrawer();
+    state.map.flyTo({ ...PRESETS.city, essential: true, duration: 1800 });
+    setFloodVisible(true);
+    const input = document.getElementById('flood-toggle-input');
+    if (input) input.checked = true;
+  },
+  // 4: hand off to search — prefilled, not auto-submitted
+  () => {
+    closeDrawer();
+    const input = document.getElementById('search-input');
+    input.value = 'HSR Layout';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.focus();
+  },
+  // 5: scoreboard, with the chart and the narrative line
+  () => { openDrawer('scoreboard'); },
+  // 6: hand off to a second city — proves this generalizes beyond Bengaluru
+  () => { window.location.href = '?city=chennai&demo=1'; },
+];
+
+const DEMO_STEPS_CITY = [
+  // 1: the named, surviving tank in the second city
+  () => {
+    closeDrawer();
+    const id = CITY_DEMO_TANK[state.cityKey];
+    const t = id ? demoFindTank(id) : (state.tanksWithCentroid || [])[0];
+    if (!t) return;
+    state.map.flyTo({ center: t.centroid, zoom: 15.5, pitch: 52, essential: true, duration: 1600 });
+    openSourceDrawer(t.props);
+  },
+  // 2: the fence — refusals shown, not hidden
+  () => { openDrawer('fence'); },
+  // 3: end card
+  () => { showEndCard(); },
+];
+
+function wireDemoMode() {
+  if (!state.demoMode) return;
+  const steps = state.cityMode ? DEMO_STEPS_CITY : DEMO_STEPS_BENGALURU;
+  document.addEventListener('keydown', (e) => {
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return;
+    const n = parseInt(e.key, 10);
+    if (!Number.isNaN(n) && n >= 1 && n <= steps.length) steps[n - 1]();
+  });
+  document.getElementById('end-card-close').addEventListener('click', hideEndCard);
+  if (state.cityMode) steps[0](); // auto-resume the flow on the far side of the city-switch reload
+}
+
 async function main() {
   try {
+    state.demoMode = urlParams().get('demo') === '1';
     const citiesIndex = await fetchJSON(`${DATA}cities.json`).catch(() => ({ cities: [{ key: 'bengaluru', name: 'Bengaluru', hand_traced: true }] }));
     const cityKey = currentCityKey(citiesIndex);
     const entry = citiesIndex.cities.find((c) => c.key === cityKey);
@@ -1405,6 +1579,7 @@ async function main() {
       document.title = `Kere — the lakes ${entry ? entry.name : cityKey} forgot`;
       await bootCity(cityKey, entry);
     }
+    wireDemoMode();
     finishLoading();
   } catch (err) {
     console.error('Kere failed to start', err);
