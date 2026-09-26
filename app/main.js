@@ -1593,7 +1593,7 @@ function addVersusLayers(map, onlyHere, missedHere, ownLabel) {
     { id: 'versus-missed-fill', type: 'fill', source: 'versus-missed',
       paint: { 'fill-color': VERSUS_MISSED_COLOR, 'fill-opacity': 0.16 } },
     { id: 'versus-only-glow', type: 'line', source: 'versus-only',
-      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': byZoom(16, 10), 'line-blur': byZoom(10, 7), 'line-opacity': 0.7 } },
+      paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': byZoom(7, 6), 'line-opacity': 0.3 } },
     { id: 'versus-only-line', type: 'line', source: 'versus-only',
       paint: { 'line-color': VERSUS_ONLY_COLOR, 'line-width': byZoom(3.5, 2.5) } },
     { id: 'versus-missed-line', type: 'line', source: 'versus-missed',

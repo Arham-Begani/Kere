@@ -447,14 +447,14 @@ body.drawer-open .rail{
   width: min(420px, 100vw);
   background: var(--surface);
   border-left: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
+  box-shadow: none; /* closed drawers sit just off-screen; their shadow would smear the map's right edge */
   transform: translateX(100%);
-  transition: transform var(--dur-layout) var(--ease-both, cubic-bezier(0.65,0,0.35,1));
+  transition: transform var(--dur-layout) var(--ease-both, cubic-bezier(0.65,0,0.35,1)), box-shadow var(--dur-layout) var(--ease-out);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
-.drawer.is-open{ transform: translateX(0); }
+.drawer.is-open{ transform: translateX(0); box-shadow: var(--shadow-lg); }
 .drawer__inner{
   flex: 1;
   overflow-y: auto;
