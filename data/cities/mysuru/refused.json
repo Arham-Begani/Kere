@@ -1,0 +1,104 @@
+[
+ {
+  "point_lonlat": [
+   76.534728,
+   12.381626
+  ],
+  "point_px": [
+   1845.5,
+   2120.5
+  ],
+  "tile": [
+   "mysuru_t0"
+  ],
+  "runs": [
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (31 px): text or a speck",
+  "crop": "crops/refused_000.jpg",
+  "bbox_px": [
+   1843.0,
+   2118.0,
+   1848.5,
+   2123.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   76.53557,
+   12.325528
+  ],
+  "point_px": [
+   1848.0,
+   2293.0
+  ],
+  "tile": [
+   "mysuru_t0"
+  ],
+  "runs": [
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (36 px): text or a speck",
+  "crop": "crops/refused_001.jpg",
+  "bbox_px": [
+   1845.2,
+   2290.5,
+   1851.0,
+   2296.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   76.730644,
+   12.30878
+  ],
+  "point_px": [
+   2427.5,
+   2344.5
+  ],
+  "tile": [
+   "mysuru_t1"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (59 px): text or a speck",
+  "crop": "crops/refused_002.jpg",
+  "bbox_px": [
+   2425.0,
+   2342.0,
+   2430.5,
+   2347.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   76.710278,
+   12.35187
+  ],
+  "point_px": [
+   2367.0,
+   2212.0
+  ],
+  "tile": [
+   "mysuru_t1"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (30 px): text or a speck",
+  "crop": "crops/refused_003.jpg",
+  "bbox_px": [
+   2364.5,
+   2209.5,
+   2369.5,
+   2215.0
+  ]
+ }
+]

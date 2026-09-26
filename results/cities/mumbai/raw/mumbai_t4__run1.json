@@ -1,0 +1,248 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t4",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 14.46,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 1240
+ },
+ "cost_usd": 0.0334,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": [
+   {
+    "x": 465,
+    "y": 368,
+    "bbox": [
+     461,
+     364,
+     470,
+     373
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Ajivle",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 408,
+    "y": 406,
+    "bbox": [
+     404,
+     402,
+     413,
+     411
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Shedung",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 362,
+    "y": 461,
+    "bbox": [
+     358,
+     457,
+     367,
+     466
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "\u0100shte",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 556,
+    "y": 470,
+    "bbox": [
+     552,
+     466,
+     561,
+     475
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Poyanje",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 752,
+    "y": 547,
+    "bbox": [
+     748,
+     543,
+     757,
+     552
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Irsal",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 323,
+    "y": 689,
+    "bbox": [
+     319,
+     685,
+     328,
+     694
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "S\u0101vle",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 467,
+    "y": 748,
+    "bbox": [
+     463,
+     744,
+     472,
+     753
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "V\u0101sambe",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01YAzS8nyqsdkavf7vE6hGXF",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": [
+     {
+      "x": 465,
+      "y": 368,
+      "bbox": [
+       461,
+       364,
+       470,
+       373
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Ajivle",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 408,
+      "y": 406,
+      "bbox": [
+       404,
+       402,
+       413,
+       411
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Shedung",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 362,
+      "y": 461,
+      "bbox": [
+       358,
+       457,
+       367,
+       466
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "\u0100shte",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 556,
+      "y": 470,
+      "bbox": [
+       552,
+       466,
+       561,
+       475
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Poyanje",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 752,
+      "y": 547,
+      "bbox": [
+       748,
+       543,
+       757,
+       552
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Irsal",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 323,
+      "y": 689,
+      "bbox": [
+       319,
+       685,
+       328,
+       694
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "S\u0101vle",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 467,
+      "y": 748,
+      "bbox": [
+       463,
+       744,
+       472,
+       753
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "V\u0101sambe",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

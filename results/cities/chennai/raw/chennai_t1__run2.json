@@ -1,0 +1,85 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t1",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 10.59,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 829
+ },
+ "cost_usd": 0.0249,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": [
+   {
+    "x": 18,
+    "y": 172,
+    "bbox": [
+     0,
+     145,
+     50,
+     210
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Eranavur",
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "citations": null,
+   "text": "I found one likely water body on this tile, but I'm not confident it's a tank.\n\n- **The one I reported:** a small group of blue shapes near the left edge, just below and left of \"Eranavur\" (around x 0\u201350, y 145\u2013210). They look like blue hatching with outlines. They could be a small tank, but they could just as easily be marsh or lagoon symbols. No name is printed for them. They touch the left edge, so I marked them as cut off by the tile edge. I treated the group as a single water body.\n- **Left out on purpose:** the sea with its depth contours and \"sand\" notes, the backwater at the top left, which looks like a tidal creek rather than a tank, the canal running along the coast, and the yellow built-up area at the bottom left.",
+   "type": "text"
+  },
+  {
+   "id": "toolu_015DzMoqT4Vq2ZR3vZo4jjrs",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": [
+     {
+      "x": 18,
+      "y": 172,
+      "bbox": [
+       0,
+       145,
+       50,
+       210
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Eranavur",
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

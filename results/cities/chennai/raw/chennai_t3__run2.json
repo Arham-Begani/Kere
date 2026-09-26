@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t3",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 4.67,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 225
+ },
+ "cost_usd": 0.0128,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS5AYKEAgSGAI4AUIIdGhpbmtpbmcSDB/W90Tdrpo1mx5MFBoMQ7NCPPofzQVojqcXIjC0mQBAih8shrzXTJeSjEz6wZxa8LyyUszf9YIJcOfh+FNWXlmh9fKsGh2Z8bFsSFgqgQY03FSKVNzNmRVq6LC6PCwqgyd6hF6GIr5c/yUqvxbM5HJ2px1VuDUWEoWMhoGkmxr3gViK+IqnJS1QgN9IQXVs+g9uNP4zbCJ8QWeIDO3K9iDv706ZfgtPeOvaWxHqBfTV8Tqeuy9dtWG34CGqSfIHS1IT9T74LqMUJ2HRithSmEXAEV6hfTcY6h1n6gBTpPsoRPJdrR7AWtZf8oEnozz01SbRsgIsodm1OSsrzWkZ5vSzIvAvDGW1QZz3PMOKzB13IW2+lCCQH4/JJALsdW45POPZIBMYXZ9RZ0UPl/HrQDyjs42DWQdeWB5myURhe9mtX+frLuKSx7vsWPKXNetV3G2KiLBoMeNcD3z6/NTD3PjVgXYZu+WfOzoYvoBFzD78W2/qO7Pc8tLZ6bsakvEOH2xFImEiMOy2jpxmSsEaa5dobGnys3H69kfvLQppUivH203Ew/ZZZve4Fw/iKIT5kfXiZsluu2cVL+jEBlVWeycW+yLYuCARNX75iNRKlzCr9ABo2mtnl8AxUmcdiFK6f9GUUMvdEW0A21etYD+fQi8VDXNgNPhU23TbWkmxVvQfPZaw0kE8ehTFdxcZ7lQ8UcrY9EfuU+s51htuENUKXgYqwaP65QEMkHbXsok6bKg4lI4k5m3BUuQfQGebMNJHhdqK8XLCGoC6sUzuAjviEpwapTqKuiTWBVL//qTF+e2itauUqQwQB7dXa37HTLwYwAq0Zl4/tV57zO5uFTncC2LZ0Fh/fCc/qLYH3p0Tu58AT8KA6N5f2facvpAEHeIJLNuFiQ5ZbHiYRFpqe6qQooqaRZcyGNUGyF+MJg13FdiqlA89LFS4NYD1eMNMuzkk8V4X85SnlqtnWQZqIs/esr4s32QPUihl0/SJ+EWsdh3IvkycYzLGoGi17NfGVy5GwXL2KvlVNDUC0MWW/cg5A1iY4vAI6D5oqALUTEB2Bmr1w6eXdco71qOxr5RYnjDTyHrsR6lDI9MsrWLu0CQBwv4MSPuOPT39hMAvS0TXadMgGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_019vxJcNKmZ1JcNqQC6cXqoD",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

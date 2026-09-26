@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t8",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 4.45,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2175,
+  "output_tokens": 238
+ },
+ "cost_usd": 0.0135,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 813,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS7AYKEAgSGAI4AUIIdGhpbmtpbmcSDBdeJfz2ILTdH19bzRoM2ZCrYQTe6pfcEhI2IjBiy3Nc+ID8DgB6aSgdKY7qj8t+6XHL6FWcpovZgYBgPFFCXMT379UIHy48RwNIAqMqiQZn87O3oJxRN2NLCjinD30l3b/WF6QIHv+Yffpl5vHt6r3UhEkR01GevL/dQT8qKgJOzdsQqHxQFts6lfPv3Re71gifsVkS70cHpIiJ9v84UMsO6HpRpoA87mKhoYNCAh0sF1HtMFxADgz1PC8Qsk1mnsiV0u2nVZKIdeXL9BTKhDvgujJTr/0thN/lrAzYcVHKSFc3r0po3mmgJeBygLrWF4gR6jE49Pr6Dsw8757fH5WoZsXWXVkMiNUvxGKdngpsRCqYUZ5vnao0WG/b/+O/AOzSk1xoCbHaJOeUjtHGSNflKv11yT8hx4eTiqeQ/am1iZ8mndWvX/gjOyocQnC26VxycuonUrvB2UlDEZUQp5nnNB8UYFdTy1qiYqgAeYRmsgSOKoXSDlQMm6FtZBfr4ySVA1IOqbJQE+RvlgSptcRE4EzxaBAtwgMkbHyL4eedPcSlBfz4hWfivCIRCTYzh6Vgi7QxBZkNfHhxQONSCoESKTCrAsrC7BiOwgIrz3NqScffPJmeZY64mlxsmTAbFyg2zig7oVbfhFRir208ZniVjHKY5Eq8M2ceti3HAhmayhDRCdfEwwfr7nUMISo3FiIvYyS+Zyx+FNLIqf4sH6XWr3po8y1u7piipgXKbGD1MZHvUEzgxG4azy8mPO5jE0QgOdSrg6Ip3oHLV4zRX7Q7Yk3dGznfHeRZL0DjatT4z5XwYJA0pBPQ4H8YAS6S7nS7FjPAzdzXWLnxAkFkmbpJvdoxdqp5ugNu3t4Ib0sH1w0/i+vmumx9GHbcDXkVn89RiODzyvb0wiHhpyioSUVT8OnTNmxUiv5m0ZHPo+8FB6518plcBDI8FKs0RfnyHzF7CWQXQ7b//UKwB/3EXKE5PmH8RQoF0RoLrB16IlClZrVVQud8BuMPadFfy6F9mSrqqwvCY+AuLRE5lz9aqThqd+VMB+kdbs6whu4odlJmusBxvhwBGAi8A5vPeK8OmnDyIa5jHEA92hNqUoH8krxQA9r9LIDFJV+bZ2pRIBNE9u7LZ3EbsycYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01CNeYzWBUE6gMAnDuNmdjKa",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 813,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

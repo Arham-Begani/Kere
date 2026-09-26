@@ -1,0 +1,365 @@
+[
+ {
+  "point_lonlat": [
+   73.013103,
+   18.939016
+  ],
+  "point_px": [
+   3257.0,
+   380.5
+  ],
+  "tile": [
+   "mumbai_t3"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (48 px): text or a speck",
+  "crop": "crops/refused_000.jpg",
+  "bbox_px": [
+   3255.0,
+   378.5,
+   3259.5,
+   382.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.051379,
+   18.943546
+  ],
+  "point_px": [
+   3368.0,
+   366.5
+  ],
+  "tile": [
+   "mumbai_t3"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (38 px): text or a speck",
+  "crop": "crops/refused_001.jpg",
+  "bbox_px": [
+   3366.0,
+   364.5,
+   3370.5,
+   369.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.018966,
+   18.923488
+  ],
+  "point_px": [
+   3274.0,
+   428.5
+  ],
+  "tile": [
+   "mumbai_t3"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (41 px): text or a speck",
+  "crop": "crops/refused_002.jpg",
+  "bbox_px": [
+   3272.0,
+   426.5,
+   3276.5,
+   431.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.029138,
+   18.925267
+  ],
+  "point_px": [
+   3303.5,
+   423.0
+  ],
+  "tile": [
+   "mumbai_t3"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (37 px): text or a speck",
+  "crop": "crops/refused_003.jpg",
+  "bbox_px": [
+   3301.5,
+   421.0,
+   3306.0,
+   425.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.168103,
+   18.940634
+  ],
+  "point_px": [
+   3706.5,
+   375.5
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (44 px): text or a speck",
+  "crop": "crops/refused_004.jpg",
+  "bbox_px": [
+   3704.5,
+   373.5,
+   3709.0,
+   377.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.158276,
+   18.934325
+  ],
+  "point_px": [
+   3678.0,
+   395.0
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (26 px): text or a speck",
+  "crop": "crops/refused_005.jpg",
+  "bbox_px": [
+   3676.0,
+   393.0,
+   3680.5,
+   397.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.150345,
+   18.925429
+  ],
+  "point_px": [
+   3655.0,
+   422.5
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (37 px): text or a speck",
+  "crop": "crops/refused_006.jpg",
+  "bbox_px": [
+   3653.0,
+   420.5,
+   3657.0,
+   424.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.183793,
+   18.923973
+  ],
+  "point_px": [
+   3752.0,
+   427.0
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (127 px): text or a speck",
+  "crop": "crops/refused_007.jpg",
+  "bbox_px": [
+   3750.0,
+   425.0,
+   3754.0,
+   429.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.217586,
+   18.911517
+  ],
+  "point_px": [
+   3850.0,
+   465.5
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (18 px): text or a speck",
+  "crop": "crops/refused_008.jpg",
+  "bbox_px": [
+   3848.0,
+   463.5,
+   3852.0,
+   467.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.143621,
+   18.888547
+  ],
+  "point_px": [
+   3635.5,
+   536.5
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (98 px): text or a speck",
+  "crop": "crops/refused_009.jpg",
+  "bbox_px": [
+   3633.5,
+   534.5,
+   3637.5,
+   538.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   73.168448,
+   18.879004
+  ],
+  "point_px": [
+   3707.5,
+   566.0
+  ],
+  "tile": [
+   "mumbai_t4"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (48 px): text or a speck",
+  "crop": "crops/refused_010.jpg",
+  "bbox_px": [
+   3705.5,
+   564.0,
+   3709.5,
+   568.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   72.887759,
+   18.747654
+  ],
+  "point_px": [
+   2893.5,
+   972.0
+  ],
+  "tile": [
+   "mumbai_t7"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (42 px): text or a speck",
+  "crop": "crops/refused_011.jpg",
+  "bbox_px": [
+   2891.0,
+   969.5,
+   2896.0,
+   974.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   72.882414,
+   18.736331
+  ],
+  "point_px": [
+   2878.0,
+   1007.0
+  ],
+  "tile": [
+   "mumbai_t7"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (33 px): text or a speck",
+  "crop": "crops/refused_012.jpg",
+  "bbox_px": [
+   2875.5,
+   1004.5,
+   2880.5,
+   1009.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   72.870086,
+   18.750081
+  ],
+  "point_px": [
+   2842.2,
+   964.5
+  ],
+  "tile": [
+   "mumbai_t7"
+  ],
+  "runs": [
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (95 px): text or a speck",
+  "crop": "crops/refused_013.jpg",
+  "bbox_px": [
+   2839.0,
+   961.2,
+   2845.8,
+   968.0
+  ]
+ }
+]

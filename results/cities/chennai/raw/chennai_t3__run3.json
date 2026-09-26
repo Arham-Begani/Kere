@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t3",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 4.73,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 286
+ },
+ "cost_usd": 0.014,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQSiQgKEAgSGAI4AUIIdGhpbmtpbmcSDCbTWRTHmYfM77M/DhoMMBwhbOho3wCA7/5jIjB8t6X+inSDkQXHtYAMIqFG+VcHst3yxy99ffPdBKMB9Ddg1VqlvikCzAAo8O1D1K8qpgdokWXY9N2QXt6gaEmwwps7x3bxkUrV3jC5HsFQPv1kOmrv45AaR2rKn+DZ56To43bvo3Ba99AMdHGcGs+lBbmY5lB7fOhb0OP5HnsAv+1yAPiWfl3q1VbTs5CKMgwLITaU4ACVcW3jRsC/SOvS2frtxqN0BOrEyYF+s0/yZLninzNdSQB1WLrJ/ksUOtywZ6UOe48/NfwrGFpvwXFXKWNg8OZqc3RSjVM/fZS4R2RM9AUfpk1XzvFkeLK2B8v1OzL/JKGtZ3YIlJpEgNbqCt4SLzMJozuRb6l1umovQyUNrcTh+zsgZYc/pZj+zRt1klfKEdrUMByjBCiIYL/7ExvoApNcabU62FzhStnfBtGQJX4N0MLWhItMGEKglk6+OAuo2r5VpZ+BB5ayBzv2p8DGCQIkGW8VDtNYmGHa3mnhp6k6+9e9zeXnauHs8H1znCBIYl6UZ/KHq8TFlZcM6g8/8fuwEiIgvLIxWOX+H8jYqpLoeUStAOOLKI0+oLKtVP9tGwyD/sX7kVRLZZx5ikhtRI1HbCwNZ/Ke/5p7uZgYtzapwKuNa9OtO6QBjke+purI501NGsK8h0yTssRB/8na0lH+PvetUf6Dk/RL46fY3qzdPPFney5O4XxW4v4Jp7PeqpC8AfRXRfSF1zZ8T78+l9xuPCrBC1xoObuDa18CSBYWZD+M5A5vI9oLJFMn1gCFpPboNWO/u97+Fo7znLL+a/Z68eQqpa4eYGiR1JXRkpnQsdkt3GNrrR8fZ97JybHoXrhpDM13SOx236tg8SRtQ1fmFw3wR8MKJ1HQnwFCL0vow4nm3rhSA2u0whu4VCKbOL5vWItIixG0lL15/pmb0n+1nZPcEemuNCga42VUpPEHOVNvQtILZRFbS6KIzkd7qREKRMrr/XJPydKH3qiBVKtX7glx1Xl6YBgl76tV6MHITnqCcc6b5PXTRhPg/jAtSx0nydiUBXlCeFN6yYdNPt4tdGIGs4W1W7T6Apnv3DHnWeR2oGkJdqQ4hm/ov7a7jl9e1gtVMjuATjrvlJqq0N9njw8sRvJjeG1U3crZCwqloExk1EavsrGS7QP6kjlHjD0505jjDJKjO9lRt2qg+Ff8Tx12li4t4hA6Kt6oWYtsCSRbJ4Y/rH0vuGs6i8AzxO06nrhqqxyeclzUlxh1Z84LCPcyDBXnbrYyyo8XPhqeTzT8l/YZ2aeLOuM2/VcETtaerP0wMa/PZnSeKUGk78ssdQ9mGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01VG6xLMABrXogMsTkbLQ7iB",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

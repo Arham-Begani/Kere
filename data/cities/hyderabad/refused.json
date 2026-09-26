@@ -1,0 +1,130 @@
+[
+ {
+  "point_lonlat": [
+   78.44151,
+   17.452725
+  ],
+  "point_px": [
+   1716.5,
+   1818.5
+  ],
+  "tile": [
+   "hyderabad_t0"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (127 px): text or a speck",
+  "crop": "crops/refused_000.jpg",
+  "bbox_px": [
+   1711.5,
+   1815.0,
+   1722.5,
+   1823.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   78.411686,
+   17.444314
+  ],
+  "point_px": [
+   1635.0,
+   1843.5
+  ],
+  "tile": [
+   "hyderabad_t0"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (147 px): text or a speck",
+  "crop": "crops/refused_001.jpg",
+  "bbox_px": [
+   1630.0,
+   1839.0,
+   1641.0,
+   1849.0
+  ]
+ },
+ {
+  "point_lonlat": [
+   78.366126,
+   17.526077
+  ],
+  "point_px": [
+   1510.5,
+   1600.5
+  ],
+  "tile": [
+   "hyderabad_t0"
+  ],
+  "runs": [
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (90 px): text or a speck",
+  "crop": "crops/refused_002.jpg",
+  "bbox_px": [
+   1506.5,
+   1596.2,
+   1515.5,
+   1604.8
+  ]
+ },
+ {
+  "point_lonlat": [
+   78.590998,
+   17.418742
+  ],
+  "point_px": [
+   2125.0,
+   1919.5
+  ],
+  "tile": [
+   "hyderabad_t1"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (117 px): text or a speck",
+  "crop": "crops/refused_003.jpg",
+  "bbox_px": [
+   2120.0,
+   1916.0,
+   2131.0,
+   1923.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   78.573798,
+   17.366925
+  ],
+  "point_px": [
+   2078.0,
+   2073.5
+  ],
+  "tile": [
+   "hyderabad_t3"
+  ],
+  "runs": [
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (119 px): text or a speck",
+  "crop": "crops/refused_004.jpg",
+  "bbox_px": [
+   2071.2,
+   2067.0,
+   2085.5,
+   2080.5
+  ]
+ }
+]

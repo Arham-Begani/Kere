@@ -1,0 +1,26 @@
+{
+ "city": "chennai",
+ "reference_lakes": [
+  {
+   "name": "Puzhal Lake",
+   "offset_m": 0
+  },
+  {
+   "name": "Sholavaram Lake",
+   "offset_m": 604
+  },
+  {
+   "name": "Korattur Lake",
+   "offset_m": 37
+  }
+ ],
+ "median_offset_m": 37,
+ "n_tanks": 27,
+ "n_surviving": 3,
+ "n_lost": 24,
+ "surviving_strong_overlap_share": 0.33,
+ "n_refused": 3,
+ "n_osm_water_features": 486,
+ "passed": true,
+ "reason": null
+}

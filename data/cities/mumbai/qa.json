@@ -1,0 +1,26 @@
+{
+ "city": "mumbai",
+ "reference_lakes": [
+  {
+   "name": "Ransai Reservoir",
+   "offset_m": 670
+  },
+  {
+   "name": "Balganga",
+   "offset_m": 345
+  },
+  {
+   "name": "Balganga",
+   "offset_m": 520
+  }
+ ],
+ "median_offset_m": 520,
+ "n_tanks": 4,
+ "n_surviving": 0,
+ "n_lost": 4,
+ "surviving_strong_overlap_share": null,
+ "n_refused": 14,
+ "n_osm_water_features": 249,
+ "passed": false,
+ "reason": "median offset 520 m >= 400 m"
+}

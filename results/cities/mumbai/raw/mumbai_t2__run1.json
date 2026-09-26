@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t2",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 9.65,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 595
+ },
+ "cost_usd": 0.0205,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01ChHzDktPyDXmV7JVMaeMuJ",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

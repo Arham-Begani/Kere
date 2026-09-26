@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t9",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 5.33,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 229
+ },
+ "cost_usd": 0.0132,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS8gYKEAgSGAI4AUIIdGhpbmtpbmcSDC4hFEDCUy0Whg0G8BoMHLepo75Rc5NZBCkfIjACi20gVNUT9/RqaG/W48MV3Ck8gphhS1kFXoS/67RW30KlxAL39Nc4cmZZIL6zuFEqjwbtrQF6Gg/bhXG+Lu2l5kWIAqQwWN38WZsKMPqoxGl/OIjHxBejTyNrBQpkdORg43KuYPFyXjKW2XQYqlfPT8tUyoo9H6PeIaVzeOO04Pawnoeu+YPq0O9SzivvcHioW2/xZMK60OLUw6V4brvY+r0zL2JgtKJc3bapenqyfOGI+AIlrOMCXJEJleqhnIKWA43AcBU0+S23youATggVtkMBhFkoUiMP0O2JfV7+jeREsws6E6C9IlatZwCysWAZkgitwknq1yfvo3ghUioyrBshlG9OdMz6XdRbz5xySbSUEg3FHgZSVDVcm9oD3ShOsYj3jfZ92N1SjgxURdArgnheiPT2zBh0Hxg6VBTJDOzzuxCNHUv3HHWkdgx/SrG0HjaLgoTN/+dVo+Y5VYaeJIXRpE8CISCK/pgdP1mqRp3kQuUsIHxUBh+HgLNkmymI6vHxT/KwYn4eUG8CzISxlwrKVpspB/RmvKK5hKhQpBzUIxGRAN2/jyiFnPWuSo6I8Kmy4e2E53EF0MnBO3qhZAxCRhekRuNbPf2csMQmLOu51TGESdmt8z/sAI4LMJQRPaydBHkFdfLB2anIYmuOHR9gS/JxSSjtV/371RIoweEP0feV57JmuAPwpR+bSYR2YzfcMGtrmGTw5S/N1VwgBzZfgY+J046F8MkqWrCz/iQQFyrpEQVvIK/KW9sRqtttL3IuxQeyonaaYBL4EoU4oDjgBsGX4hjsHpgGZer9VIoMQ5AWys6mePiaaUCgcJAOzyhcRUHLyttpTfkDNOqOvQxwvDFoG97p/XFieNfMT/7PSdBXC8pBTEjj68XCP+xO33kMbxxzPl4T7RYOUHuPduWG0gFqhn3hQk0iQIfwpCWADl6e69LWQFgzRX5qECTAQ2lapbX7UOh8gCQMRROPY4eWBmW+X6cCi31Lui7Ab5m3+yHs6b+qTTVC0e/dfl02UW6Oymer/xkwBKfIeCrnl39SzIRJHiNx1RTgtz1nzSoXN3kuiriSEwf1aRVslIcRfRjGXvhsh2UpW0nbARMbLC0YAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_013GrwKgbuBv33htpw5ffWgv",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

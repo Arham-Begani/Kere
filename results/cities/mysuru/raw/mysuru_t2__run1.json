@@ -1,0 +1,108 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t2",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.46,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 842
+ },
+ "cost_usd": 0.026,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 760,
+    "y": 105,
+    "bbox": [
+     724,
+     78,
+     792,
+     138
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 415,
+    "y": 566,
+    "bbox": [
+     384,
+     552,
+     447,
+     582
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Thorena Kat\u016br",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01FcB7uZNE57DTAMQSRJXVwA",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 760,
+      "y": 105,
+      "bbox": [
+       724,
+       78,
+       792,
+       138
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 415,
+      "y": 566,
+      "bbox": [
+       384,
+       552,
+       447,
+       582
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Thorena Kat\u016br",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

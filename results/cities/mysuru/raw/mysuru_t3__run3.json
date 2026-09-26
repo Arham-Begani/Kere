@@ -1,0 +1,192 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t3",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 9.56,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 885
+ },
+ "cost_usd": 0.0269,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 638,
+    "y": 78,
+    "bbox": [
+     612,
+     48,
+     666,
+     102
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Varuna",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 790,
+    "y": 160,
+    "bbox": [
+     775,
+     130,
+     806,
+     190
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dandikere",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 112,
+    "y": 195,
+    "bbox": [
+     88,
+     125,
+     130,
+     232
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gejjagahalli",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 126,
+    "y": 292,
+    "bbox": [
+     116,
+     280,
+     140,
+     304
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Temple",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 675,
+    "y": 672,
+    "bbox": [
+     645,
+     612,
+     706,
+     700
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Hadin\u0101du",
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01K1irRKQ2tTnjkkEQ3aQRzk",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 638,
+      "y": 78,
+      "bbox": [
+       612,
+       48,
+       666,
+       102
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Varuna",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 790,
+      "y": 160,
+      "bbox": [
+       775,
+       130,
+       806,
+       190
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dandikere",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 112,
+      "y": 195,
+      "bbox": [
+       88,
+       125,
+       130,
+       232
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gejjagahalli",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 126,
+      "y": 292,
+      "bbox": [
+       116,
+       280,
+       140,
+       304
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Temple",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 675,
+      "y": 672,
+      "bbox": [
+       645,
+       612,
+       706,
+       700
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Hadin\u0101du",
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

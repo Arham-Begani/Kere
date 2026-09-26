@@ -1,0 +1,34 @@
+{
+ "city": "chennai",
+ "corners_px": {
+  "tl": [
+   272.0,
+   191.0
+  ],
+  "tr": [
+   4727.0,
+   191.0
+  ],
+  "bl": [
+   272.0,
+   3270.0
+  ],
+  "br": [
+   4727.0,
+   3270.0
+  ]
+ },
+ "window_native_px": [
+  3600,
+  2553,
+  4492,
+  3270
+ ],
+ "upscale": 2,
+ "tiles": [
+  "chennai_t0",
+  "chennai_t1",
+  "chennai_t2",
+  "chennai_t3"
+ ]
+}

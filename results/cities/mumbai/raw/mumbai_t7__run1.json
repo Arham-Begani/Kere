@@ -1,0 +1,192 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t7",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 11.13,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 755
+ },
+ "cost_usd": 0.0237,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": [
+   {
+    "x": 430,
+    "y": 566,
+    "bbox": [
+     423,
+     558,
+     438,
+     576
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kolgaon",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 463,
+    "y": 713,
+    "bbox": [
+     459,
+     709,
+     468,
+     718
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zirad",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 537,
+    "y": 737,
+    "bbox": [
+     533,
+     733,
+     542,
+     742
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "BORI TEP",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 432,
+    "y": 783,
+    "bbox": [
+     428,
+     779,
+     437,
+     788
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zirad",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 740,
+    "y": 770,
+    "bbox": [
+     736,
+     766,
+     745,
+     775
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Narangi",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQSrQoKEAgSGAI4AUIIdGhpbmtpbmcSDGh/lHnUvOeULie3RhoM35ODoR8+Srl9PqsFIjDoQ9MSvAkYt3QTIe1mLdxjnimV1M+69n9boTWKSZ2LKxejrF1sMOpzrjML5dSGzAwqyglaHTAUSCtcoytfQ2g9U3wsLC/4pxJ07A+rGG6LAeIz43jNnJDREVmnrmK8/TOluvjcEfqQd2a8wZqOFXHwOVGZPemJpnTJExXRXPHECn1f6719onGpjOYc85c7C3oW2OKgxproSuBV5pW6igoMvP8maCzJtM9B+Tp6YGyz5jLjt3JI6X0e/aZy78BAtHSIwZpCzNzpn4gHFcASZpIGXRFyYCw1Dy8XolwQ6eMVKpzkgijKnv7fHQeqFDIgPBbhcl0esti4bJBxGWUleiLVvrqgZoIIzmiC7I0VdsnEqBrkW2392RnArrSginA595wTM5JQRJFA0LEe8sH+MVR2WOh3gqn1qoBxWK3hPA5rvtlkYmI748mfb5aP26XmwLWjptlm/Yc8fc/Ov2c9+BfL+g0QUBz9c8JjfigVZTAedvRix8YYQ5FrObkxo+1sSYTwLcVCptwIAl1OLLVfe4PcFhookhSkeUlCavkhL8EVQsVDIOjbdnTleKYcQjgIy9yRRCMNbVxL5BNJBP9r4dc3wvmHbm+AokB3qdxSfPtF3zLYnPCMlGnkeGJXowlpHZShhi7yJZCdqwbwEp3sZp2XHJQOjx36Y6v8XfgXx4XUpNIOd6wnjMf6yzyY8An3FOvawbT78W6KDcCt4dF4a/mAVHB+JQkt4IopLOEc+uZPzqzIzcrCAO53ZZ9k55KzEASNoU8qbxKk3QVtYPNlJcunNpu9kxIklG3kBlfBQR/cRMYAnm075b6MM95/S5eUIpNSC1MxRz5gNXvrsGJiMQHCwLhdOA4H6x43oRPPdt1IHJDJdXi++7gXmD9M9SoVjkmIiYsbvNm774XAn9QBPb+Coq9BjKUwpmdGfU5EcaqGgcwTGQAs6SdyiqcV7GTzyijmWQXF0Aa+v8zfhZ6AExWP+/2HIZyd9f/LFreAqQAASHYDCnLwzz8BqywSGR6azTKOF9zA75jcGnDk7+qtfwol/tb2X0zKqLqceJ0qzFkJJd5eknjwIyR09+I5tRSNhVjuh5GXfIdnagQfcJJm590bYBMjuZvTybWWmX22sXI7d8pw2RAuEQqoDtxG92N64gspDjhhkhU5tYI9kgFI4Lq3b1dw8TXmFW5MVCutkoAKGBW8mUkd7FAD2ZZ/5cq8Rf5BSXVSzuVLb+YI/NFuhFBT67qta70x74h+zq3S+W8STSwDDXtPihNTfcWfiYmgaEvbO27t6n2utTL4hhGurMxn7yAXIxotuo2a5QAqHi4/f6t32clBjqrYEG0Ar5UW8WqnzB3YWRpm+KJFx6YTMBZJpMu6IJnmtfUf54IlY0gmKqVgtjSGfTYiPXFytQ54Zmftuam4LG8H9RSsMRRClgwyvKchna5MRs6ENoV3xmURMTmpy7gvyRRnIUkRm7J6Zlo5g8zNQ5y06OgJLiVQe2FW1sPi3vT0LFulPkF6wRB1eQ4qb8s9mY2K+cKoZq52QOXosKAVE/UnRL4vJQrLyMO8OkcjY2CP036mhQkPgu6kZKOBMmCCGVZMBSA++vUum+gUeIx/KhStsnVv7OgFXNofiaKoQu61X94EVjbmgn7KIl3ORf6052PSsQcDQ6Jo7VB8HYZFRc99Ksw9RvHQlxpZtL+/ICiEM4slbxdyqxgB",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01Q83KLUcA2yWW8NnbJLT9Ju",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": [
+     {
+      "x": 430,
+      "y": 566,
+      "bbox": [
+       423,
+       558,
+       438,
+       576
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kolgaon",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 463,
+      "y": 713,
+      "bbox": [
+       459,
+       709,
+       468,
+       718
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zirad",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 537,
+      "y": 737,
+      "bbox": [
+       533,
+       733,
+       542,
+       742
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "BORI TEP",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 432,
+      "y": 783,
+      "bbox": [
+       428,
+       779,
+       437,
+       788
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zirad",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 740,
+      "y": 770,
+      "bbox": [
+       736,
+       766,
+       745,
+       775
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Narangi",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

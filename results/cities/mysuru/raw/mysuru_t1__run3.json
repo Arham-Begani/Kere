@@ -1,0 +1,192 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t1",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.55,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 1008
+ },
+ "cost_usd": 0.0294,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 140,
+    "y": 850,
+    "bbox": [
+     130,
+     828,
+     152,
+     872
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "MYSORE",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 541,
+    "y": 845,
+    "bbox": [
+     536,
+     840,
+     547,
+     851
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Alanhalli",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 420,
+    "y": 578,
+    "bbox": [
+     415,
+     573,
+     426,
+     584
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "G\u0101nigahundi",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 745,
+    "y": 600,
+    "bbox": [
+     725,
+     580,
+     765,
+     620
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kempanahundi",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 848,
+    "y": 773,
+    "bbox": [
+     838,
+     765,
+     860,
+     782
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Hunagana",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01NXWbtcFQazKT2QbkodGMeB",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 140,
+      "y": 850,
+      "bbox": [
+       130,
+       828,
+       152,
+       872
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "MYSORE",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 541,
+      "y": 845,
+      "bbox": [
+       536,
+       840,
+       547,
+       851
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Alanhalli",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 420,
+      "y": 578,
+      "bbox": [
+       415,
+       573,
+       426,
+       584
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "G\u0101nigahundi",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 745,
+      "y": 600,
+      "bbox": [
+       725,
+       580,
+       765,
+       620
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kempanahundi",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 848,
+      "y": 773,
+      "bbox": [
+       838,
+       765,
+       860,
+       782
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Hunagana",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

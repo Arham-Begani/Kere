@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t1",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 3.58,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2175,
+  "output_tokens": 203
+ },
+ "cost_usd": 0.0128,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 813,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS2wYKEAgSGAI4AUIIdGhpbmtpbmcSDDOEwiQiyfHMWsgqExoM+/l1sLGehSWLqNbKIjDfyVxrmz1kR6NOqKQ7BkoLjrnUvLsnBYwU6RgcwhQFJC+r6tM+3PNwcz+zWU4aZEAq+AVwuu/qjjcKW7yB0AdroKGfa/oRN9TV/QBspK189UYDiTtpIEeNUn1Qd0+y8uV7NXYHeBYWr7IHqo2ZD4q74H3zrTev/wgI1RbZq9O/ski0q03kvYmp7QqyOKQ0d3pdqVP7QROe8gclnB/9xJhuP9AobFgqLbHtcjSJ7aBKZL0bliLG7bcKral5wy7Gx6Wio6jRK/90vjIahBwH6YbCHKwT9i0O0Wj/JBUxctXQagKnZwmBkxE4Qk2MS2a+Yhwh8tt2t0HsgCpkg1S2hENIssx1wCXfEMDQ7n/oQJ+fY+NLfjGedLI81IkCE+UeXwPkxSrH6ezBa11vlehocNdH6JlPIU0kC5U5XMMqtmY3OGSzwLYnJWV3komhzcQcMyTPx333iseuagSP9imUwwzPsMHaJWOVUVHiAG5BanRntLb+pUsVXfaKF3IStlItXPp2yXzVW12tHsmOPFAbuJieiLup0XgYBO240tFXnr+Gl5sVZHzxW0eEhPaUlNtHIwEfMreMA5ixdCyjRTcDPj+t+5bhVHUsU6MeiTVaKpnv2SyTXsJUoaKvy/POwnRMEIuFBky/h4rMCbVr+6J4OZ0Koc7KIOegqJK3zRhv8a9DAip8sc9xRXhxWWJWCP9d7Evt5G3zxAHPnvUmc63Jakhxf9EhKaZQFlhnBPwBXusNHGMhAIwgBvdZAQeRUnvLvOWAo82E/fiFyl0Pp+Dz8RsN0bkgOlYfYts6YjP7zyLeRUI+MNwV6w+O17jz//NmA6rIrkBvyHfk3I/1k6TSktrXCQrXkHWj6sphTQbW+eK0giwW0bKAqy+0uuutsGCiWubfURBKAIw3EOGDeqaBZLxk9HJFl97UZlcm3dgx++2me1KvVMjm4+T253okXEbXKuxEHSP/al5Cq1LpA9FItoBWRBYdC8IX3n15EBjQLUNvalNm1BJ5LVgNX0G9me+IMpz7giHn3eR2vXKSxGUAlW4isRTz/5hln9DXhQPtgjSicxrAaSZVUYP+lVBOGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01ErFpeHgD53x8wsVs3gDdtk",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 813,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

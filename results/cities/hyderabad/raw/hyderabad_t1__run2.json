@@ -1,0 +1,276 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "hyderabad",
+ "tile": "hyderabad_t1",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 14.68,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2208,
+  "output_tokens": 1336
+ },
+ "cost_usd": 0.0356,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 820,
+  "image_height": 893,
+  "tanks": [
+   {
+    "x": 226,
+    "y": 425,
+    "bbox": [
+     203,
+     398,
+     265,
+     442
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Safilguda",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 746,
+    "y": 285,
+    "bbox": [
+     736,
+     272,
+     757,
+     298
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kunz",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 551,
+    "y": 620,
+    "bbox": [
+     540,
+     610,
+     563,
+     631
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Narapalli",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 570,
+    "y": 693,
+    "bbox": [
+     559,
+     685,
+     583,
+     701
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Medpalli",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 470,
+    "y": 786,
+    "bbox": [
+     459,
+     774,
+     483,
+     797
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Pirz\u0101dag\u016bda",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 657,
+    "y": 70,
+    "bbox": [
+     646,
+     57,
+     669,
+     85
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Cherial",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 661,
+    "y": 395,
+    "bbox": [
+     648,
+     383,
+     676,
+     408
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Madara",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 62,
+    "y": 690,
+    "bbox": [
+     48,
+     678,
+     78,
+     702
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zamist\u0101pur",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_018224KTjqh5cuZAAqUp5VCa",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 820,
+    "image_height": 893,
+    "tanks": [
+     {
+      "x": 226,
+      "y": 425,
+      "bbox": [
+       203,
+       398,
+       265,
+       442
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Safilguda",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 746,
+      "y": 285,
+      "bbox": [
+       736,
+       272,
+       757,
+       298
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kunz",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 551,
+      "y": 620,
+      "bbox": [
+       540,
+       610,
+       563,
+       631
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Narapalli",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 570,
+      "y": 693,
+      "bbox": [
+       559,
+       685,
+       583,
+       701
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Medpalli",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 470,
+      "y": 786,
+      "bbox": [
+       459,
+       774,
+       483,
+       797
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Pirz\u0101dag\u016bda",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 657,
+      "y": 70,
+      "bbox": [
+       646,
+       57,
+       669,
+       85
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Cherial",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 661,
+      "y": 395,
+      "bbox": [
+       648,
+       383,
+       676,
+       408
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Madara",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 62,
+      "y": 690,
+      "bbox": [
+       48,
+       678,
+       78,
+       702
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zamist\u0101pur",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

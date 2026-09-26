@@ -1,0 +1,329 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.02896551724137,
+       18.97767712714332
+      ],
+      [
+       73.02413793103449,
+       18.978000647039792
+      ],
+      [
+       73.02413793103449,
+       18.970883209317375
+      ],
+      [
+       73.02586206896552,
+       18.971206729213847
+      ],
+      [
+       73.02931034482759,
+       18.97444192817858
+      ],
+      [
+       73.02896551724137,
+       18.97767712714332
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "mumbai_000",
+    "city": "mumbai",
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kambad",
+    "display_name": "Unnamed tank near Kambad",
+    "status": "lost",
+    "now_osm": {
+     "name": "Maharashtra",
+     "type": "state",
+     "source": "OpenStreetMap"
+    },
+    "runs_found": [
+     1,
+     2,
+     3
+    ],
+    "tiles": [
+     "mumbai_t3"
+    ],
+    "style": "solid",
+    "crop": "crops/mumbai_000.jpg",
+    "area_m2": 331042,
+    "overlap_frac": 0.0,
+    "bbox_px": [
+     3289.0,
+     260.0,
+     3304.0,
+     282.0
+    ],
+    "point_px": [
+     3295.4,
+     269.6
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       72.8851724137931,
+       18.77644775153672
+      ],
+      [
+       72.88448275862069,
+       18.77644775153672
+      ],
+      [
+       72.88413793103449,
+       18.773212552571984
+      ],
+      [
+       72.88034482758621,
+       18.773212552571984
+      ],
+      [
+       72.88034482758621,
+       18.768036234228404
+      ],
+      [
+       72.88620689655173,
+       18.76738919443546
+      ],
+      [
+       72.8855172413793,
+       18.7693303138143
+      ],
+      [
+       72.88344827586207,
+       18.769653833710773
+      ],
+      [
+       72.88344827586207,
+       18.770947913296666
+      ],
+      [
+       72.8851724137931,
+       18.773536072468456
+      ],
+      [
+       72.88620689655173,
+       18.773859592364932
+      ],
+      [
+       72.8851724137931,
+       18.77644775153672
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "mumbai_001",
+    "city": "mumbai",
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kolgaon",
+    "display_name": "Unnamed tank near Kolgaon",
+    "status": "lost",
+    "now_osm": {
+     "name": "Maharashtra",
+     "type": "state",
+     "source": "OpenStreetMap"
+    },
+    "runs_found": [
+     1,
+     2,
+     3
+    ],
+    "tiles": [
+     "mumbai_t7"
+    ],
+    "style": "solid",
+    "crop": "crops/mumbai_001.jpg",
+    "area_m2": 317161,
+    "overlap_frac": 0.0,
+    "bbox_px": [
+     2872.0,
+     883.0,
+     2889.0,
+     911.0
+    ],
+    "point_px": [
+     2879.7,
+     900.0
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       72.89827586206897,
+       18.744742801682303
+      ],
+      [
+       72.89758620689655,
+       18.74247816240699
+      ],
+      [
+       72.89896551724138,
+       18.742154642510513
+      ],
+      [
+       72.89896551724138,
+       18.740537043028148
+      ],
+      [
+       72.90275862068965,
+       18.741184082821093
+      ],
+      [
+       72.90275862068965,
+       18.74183112261404
+      ],
+      [
+       72.90137931034482,
+       18.742154642510513
+      ],
+      [
+       72.90068965517241,
+       18.744742801682303
+      ],
+      [
+       72.89827586206897,
+       18.744742801682303
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "mumbai_002",
+    "city": "mumbai",
+    "name_as_printed": null,
+    "nearest_place_as_printed": "BORI TEP",
+    "display_name": "Unnamed tank near BORI TEP",
+    "status": "lost",
+    "now_osm": {
+     "name": "Maharashtra",
+     "type": "state",
+     "source": "OpenStreetMap"
+    },
+    "runs_found": [
+     1,
+     2,
+     3
+    ],
+    "tiles": [
+     "mumbai_t7"
+    ],
+    "style": "solid",
+    "crop": "crops/mumbai_002.jpg",
+    "area_m2": 147205,
+    "overlap_frac": 0.001,
+    "bbox_px": [
+     2922.0,
+     981.0,
+     2937.0,
+     994.0
+    ],
+    "point_px": [
+     2928.8,
+     987.4
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       72.93103448275862,
+       18.740213523131672
+      ],
+      [
+       72.93103448275862,
+       18.73891944354578
+      ],
+      [
+       72.93241379310345,
+       18.73891944354578
+      ],
+      [
+       72.93275862068965,
+       18.737625363959882
+      ],
+      [
+       72.93931034482759,
+       18.73633128437399
+      ],
+      [
+       72.93931034482759,
+       18.737948883856358
+      ],
+      [
+       72.93689655172413,
+       18.737948883856358
+      ],
+      [
+       72.93586206896552,
+       18.739566483338724
+      ],
+      [
+       72.93103448275862,
+       18.740213523131672
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "mumbai_003",
+    "city": "mumbai",
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Narangi",
+    "display_name": "Unnamed tank near Narangi",
+    "status": "lost",
+    "now_osm": {
+     "name": "Maharashtra",
+     "type": "state",
+     "source": "OpenStreetMap"
+    },
+    "runs_found": [
+     1,
+     2,
+     3
+    ],
+    "tiles": [
+     "mumbai_t7"
+    ],
+    "style": "solid",
+    "crop": "crops/mumbai_003.jpg",
+    "area_m2": 176512,
+    "overlap_frac": 0.0,
+    "bbox_px": [
+     3019.0,
+     995.0,
+     3043.0,
+     1007.0
+    ],
+    "point_px": [
+     3030.7,
+     1000.9
+    ]
+   }
+  }
+ ]
+}

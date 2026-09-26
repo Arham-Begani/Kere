@@ -1,0 +1,780 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "kolkata",
+ "tile": "kolkata_t3",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 33.14,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2266,
+  "output_tokens": 3097
+ },
+ "cost_usd": 0.071,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 816,
+  "image_height": 932,
+  "tanks": [
+   {
+    "x": 330,
+    "y": 110,
+    "bbox": [
+     230,
+     0,
+     545,
+     335
+    ],
+    "name_as_printed": "Salt Water Lake",
+    "nearest_place_as_printed": "Th\u0101kurdw\u0101ri",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 450,
+    "y": 400,
+    "bbox": [
+     190,
+     300,
+     570,
+     470
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "B\u0101mangh\u0101ta",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 600,
+    "y": 240,
+    "bbox": [
+     540,
+     150,
+     660,
+     345
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "P\u0101nchuria",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 553,
+    "y": 82,
+    "bbox": [
+     535,
+     60,
+     572,
+     105
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "P\u0101nchuria",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 522,
+    "y": 150,
+    "bbox": [
+     505,
+     122,
+     545,
+     190
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "P\u0101nchuria",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 420,
+    "y": 510,
+    "bbox": [
+     375,
+     480,
+     470,
+     550
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kheardaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 398,
+    "y": 592,
+    "bbox": [
+     383,
+     562,
+     415,
+     625
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kheardaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 369,
+    "y": 566,
+    "bbox": [
+     357,
+     550,
+     382,
+     582
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kheardaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 330,
+    "y": 470,
+    "bbox": [
+     305,
+     415,
+     365,
+     545
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kheardaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 275,
+    "y": 520,
+    "bbox": [
+     245,
+     485,
+     310,
+     560
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kheardaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 229,
+    "y": 485,
+    "bbox": [
+     215,
+     470,
+     245,
+     500
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Madhudaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 215,
+    "y": 540,
+    "bbox": [
+     185,
+     525,
+     245,
+     560
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gariya",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 147,
+    "y": 515,
+    "bbox": [
+     135,
+     495,
+     160,
+     540
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gariya",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 100,
+    "y": 530,
+    "bbox": [
+     80,
+     500,
+     120,
+     570
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gariya",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 205,
+    "y": 600,
+    "bbox": [
+     175,
+     580,
+     235,
+     620
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gariya",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 290,
+    "y": 578,
+    "bbox": [
+     265,
+     568,
+     315,
+     590
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Nao\u0101b\u0101d",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 267,
+    "y": 457,
+    "bbox": [
+     255,
+     445,
+     280,
+     470
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Madhudaha",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 548,
+    "y": 488,
+    "bbox": [
+     515,
+     452,
+     580,
+     525
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Baynala",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 651,
+    "y": 467,
+    "bbox": [
+     642,
+     458,
+     661,
+     477
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Baynala",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 503,
+    "y": 660,
+    "bbox": [
+     482,
+     632,
+     525,
+     690
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "R\u0101dh\u0101nagar",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 352,
+    "y": 790,
+    "bbox": [
+     343,
+     781,
+     362,
+     800
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gh\u0101si\u0101ra",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 290,
+    "y": 783,
+    "bbox": [
+     282,
+     775,
+     300,
+     792
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Son\u0101rpur",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 230,
+    "y": 832,
+    "bbox": [
+     220,
+     822,
+     240,
+     842
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Ukila",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 35,
+    "y": 742,
+    "bbox": [
+     25,
+     733,
+     45,
+     752
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gariya",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 80,
+    "y": 862,
+    "bbox": [
+     70,
+     850,
+     90,
+     872
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Erachi",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 75,
+    "y": 780,
+    "bbox": [
+     60,
+     755,
+     90,
+     810
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Ukila",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01EcAxhstp9XTBj15xM3SVvi",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 816,
+    "image_height": 932,
+    "tanks": [
+     {
+      "x": 330,
+      "y": 110,
+      "bbox": [
+       230,
+       0,
+       545,
+       335
+      ],
+      "name_as_printed": "Salt Water Lake",
+      "nearest_place_as_printed": "Th\u0101kurdw\u0101ri",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 450,
+      "y": 400,
+      "bbox": [
+       190,
+       300,
+       570,
+       470
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "B\u0101mangh\u0101ta",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 600,
+      "y": 240,
+      "bbox": [
+       540,
+       150,
+       660,
+       345
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "P\u0101nchuria",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 553,
+      "y": 82,
+      "bbox": [
+       535,
+       60,
+       572,
+       105
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "P\u0101nchuria",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 522,
+      "y": 150,
+      "bbox": [
+       505,
+       122,
+       545,
+       190
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "P\u0101nchuria",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 420,
+      "y": 510,
+      "bbox": [
+       375,
+       480,
+       470,
+       550
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kheardaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 398,
+      "y": 592,
+      "bbox": [
+       383,
+       562,
+       415,
+       625
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kheardaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 369,
+      "y": 566,
+      "bbox": [
+       357,
+       550,
+       382,
+       582
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kheardaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 330,
+      "y": 470,
+      "bbox": [
+       305,
+       415,
+       365,
+       545
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kheardaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 275,
+      "y": 520,
+      "bbox": [
+       245,
+       485,
+       310,
+       560
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kheardaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 229,
+      "y": 485,
+      "bbox": [
+       215,
+       470,
+       245,
+       500
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Madhudaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 215,
+      "y": 540,
+      "bbox": [
+       185,
+       525,
+       245,
+       560
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gariya",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 147,
+      "y": 515,
+      "bbox": [
+       135,
+       495,
+       160,
+       540
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gariya",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 100,
+      "y": 530,
+      "bbox": [
+       80,
+       500,
+       120,
+       570
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gariya",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 205,
+      "y": 600,
+      "bbox": [
+       175,
+       580,
+       235,
+       620
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gariya",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 290,
+      "y": 578,
+      "bbox": [
+       265,
+       568,
+       315,
+       590
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Nao\u0101b\u0101d",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 267,
+      "y": 457,
+      "bbox": [
+       255,
+       445,
+       280,
+       470
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Madhudaha",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 548,
+      "y": 488,
+      "bbox": [
+       515,
+       452,
+       580,
+       525
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Baynala",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 651,
+      "y": 467,
+      "bbox": [
+       642,
+       458,
+       661,
+       477
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Baynala",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 503,
+      "y": 660,
+      "bbox": [
+       482,
+       632,
+       525,
+       690
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "R\u0101dh\u0101nagar",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 352,
+      "y": 790,
+      "bbox": [
+       343,
+       781,
+       362,
+       800
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gh\u0101si\u0101ra",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 290,
+      "y": 783,
+      "bbox": [
+       282,
+       775,
+       300,
+       792
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Son\u0101rpur",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 230,
+      "y": 832,
+      "bbox": [
+       220,
+       822,
+       240,
+       842
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Ukila",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 35,
+      "y": 742,
+      "bbox": [
+       25,
+       733,
+       45,
+       752
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gariya",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 80,
+      "y": 862,
+      "bbox": [
+       70,
+       850,
+       90,
+       872
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Erachi",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 75,
+      "y": 780,
+      "bbox": [
+       60,
+       755,
+       90,
+       810
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Ukila",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

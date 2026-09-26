@@ -1,0 +1,13 @@
+{
+ "tile": "hyderabad_t1",
+ "city": "hyderabad",
+ "image": "tiles/hyderabad_t1.png",
+ "sheet": "city_front_250k",
+ "width": 820,
+ "height": 893,
+ "origin_in_sheet_px": [
+  1840.0,
+  1573.0
+ ],
+ "scale_in_sheet": 2
+}

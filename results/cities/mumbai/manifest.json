@@ -1,0 +1,40 @@
+{
+ "city": "mumbai",
+ "corners_px": {
+  "tl": [
+   319.0,
+   192.0
+  ],
+  "tr": [
+   4669.0,
+   192.0
+  ],
+  "bl": [
+   319.0,
+   3283.0
+  ],
+  "br": [
+   4669.0,
+   3283.0
+  ]
+ },
+ "window_native_px": [
+  1849,
+  192,
+  3880,
+  1039
+ ],
+ "upscale": 2,
+ "tiles": [
+  "mumbai_t0",
+  "mumbai_t1",
+  "mumbai_t2",
+  "mumbai_t3",
+  "mumbai_t4",
+  "mumbai_t5",
+  "mumbai_t6",
+  "mumbai_t7",
+  "mumbai_t8",
+  "mumbai_t9"
+ ]
+}

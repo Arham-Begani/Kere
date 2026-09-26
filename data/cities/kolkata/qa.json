@@ -1,0 +1,26 @@
+{
+ "city": "kolkata",
+ "reference_lakes": [
+  {
+   "name": "Hooghly",
+   "offset_m": 0
+  },
+  {
+   "name": "Saheb Mara Bheri",
+   "offset_m": 0
+  },
+  {
+   "name": "Eco Park",
+   "offset_m": 0
+  }
+ ],
+ "median_offset_m": 0,
+ "n_tanks": 37,
+ "n_surviving": 3,
+ "n_lost": 34,
+ "surviving_strong_overlap_share": 0.33,
+ "n_refused": 17,
+ "n_osm_water_features": 6051,
+ "passed": true,
+ "reason": null
+}

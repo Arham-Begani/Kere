@@ -1,0 +1,164 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t0",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.47,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 1076
+ },
+ "cost_usd": 0.0307,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 430,
+    "y": 60,
+    "bbox": [
+     0,
+     0,
+     565,
+     290
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Anand\u016br",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 875,
+    "y": 785,
+    "bbox": [
+     853,
+     758,
+     893,
+     812
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Bog\u0101di",
+    "style": "hatched",
+    "partial": true
+   },
+   {
+    "x": 271,
+    "y": 395,
+    "bbox": [
+     266,
+     390,
+     277,
+     401
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dadadakallahalli",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 276,
+    "y": 740,
+    "bbox": [
+     271,
+     735,
+     282,
+     746
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Bommanahalli",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01EC9QR1nVEJxqV73DXYo3KL",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 430,
+      "y": 60,
+      "bbox": [
+       0,
+       0,
+       565,
+       290
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Anand\u016br",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 875,
+      "y": 785,
+      "bbox": [
+       853,
+       758,
+       893,
+       812
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Bog\u0101di",
+      "style": "hatched",
+      "partial": true
+     },
+     {
+      "x": 271,
+      "y": 395,
+      "bbox": [
+       266,
+       390,
+       277,
+       401
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dadadakallahalli",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 276,
+      "y": 740,
+      "bbox": [
+       271,
+       735,
+       282,
+       746
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Bommanahalli",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

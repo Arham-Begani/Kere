@@ -1,0 +1,192 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t3",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.97,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 1094
+ },
+ "cost_usd": 0.0311,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 640,
+    "y": 78,
+    "bbox": [
+     612,
+     50,
+     667,
+     102
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Varuna",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 790,
+    "y": 160,
+    "bbox": [
+     775,
+     128,
+     806,
+     192
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dandikere",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 110,
+    "y": 195,
+    "bbox": [
+     88,
+     125,
+     132,
+     225
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gejagahalli",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 675,
+    "y": 672,
+    "bbox": [
+     645,
+     612,
+     705,
+     700
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Hadin\u0101du",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 2,
+    "y": 105,
+    "bbox": [
+     0,
+     85,
+     6,
+     125
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": null,
+    "style": "solid",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_018fP9dk2RVyijG1KATCHPqf",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 640,
+      "y": 78,
+      "bbox": [
+       612,
+       50,
+       667,
+       102
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Varuna",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 790,
+      "y": 160,
+      "bbox": [
+       775,
+       128,
+       806,
+       192
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dandikere",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 110,
+      "y": 195,
+      "bbox": [
+       88,
+       125,
+       132,
+       225
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gejagahalli",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 675,
+      "y": 672,
+      "bbox": [
+       645,
+       612,
+       705,
+       700
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Hadin\u0101du",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 2,
+      "y": 105,
+      "bbox": [
+       0,
+       85,
+       6,
+       125
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": null,
+      "style": "solid",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

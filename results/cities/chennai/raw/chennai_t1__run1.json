@@ -1,0 +1,80 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t1",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 9.62,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 676
+ },
+ "cost_usd": 0.0218,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": [
+   {
+    "x": 25,
+    "y": 175,
+    "bbox": [
+     2,
+     148,
+     48,
+     210
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Eranavur",
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01UMoEwfoJkrBSr3joGXBaGN",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": [
+     {
+      "x": 25,
+      "y": 175,
+      "bbox": [
+       2,
+       148,
+       48,
+       210
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Eranavur",
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

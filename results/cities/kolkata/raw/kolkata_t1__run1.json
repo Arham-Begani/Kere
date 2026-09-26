@@ -1,0 +1,136 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "kolkata",
+ "tile": "kolkata_t1",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 10.64,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2266,
+  "output_tokens": 895
+ },
+ "cost_usd": 0.027,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 816,
+  "image_height": 932,
+  "tanks": [
+   {
+    "x": 250,
+    "y": 815,
+    "bbox": [
+     118,
+     780,
+     340,
+     932
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "CALCUTTA",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 470,
+    "y": 880,
+    "bbox": [
+     390,
+     815,
+     640,
+     932
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Uttar P\u0101nchuria",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 111,
+    "y": 350,
+    "bbox": [
+     98,
+     325,
+     126,
+     375
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "K\u0100MARH\u0100TI",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01SqkuQftBvWxyK3hE71Qg43",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 816,
+    "image_height": 932,
+    "tanks": [
+     {
+      "x": 250,
+      "y": 815,
+      "bbox": [
+       118,
+       780,
+       340,
+       932
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "CALCUTTA",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 470,
+      "y": 880,
+      "bbox": [
+       390,
+       815,
+       640,
+       932
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Uttar P\u0101nchuria",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 111,
+      "y": 350,
+      "bbox": [
+       98,
+       325,
+       126,
+       375
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "K\u0100MARH\u0100TI",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

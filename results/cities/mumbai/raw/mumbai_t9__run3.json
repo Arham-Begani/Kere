@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t9",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 5.42,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 279
+ },
+ "cost_usd": 0.0142,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS6AcKEAgSGAI4AUIIdGhpbmtpbmcSDCdajX1Ng+GoEQ0NZhoMosjaPgdSVBFji1cXIjCGGiYyd3OOsRlY/sx94yQAcUvlLadlAV4xoQ1yqAIhyD6NbFyk69TyyZKfxWm/NNAqhQc+9ID/QsdlQmq2HnCmCE+3uwssfdZtv4dDianQe4Ee2l/LUGrMR5VP+u5tUPTyv9M4ylcUC3vNANFh8kVF8bw/o2YLPf3RtjO0OoqfR3RVE8/ikHkpxrWTKTJFg4p3FUmXW9SI2EIWReYMiolUFpIao+vcFOtM58M24u2qIsXrOQEgqQGLDimOkDRNLfuN8cLK7sTxARJp3Z2O0scYNRLwOEeDjAPRE7Hxxqc400SQyPIhUIWnEhQOuDJQuOTUrU7NyC57wbsOCvZUiTMq60SfSyh8AtGnwzyD3mVP2pVH0dqAD1UVKI9DB6KR3ihMKU+W1SdGLo0ZhL2ivprlsFpLfDtLlarYzU6X9/M0YSA/GgfQqQVPneOn/dk8kNN85Qel3GfVoRzW76X4vXOjm7jt+uGrUD1PqQ8m2DZCffTHImRENgKW7iups62tVEu7VFVJ5QuWs5+g+n0jkBteQ5gbH9JGLeuAGPfxWyj8oANNLk9Yjb24vEtU3rGDDDDeozLu5EXcdl+9qIirtHXfOVB3rekc75ZAs/7PRMTYykLTMY0Dn2kx8ms3GQpn7LZiDb1SsrvLy6k5iSLLmZmDjZ9Mk7Vv48z8K4nkTNCfDCFD5IPma3ov1wpfImw1prvEY1nn96ycKfK9jZP8sYHpw9+QYcAY7/kWPm84dWCanjlRv1HolusJY8RZed0RjFaI0PUGowKkwCzcU4VtgwhBvjFRY2BBUAeVdAVku6BBA8l+8O6rYsEWkRvuRQmhU1QxruWpAXaCpWFj1CiFHMabat0X2iVNzdYulYpcJh28P7L7eO91SphJxv6X8c3lWWg2W0ytRVe9ijk5pHxjUKtqjfD0Bo2hMkx2FZ+Czr3Sy6wOTZZXvhmTBsyYkRsS25RsIgTiCD+d/CkAvvf2GqdYipsBpx96Qt/p5vqOzsi4xqU1vemxeKqFUzwBdGXs9/a0Mh8uJexenZiBv+wSuOYHfuP4EAv9xdZ/MrGtHybtP2mCdMWeUqh/uiV+BcGH3VCmUuVNA0YwD3JuC+6HAou0NthlBixfjZh9iwFmRDfASt9Uk87/sRQfAx7zTGyLQKu5jCo5SjoZMRBKAfu4r8Gk3/BhzlMUIemLcFvfy/g7iKXBF/HKEuGYcZ+roP1RjZVDpO/9iuGpq2LBfjCj15exY0NeKk8sW1LB5rMzW4x71inTuOJ7X77aGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01LMceB3TeGNXbcxb6ywkiw8",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

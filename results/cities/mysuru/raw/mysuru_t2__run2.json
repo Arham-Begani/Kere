@@ -1,0 +1,108 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t2",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 10.43,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 822
+ },
+ "cost_usd": 0.0256,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 760,
+    "y": 102,
+    "bbox": [
+     722,
+     78,
+     790,
+     138
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 420,
+    "y": 566,
+    "bbox": [
+     385,
+     552,
+     448,
+     580
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Thorena Kat\u016br",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01XSTqe8oYPdTfyU7wp9QTDF",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 760,
+      "y": 102,
+      "bbox": [
+       722,
+       78,
+       790,
+       138
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 420,
+      "y": 566,
+      "bbox": [
+       385,
+       552,
+       448,
+       580
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Thorena Kat\u016br",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

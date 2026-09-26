@@ -1,0 +1,80 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "pune",
+ "tile": "pune_t2",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 6.51,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2330,
+  "output_tokens": 457
+ },
+ "cost_usd": 0.0185,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 871,
+  "image_height": 926,
+  "tanks": [
+   {
+    "x": 380,
+    "y": 520,
+    "bbox": [
+     0,
+     458,
+     466,
+     772
+    ],
+    "name_as_printed": "KHANAKVASLA LAKE",
+    "nearest_place_as_printed": "Khardkvasla",
+    "style": "solid",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS9AgKEAgSGAI4AUIIdGhpbmtpbmcSDGajSNGkKrRCkusOJRoMcMtp/FRwxhtQ9qYfIjB0POMfA6bZaJkn406tikC0xztSR8bv0DNQkqvmIz9KzPCXL71x4LiaKR00UCoJ6KcqkQgZTzM73/joSdtxbKBXMsbLgnA6qCpBhbKfrXfBINizN1AY5iCKj3fNFQNUxVfCjJRJjaIpVfi+xGa21MnyaRqij9sLclNVGqTk5Q4ANlEr1RGsg0g+0y6M7UpH0PbF41TZt2Kaji64D13PG4Eac6TjlQMOkkI6/B7ItihrHEPIksjLn1aatVisGiZQh9NtWkGtguUYpGAXGaEBqUw/+cvrE+s+yfEHy05WOW+4Dy3jLUKYJWXWdMv1eI9V4yXw9Q2A4wOJ721C0aTwJwcnA/waUVpkPEjKYasHbW0w6OUSdsSxopt0CSpgvpUVhulvse1nkAk4cg0gzRERtCH0vYb+aaM3DQHg9hHELmNVPZRB5p/OZPwftLMoWBYQpQ0bEeEaXLJ7m2Y49ED2YV5Pq+amwJoOGh5c60fOauJiaLu25XEUDVjutqBiF2f2zQclho4H+cXgoSPXfdDZSw8OasmDOJriUUva2PgjmYsZIhE9ZxK63Prs7jJMVbe9NfRuFUwLEAPz6nY63s2FRrsbHnXZgvPxUd2Pko6r8afyV6p/csxl3KBxZ12laqiKJcvSesrHn4Bk3s9+V4f9aPB3I4NdQavZNKGFFO4/2eI1/AzztVPMU0TqW8hCB4S/2rJSbPIkQLDPikwDcuaSVa+ZEAYU92PJZ8l46gACx5v5TbPjjB4Xf4C7sfFzRk7FueJpGdWUR2srPmkjDUkNElzcWfV15muN4ucsPw/0yjqs489RfKaVfp2RzkNRjMvmB4AAKby9NUkTMKK2Rotcb/U4IORa5XUdPZB4JtQEAU9HZa/EzUXzE6mdRLbXF5tHarYAAPJEBLybOvuEMjY9v1TFNBGpQoTP5waLO0neIxQeOlzHnmZYgCEhvkTBuMFz60KWNckV3fn1PFXmN8cKU99ULZ+d4o3vLiRkAxk6R8Wmwen2+t9dlrEO0OuqJ0yB+hmmYnQ88a3a1Rrgrju3Lu9V2r8B1w/SVLsE+6qlYiV5vAoByx1ZePOkCQrJttvNAROdTwzTPtdm0lergcTCP2lvsnK56+5H4ipi/P2NxkZcVdiTkmysxMpCIc7hoGJPo5+nFo6RKNx72XUPh4f+9tBFCNaqxzB/1DSl+ADoHmGqd49GyolXS6VrxYWAWLKd+DgvrWt8UnsfDYqAvJSObtRnBYPsZiYw+fLZP78zYZTbjR9EQdMQ2FADn/JROOtYI59WssnsL3u4X/dWbaAU4EmQSIMXexILv9U7mQMNBPVQu1XyJi9IF/wcAoNYvGg68xvNfcSxygEvNJFHC+QnPeQ8CVNN8PIA1uakp2JowyLlKB3xwp570U2MUjcsm5BoQvKKo2HuRzGZv+PMlhBNMXNxbaq/774584poSekbq26B2KEEH6gYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_0191D3AKD6PpFC9SEoniWSYK",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 871,
+    "image_height": 926,
+    "tanks": [
+     {
+      "x": 380,
+      "y": 520,
+      "bbox": [
+       0,
+       458,
+       466,
+       772
+      ],
+      "name_as_printed": "KHANAKVASLA LAKE",
+      "nearest_place_as_printed": "Khardkvasla",
+      "style": "solid",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

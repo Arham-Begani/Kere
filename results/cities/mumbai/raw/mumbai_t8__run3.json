@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t8",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 7.4,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2175,
+  "output_tokens": 441
+ },
+ "cost_usd": 0.0175,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 813,
+  "image_height": 847,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQS/QoKEAgSGAI4AUIIdGhpbmtpbmcSDF7q0+00gIp/sNs+uhoMxRWKXBCRTTa0O9Y4IjC9f44JFaArVwJFQzQ0yzfio7zhAHjFE94b6PcQzgiXoJWx7fiDagN7VZCyodq34OEqmgqHYfylEaldf/eGX35QvUtLFy3UZC0gkIlFlN0rN5neoiYIsw4FLdDYZ8uEi/Wkl1AsrhzGQ4mIBgw8PzW/YtNr9utgSEQSKldYK8SPrI2a6nNSaf8Q6GeMJAg5/lRZZHxSesBOxHG7zXEb9Q7+RcQMFW3OfAmCFoaB0fg0Tbdrb+foPGVrZvLgYMIJ6gW8nCV9QV0oYQ26jVqol5xeTCfB44ebxUK2oViF/6iw21ecy3If293S7z/8AeoQnAduG4SO03jsoMFKPhqmM7VIBLUk6OFfvr/kvHFIXVX8ms5oC4iCNz56RxW7Sj7Q7nYZZch4HaBXduwTlE8nji4li7tgRSakMGXfv0YONez6eZep1fgjsrRcGn4Pe90nXdekQNKmhLo8cD+/BqTDlV12CAi/snc17ByIRQpcVLPhGKwfMu9g8f9JcrERl5WZyUpiwFKer3SSLrGL7TOvDf+Ia/c2LRNmav+idVUMJ1tjGZNV9f+j9aJWGBgKQgJVM35SnOWLhnqkiN2Jlorb0eviaiehk3EkuMRZ7xhtjocwNE/pyWMLYXJ+yVXdl1noqH+pph91IZJXDw3EHDmUZ03RFWs4bKH/b5FU+HWecIKZxBZBCisL6D4zvs+kp4P6l6MHLavFmiL4usfa/sa4/99c6ITWpH7KyoTycXw13r8xlLMYoZ+XkerVojdmMPliya6QCVcy/pnKYNWn9IMcKVozqpGoXrs2zyJhZwjYPfHMBZwIEg0fOutnX+eOThCWM8p2kwPJ3rR2sVi3jv4of5Gz5io7rzYl5LF1cBivOn8TcFHCQQu/YK6ojLLfdEEX2tF1SaaUhMTW1s381C3pqFjN0h9UEDU6TRqL/nLdLJ6R9ncVY0l494gZeXtLRdTs4WWLfSf2OqRbujR7fMvwKO5UWsW4GXA4L+LIARNo4qonNrGjQ0yQm+9SJns5JDQqV69MIHWOKYtOjQa1XuDhugQkI7nnEGOP1uZGVvtOjuLi1NqAc7yNPyeKCgIixw9B9m6Y3t8qrAOr92rBo/6iUsF/dIkFvvBiAMEmf05VIqokvoBvTqInKahn/sjBQgeb6gQtDcZy5Q+GP8P7PnhaX15OlhFWrrQPrByqrKQcYLlPmhKNg1yA9xvFPcIdnjFUDVYCp1IqKdyj6NBHXXp2qj4pDYXLNE1lX/yf4P1nI9RyVevVrPnP7XkX61dn+HztAzJEiidGKxjccvVilejFs2Te5gBh8ztAg8yaA8uG2fqmJjwsSNPcrWEgZG6nBK/PWe1OgbOrSXOGijEM1twWU19O9Ks/9oYYUiy7tnX8LBlCHtvYqu4F0SRkHhiqKEXZtagYUD6LDhK/LYdoBZLfAnwnZcrRUQ3czxwRKYYt9V+OlwuJDCMrvVpyeY6ecXetz0m02gjcTS5ERDdplwN3kYW8txrMUEAkHQK14e3RyetyhVvSGiLD5Wz7QCcBU9I/Yfve/p+h0OciQX8NpVHXQrmIYPSVrBevoUU+Z//vTEyE7FsqAuqnxuQ1Qj9gr9mg06Vqc1kUCTvpKC1NKwVb3yfCCcCzAitp0qFXmD2gHE2gBz8W6rlbGRk6kg/cOn7WDejTfOz1RASkieFIPSg2NOEqvXWXoBlFCm6keJ0R5pcRSxn4ij6Owqf60tCC1fA7bJa514udvKeyRqfc+czUAN1klx8kqgloTvOMPbIYLpE/ryTO0qYzUpCqBuNGVozbjpwhcg6FQ5D1RGQn80uoGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01JczAbJJUEM7vtyAVCEuwcM",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 813,
+    "image_height": 847,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

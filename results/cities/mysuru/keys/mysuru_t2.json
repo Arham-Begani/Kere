@@ -1,0 +1,13 @@
+{
+ "tile": "mysuru_t2",
+ "city": "mysuru",
+ "image": "tiles/mysuru_t2.png",
+ "sheet": "city_front_250k",
+ "width": 893,
+ "height": 923,
+ "origin_in_sheet_px": [
+  1710.0,
+  2384.5
+ ],
+ "scale_in_sheet": 2
+}

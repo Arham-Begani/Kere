@@ -1,0 +1,26 @@
+{
+ "city": "mysuru",
+ "reference_lakes": [
+  {
+   "name": "Krishnaraja Sagara",
+   "offset_m": 1793
+  },
+  {
+   "name": "Ennehole Kere",
+   "offset_m": 338
+  },
+  {
+   "name": "Dalavayi Kere",
+   "offset_m": 493
+  }
+ ],
+ "median_offset_m": 493,
+ "n_tanks": 11,
+ "n_surviving": 1,
+ "n_lost": 10,
+ "surviving_strong_overlap_share": 1.0,
+ "n_refused": 4,
+ "n_osm_water_features": 238,
+ "passed": false,
+ "reason": "median offset 493 m >= 400 m"
+}

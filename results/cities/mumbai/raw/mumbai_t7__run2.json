@@ -1,0 +1,220 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t7",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 9.63,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2144,
+  "output_tokens": 843
+ },
+ "cost_usd": 0.0254,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 812,
+  "image_height": 847,
+  "tanks": [
+   {
+    "x": 430,
+    "y": 566,
+    "bbox": [
+     423,
+     555,
+     439,
+     577
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kolgaon",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 361,
+    "y": 698,
+    "bbox": [
+     354,
+     691,
+     369,
+     706
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Avas",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 464,
+    "y": 712,
+    "bbox": [
+     459,
+     707,
+     469,
+     717
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zirad",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 537,
+    "y": 737,
+    "bbox": [
+     532,
+     732,
+     542,
+     742
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "BORI TEP",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 433,
+    "y": 782,
+    "bbox": [
+     428,
+     777,
+     438,
+     787
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zirad",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 740,
+    "y": 770,
+    "bbox": [
+     735,
+     765,
+     745,
+     775
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Narangi",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS9AoKEAgSGAI4AUIIdGhpbmtpbmcSDMOgVakv0KS/LggOxxoMB+QmzFF8TMcV8O3pIjCOfV2hXkQvadOGZ6C23GUeLvUOzIWIwdAcWyk2rgjW+JS95vkfaK6z3JjkcNUbyOsqkQoHHV+TOrP/a2IzKFQY1PLxPzCHR/QtTzigjjFG4KDi6WEqaXB8BjYfcty/UcKG24FR3R1FjR55FV/hBJc7R95LZWxoEZpWerenFs5n/Zyy+UD8AgIjB9JQJlp93B5rNTEcReeeS0UArMgvPlS+uczfTY9aYutzq8COag2SFog4Wg0FhrMJInDrFfnsaYj0fC95XSR8bZL00v26DPz73JDhbmJXFuNVmpiS7WcbgDkGSZEF0YpcoydTINnOZsLhoFZfPjL8LDulWCQc9DpWY1nsA8We76qiZ4mWtDAEokwUd2+0JrfblqPqXaaUxAHxsyD+9K69zLgR7na3xDs2ouHzFm4jJPUNFEsh3nyHUVaG6/wdm2c4WyKXo97yxqhOH0sI1/JFVUjRQJEQvHdSN2ZhcEH1GInjqbzxXEsZSQuTOCX4+JPbrljnnh35cqCBl/WDoXx0NHXB6wCpTVH005HMRizNCiPT05sYrx1Jb9ub1Pfv5xPp9zvwnFbczO1RsbyC7rRR7gHZbJ8nJ1kVlhYaFt5lh/Dv61OA0xufn8kEUwLURSKrTq0BVJhWAJJmd3Z6a6ZiwDiVdIJIujOMB7lRFJUBBkmOvdbiAmn69RmPIulLUzVbnmNPmsr2WO8B1bBtDwx/AmmbhKAp5fAR+Y/FlUNDHNLHrL5Q4b5E9VDZ0Vdkm6ZtcsYNO4FLuDYS64Fu7Y2v9g88xPg6GchxPu+BZ+HZYBSy/kRYNAqtwcK/sEEoi7S0V4e7ZNpRGKeuwUbG7TNizLsE8UvdmP7fGc/RaXRxDbAdKy5eyy2GamsF/h4yA6hjI5+6RL4s0SwNkEP08Q87GCuIc7Q99OhrhSemOy12esYj96C8vyqhX1FVuUOlnZNCEll6tn5hEvbLX0mfZYcnryDSvahg1FPseNdxDGkX9o9Z2r4y1wKXXt/CmCiKRImLHJ7lKFjl+V4psP7JYwDWfubW7MIQa+QmJEk0trkWceWz0kCgeuVZcboh31Ghd23XuBXl/Gi5Zo6D9LJUixx8JSXriPVoVQ7x5DJ1XNVYSYHECy+eicKjAukDlAXbM9/FFkMR9TI5pE/qmHP1edZwS8wWqd0wmq4smlhj2YoUZk40LLTF7sSHL2EE41qoxGLGm4VAa7PDjSwovNpMS1D/YEUlXYkLHmNNf4Ow57Immcv9Th32WtBpQqFAiiv9FVY7D2pBaRietErwSOuVd1NVpgBCDKWU/Lt7sHO7itJcYZ8vupNbeXG56qYr5Nc4gKjcxqxhtrLaTZqptH8fN0xFSom80ZiD4N2QD0Okly4A08+l6lfUxirfuohTbmVLu/LSM00uKSm7UHPTNTGVyjWr2LBYPkgiVJyaIVrTlk1vcKUyTwIaV9QMl4GlSF9OwdvtMsUhdLTik9lkrpQzF5ZZ80sz0XgodvtmJGw599Vz21d9m72najgZI11Sg+ly+9NiwZPl0dZmOY3RRtO0F4iLzT/o+75825LLT17z9MNhg90oIZeWJsM8+28Yg2GjaZHv8JTpx+iuDD9jt49S0eEAOT+0L1s/D1VGOuVzj2lyKruEabG4JepMrDeiLuuLv/61WsSXrTEkg0527bpfdhAwu2YCMEN8jFssxxENvgyh1iqVMnWaB1dcl8N+kC1zwVTrE240+JDVErZMPkRnDTV1jhm7tX9BcI6jueftzE0jul6Wf3gmtHLZTQErzzgIBMBlkcFxx/611TkYzEVBGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01YamsQ4QmmkWupZTfLqKB7i",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 812,
+    "image_height": 847,
+    "tanks": [
+     {
+      "x": 430,
+      "y": 566,
+      "bbox": [
+       423,
+       555,
+       439,
+       577
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kolgaon",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 361,
+      "y": 698,
+      "bbox": [
+       354,
+       691,
+       369,
+       706
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Avas",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 464,
+      "y": 712,
+      "bbox": [
+       459,
+       707,
+       469,
+       717
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zirad",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 537,
+      "y": 737,
+      "bbox": [
+       532,
+       732,
+       542,
+       742
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "BORI TEP",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 433,
+      "y": 782,
+      "bbox": [
+       428,
+       777,
+       438,
+       787
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zirad",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 740,
+      "y": 770,
+      "bbox": [
+       735,
+       765,
+       745,
+       775
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Narangi",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

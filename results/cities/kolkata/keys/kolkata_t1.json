@@ -1,0 +1,13 @@
+{
+ "tile": "kolkata_t1",
+ "city": "kolkata",
+ "image": "tiles/kolkata_t1.png",
+ "sheet": "city_front_250k",
+ "width": 816,
+ "height": 932,
+ "origin_in_sheet_px": [
+  4222.0,
+  1098.0
+ ],
+ "scale_in_sheet": 2
+}

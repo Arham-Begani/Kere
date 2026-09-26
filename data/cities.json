@@ -49,8 +49,8 @@
       "bounds_lonlat": { "lon_w": 72.0, "lon_e": 73.5, "lat_n": 19.0, "lat_s": 18.0 },
       "compiled_note": "Prepared by the Army Map Service (GURC), Corps of Engineers, U.S. Army, Washington, D.C. Compiled in 1954 from: One-Inch Series, 1:63,360, Directorate of Military Survey, 1926-44; Half-Inch Series, 1:126,720, Survey of India, 1929-30; British Admiralty Chart 738, 1907-08; USHO Chart 2460, 1939; French Hydrographic Chart 5261, 1905. Planimetric detail revised by photo-planimetric methods. Road classification should be referred to with caution. The reliability of vegetation information is undetermined. Names for symbolized populated places are omitted where information is not available or where density of detail does not permit their inclusion.",
       "city_center_lonlat": [72.8777, 19.0760],
-      "window_deg": 0.15,
-      "note_on_window": "Mumbai's real centre (19.076N) sits just north of this sheet's 19.0N neatline; the window is clipped to the sheet, which still covers the harbour and peninsula shown on it.",
+      "window_deg": 0.35,
+      "note_on_window": "Mumbai's real centre (19.076N) sits just north of this sheet's 19.0N neatline, and its well-known lakes (Vihar, Tulsi, Powai, all >19.1N) are on the next sheet north, not this one. The window is widened (0.35 deg instead of 0.15) and clipped to the sheet so it reaches south into the mainland/suburbs this sheet does cover, rather than only the harbour peninsula.",
       "reference_lakes_hint": ["Vihar Lake", "Tulsi Lake", "Powai Lake"]
     },
     {

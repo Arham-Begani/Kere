@@ -1,0 +1,34 @@
+{
+ "city": "kolkata",
+ "corners_px": {
+  "tl": [
+   352.0,
+   238.0
+  ],
+  "tr": [
+   4630.0,
+   238.0
+  ],
+  "bl": [
+   352.0,
+   3340.0
+  ],
+  "br": [
+   4630.0,
+   3340.0
+  ]
+ },
+ "window_native_px": [
+  3814,
+  1098,
+  4630,
+  2030
+ ],
+ "upscale": 2,
+ "tiles": [
+  "kolkata_t0",
+  "kolkata_t1",
+  "kolkata_t2",
+  "kolkata_t3"
+ ]
+}

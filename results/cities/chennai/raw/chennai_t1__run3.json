@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t1",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 8.59,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 362
+ },
+ "cost_usd": 0.0155,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQSuQkKEAgSGAI4AUIIdGhpbmtpbmcSDDKSCMpzqkFWIKpKohoMwtQ3bgoUaJg2B/kcIjBbWC9daEGv87Qr/n2Ote3hwga7Ch3XxuIph6gKX2pY7TTLNMxNhlq4mCzlhfgKTYAq1ghDze4UA80UYBHUOB6BM0AWVhcbDdn71BZXFYiSyPuzHMT6L+ydcY6DXl5cpyPhp+BrhyXEVumSjB1BPoqE9jB4k4s2sdu7elYlwD1mmpnT4OFgleH4+TA04qRHmWLdSBQ8nDvv9X/b9ns6xgYK/dgiFNV6rxHGi+DA1b3dOVFbvyuMyBZene8UCit0KBPe2iQwZnkmWFMeAm/QCxPW+Xo8b4W8k7j5ZaPEKUzq10M3cODewWZGGdM3BPGyDesX2mSSc7Qw00Mqc5/ud4zsc1BnO4lgtIivosnHsu6VCgGmd+ru0zApa1EQ0chfjYSThVpgscIAiKXn0WExQcd4brUESGMPs8u1GKuhtGAPorDpAT67ad5T8J6+Huf9oEsE/6w5NRmfTL4xOsEXpy549YM3uc3I9TVijqLD0SOtF9hYN9wnrVy9NDNN59z70LX8POSp7Z8H26otbuAhJk3LSyw9lYat8BtlVJDTbdy1G+3dvNqQ/qdSfbaHSgLUrzs5T07v6GegiE/jSgzKOYS4gCF+kuQpLf4TtjBSh2eNcRaZT+1mDmuAOZobX2V0MscUmwrFJCQ8IfK1gGv1yxljhhdBF+Y3bfsEvs8rvPX86r0YTPwDtX1OnHMJrx4P+J49d0RLDMkNT9brIic95tt8r7/x/QRDNpWTwlIg10I9bHcYPEOco58srkzWMp0lrHqTle4NOATPkmVBFcYLWOkWY1pTSycKmznwZ6+J11/2zHC12gYEhxtWBD+WqlncqGDqpXfaPN1XohxfxjxzXGpOs+SUwWtd0CKm5B1dCEM1upxpKmrJzvY4MtbUh8d9xkZBdAHTTBnf7Pav2oxVWKB68hOh/b9aVYl8XKM1mLH3KePwOUUfgQZAydFPZDhdy7foF5CdzmuZ7V90S77jFGJtAjp0xF1+LVahXcFraqiQba/GIt6PBWC8eLDFJNQfpyA2X0Yj6neFizg2bgKfO+hdaezO8S3HVs3mKPlzwZdc49V/6m+pjI05uWMBHHn4Gsf5Jpql/1ziNo7xZZqnna+0TqQ5RUDa2I8/k2lyPELgEppqNMhR3WzJRscTB3fsn4T4MuKy74BvBpSA58FkxCJNSqOyc51p+4Xf6SHIIBk5Zbdm4T5/DS9FeTOyZR0bkqN4gOJS4E3JbK51xq83eVVziW0TeOi3vSc8VGguwPW9Pbtvee1t8rOh2Pb6t8HgBkmaFA+/0KUe2CrAnlpKTZ7YkArxYXM/dMA4qNbRRuB5SQFC9es+1pQqR1ELt4eiCyXWQTvwsLtqzaGPFNmP56tJXE4flpRz53ACq3nG6hcCF+6W3FGcyXqpP8L3Zr/5BrmiL3hK688jpM3X+RiQ6KnLh+Ktpnf0xs10vn+cnSBsv2haVLzCz3j0h/ZBAezqma9l9Z9pYQXQFgPBJa2g46kGOBYTl/9LwgFNrrkQyDQDr5p5W0lQR1xETs2CwO8GIC6+SWFOHVG1ntsYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01DNiPFaASNUykjmzj78L4Ug",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

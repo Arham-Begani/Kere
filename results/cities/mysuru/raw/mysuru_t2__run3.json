@@ -1,0 +1,108 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t2",
+ "run": 3,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 8.83,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 654
+ },
+ "cost_usd": 0.0223,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 762,
+    "y": 102,
+    "bbox": [
+     722,
+     78,
+     792,
+     138
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 418,
+    "y": 565,
+    "bbox": [
+     385,
+     552,
+     448,
+     580
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Rest house",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01AfGDYJ1MwkEhkrJogHd9rt",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 762,
+      "y": 102,
+      "bbox": [
+       722,
+       78,
+       792,
+       138
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dy\u0101vayyanahundi",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 418,
+      "y": 565,
+      "bbox": [
+       385,
+       552,
+       448,
+       580
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Rest house",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

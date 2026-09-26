@@ -5,3 +5,8 @@ __pycache__/
 .env
 data/raw/plan_25k_autocontrast.png
 .claude/
+# regeneratable from data/raw/cities/*.jpg + pipeline/cities.py --step tile (keeps the repo
+# under 100 MB); results/cities/*/raw/*.json (the actual model answers) stay committed
+results/cities/*/tiles/
+# regeneratable QA diagnostic image; data/cities/*/qa.json (the verdict + numbers) stays committed
+data/cities/*/qa_overlay.png

@@ -1,0 +1,13 @@
+{
+ "tile": "mumbai_t6",
+ "city": "mumbai",
+ "image": "tiles/mumbai_t6.png",
+ "sheet": "city_front_250k",
+ "width": 813,
+ "height": 847,
+ "origin_in_sheet_px": [
+  2255.0,
+  615.5
+ ],
+ "scale_in_sheet": 2
+}

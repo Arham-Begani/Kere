@@ -1,0 +1,79 @@
+[
+ {
+  "point_lonlat": [
+   80.266162,
+   13.224748
+  ],
+  "point_px": [
+   4032.5,
+   2578.0
+  ],
+  "tile": [
+   "chennai_t0"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (89 px): text or a speck",
+  "crop": "crops/refused_000.jpg",
+  "bbox_px": [
+   4015.0,
+   2560.5,
+   4046.0,
+   2595.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   80.143603,
+   13.148425
+  ],
+  "point_px": [
+   3668.5,
+   2813.0
+  ],
+  "tile": [
+   "chennai_t0"
+  ],
+  "runs": [
+   1,
+   2,
+   3
+  ],
+  "reason": "drawing under the point is too small (122 px): text or a speck",
+  "crop": "crops/refused_001.jpg",
+  "bbox_px": [
+   3662.0,
+   2803.0,
+   3675.0,
+   2821.5
+  ]
+ },
+ {
+  "point_lonlat": [
+   80.198401,
+   13.034183
+  ],
+  "point_px": [
+   3831.2,
+   3164.8
+  ],
+  "tile": [
+   "chennai_t2"
+  ],
+  "runs": [
+   1,
+   3
+  ],
+  "reason": "drawing under the point is too small (97 px): text or a speck",
+  "crop": "crops/refused_002.jpg",
+  "bbox_px": [
+   3826.2,
+   3156.8,
+   3836.0,
+   3172.5
+  ]
+ }
+]

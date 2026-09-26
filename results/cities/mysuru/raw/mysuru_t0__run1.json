@@ -1,0 +1,108 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t0",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.2,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 800
+ },
+ "cost_usd": 0.0252,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 440,
+    "y": 60,
+    "bbox": [
+     0,
+     0,
+     575,
+     275
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Krishnar\u0101jas\u0101gara",
+    "style": "mixed",
+    "partial": true
+   },
+   {
+    "x": 875,
+    "y": 785,
+    "bbox": [
+     852,
+     758,
+     893,
+     812
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Bog\u0101di",
+    "style": "hatched",
+    "partial": true
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01JVtp6G82j7dJrfAHUAju7f",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 440,
+      "y": 60,
+      "bbox": [
+       0,
+       0,
+       575,
+       275
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Krishnar\u0101jas\u0101gara",
+      "style": "mixed",
+      "partial": true
+     },
+     {
+      "x": 875,
+      "y": 785,
+      "bbox": [
+       852,
+       758,
+       893,
+       812
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Bog\u0101di",
+      "style": "hatched",
+      "partial": true
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

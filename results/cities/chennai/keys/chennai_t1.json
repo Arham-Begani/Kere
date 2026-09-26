@@ -1,0 +1,13 @@
+{
+ "tile": "chennai_t1",
+ "city": "chennai",
+ "image": "tiles/chennai_t1.png",
+ "sheet": "city_front_250k",
+ "width": 892,
+ "height": 717,
+ "origin_in_sheet_px": [
+  4046.0,
+  2553.0
+ ],
+ "scale_in_sheet": 2
+}

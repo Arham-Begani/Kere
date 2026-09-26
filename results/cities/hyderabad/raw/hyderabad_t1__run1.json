@@ -1,0 +1,276 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "hyderabad",
+ "tile": "hyderabad_t1",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 13.1,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2208,
+  "output_tokens": 1218
+ },
+ "cost_usd": 0.0332,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 820,
+  "image_height": 893,
+  "tanks": [
+   {
+    "x": 226,
+    "y": 422,
+    "bbox": [
+     200,
+     396,
+     265,
+     442
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Safilguda",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 746,
+    "y": 285,
+    "bbox": [
+     736,
+     272,
+     757,
+     298
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Deserted",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 551,
+    "y": 620,
+    "bbox": [
+     540,
+     610,
+     563,
+     630
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Chengi Cherla",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 570,
+    "y": 693,
+    "bbox": [
+     560,
+     686,
+     582,
+     701
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Medpalli",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 468,
+    "y": 785,
+    "bbox": [
+     457,
+     772,
+     483,
+     799
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Pirz\u0101dag\u016bda",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 657,
+    "y": 70,
+    "bbox": [
+     646,
+     56,
+     669,
+     83
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Cherial",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 60,
+    "y": 690,
+    "bbox": [
+     46,
+     676,
+     76,
+     705
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Zamist\u0101pur",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 661,
+    "y": 396,
+    "bbox": [
+     648,
+     385,
+     675,
+     410
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Madara",
+    "style": "hatched",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "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",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01QsJ26NfiqVZmz92DmkdiLk",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 820,
+    "image_height": 893,
+    "tanks": [
+     {
+      "x": 226,
+      "y": 422,
+      "bbox": [
+       200,
+       396,
+       265,
+       442
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Safilguda",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 746,
+      "y": 285,
+      "bbox": [
+       736,
+       272,
+       757,
+       298
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Deserted",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 551,
+      "y": 620,
+      "bbox": [
+       540,
+       610,
+       563,
+       630
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Chengi Cherla",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 570,
+      "y": 693,
+      "bbox": [
+       560,
+       686,
+       582,
+       701
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Medpalli",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 468,
+      "y": 785,
+      "bbox": [
+       457,
+       772,
+       483,
+       799
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Pirz\u0101dag\u016bda",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 657,
+      "y": 70,
+      "bbox": [
+       646,
+       56,
+       669,
+       83
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Cherial",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 60,
+      "y": 690,
+      "bbox": [
+       46,
+       676,
+       76,
+       705
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Zamist\u0101pur",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 661,
+      "y": 396,
+      "bbox": [
+       648,
+       385,
+       675,
+       410
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Madara",
+      "style": "hatched",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

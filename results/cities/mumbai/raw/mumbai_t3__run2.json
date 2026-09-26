@@ -1,0 +1,192 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mumbai",
+ "tile": "mumbai_t3",
+ "run": 2,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 9.9,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2175,
+  "output_tokens": 790
+ },
+ "cost_usd": 0.0245,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 813,
+  "image_height": 847,
+  "tanks": [
+   {
+    "x": 469,
+    "y": 157,
+    "bbox": [
+     465,
+     153,
+     474,
+     162
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Kambad",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 380,
+    "y": 376,
+    "bbox": [
+     376,
+     372,
+     385,
+     381
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Selghar",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 601,
+    "y": 349,
+    "bbox": [
+     597,
+     345,
+     606,
+     354
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "M\u0101nghar",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 413,
+    "y": 473,
+    "bbox": [
+     409,
+     469,
+     418,
+     478
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Jasai",
+    "style": "solid",
+    "partial": false
+   },
+   {
+    "x": 472,
+    "y": 461,
+    "bbox": [
+     468,
+     457,
+     477,
+     466
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Jambhulp\u0101da",
+    "style": "solid",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQSuwoKEAgSGAI4AUIIdGhpbmtpbmcSDL0Bk3261NRilhuz8BoMUGrZXFccP/OmnCbtIjC5suYiwfyRLrQEp4BXNPlTtpLlSXeo7jks1TfnwkwWQvncUIT9fVuGs4LVtzOUGg0q2AnRphGGyYBtcz402W/TtJ5nhFgdfwbXqmdgGfP6tYpHrInVOLpECb04QUGC5LLqp8pQ8T3thv5qqbbqIWioSUA3SndC+Y+DRklXF6W9MaMKTLsFvQlUaJRKweOhrh95jFW03PU96HbbROUl1v24u+YSaX74gOhvtQW/MxCz6M5WmBPh//JttfIqj1lqzh4UriLErvl5p7W2G75VUupKzJX8TqJRKkMyoz7q5sLLwh9h1mLMla6X+Fxcg++A0aU5EQXCwHWZVuLVC6Ts+KpxDAS7dgfE6hhqUeGBA1O/Gs+i5lo/lKLp2odCPHS0H4WFURwos39tyfSmfNnnKXTf64HU2i/j2Z3u876Cb7EOTDhunGfsYN+XtPz35OdD7tQPdGsKaBc/3m3EZoV0ur6y8WPP7JwXovCxwzhbSY9nlo2wy9tt6FBm6K3T9a0T3vuRICzXOghFQi8b4ehBqDXKVUkBh8+96mVD1rEuP2eDMepP8G2qUgx6MeNt6c13yOCMZzt8HtthCkHcRWChkJ7sUqBnyDJFWnL4ZmoNmdI9cTV9CGQqOeiKiulIql1NFX1FoXZlj5uLaJU8em2LgOTx1RKFcvQVEW8cM48BZHQs3wDZavc4//8xCl1gQn2VsI4vcFyyo9uhenlsJeebUnATqVjnxAW2mfczQ7IcIr3B/vJgY9SQUR+cOKYEmWWAbhWSuT0R+BLtPMpDUuU7AGHoZwleVv+I0NuwMR+v0JZfzallqiTlbDY5erZobNdfoOlVrDsgv1WvxhUd7ZsznuRjkv6Cs6v8d9QUy+gFd6iRvxw/6HPaTilcw5CgRrl8padXKE9ZPwaAHgiCLOJ0EtbbBm2kIDrsOB4g0lxxHnGgUDKvfUoB0u5m77cJWjwx4H0Cdp8oHHqdAb7nlXqWAHDCc2FFM6J56zEi34QVP11qlJs/zPtAGBGw6myKnk4ArLX6q7/wAlbc0lIcVENkqpOvr4IkGSdPVPc78lgIrSj1cvwIgr9njbhFyKGwYr8s3lCkacOL81zJrj6LVAkwuQbcHXVaURv8vrI2LlUahMwv/SDRFsnmGRu78f5f3+pux0x1eV+KVkG4C4JBU1TW91GPLFzb+LEido3uih0zEIYwAoKPVXqeLeYg44zm6kaJzaHeHduYa/fDVm6uYXj2O9t25o4i8ExD8c+7hN45zsynr6OeukqzhMDLyuaTel2qC1fnxiWvM2PBIv31bRi7D2QUEjije8PqdsYOS5XTlhapMg1JWvOPT0U1FllXlCGk/t2mnWB1lQzCNfcqkwucF4sM6nmvC3sy5l4zKLLCNSpYJ1Cj4ZU6amfDQ+FVs+N0ajfqZJFc7pwnzH7LnY2IboBxGcLuPr/m98Lurz3SOOtYyJdldeaAUykCVHSNrvm9mMdX6UMgArX+SzlLDEFBEGqmlLhGvQgNReH7UlM0zbtkdlOBeharCWp4P+aTi5BwA9Fw9vQpq6wgiF+erxaa70JszpgMglQ12BYiqHHEC/DuHDEEx3n4fipsJJCmOxv43+SgMtm40fmVnu8/H0UK0lNHZR8xhsaSvUx8Vmczt5jVT9GsUwXsrZFuDNOZqhJPsfKQz7T3Okz9/FQ3E9M99lA4GUw8ysDf/NMdrkQvkAEPnixdWqFceGHbwBCPGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_0171oVZGr8jzn7eHKeKUg1to",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 813,
+    "image_height": 847,
+    "tanks": [
+     {
+      "x": 469,
+      "y": 157,
+      "bbox": [
+       465,
+       153,
+       474,
+       162
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Kambad",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 380,
+      "y": 376,
+      "bbox": [
+       376,
+       372,
+       385,
+       381
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Selghar",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 601,
+      "y": 349,
+      "bbox": [
+       597,
+       345,
+       606,
+       354
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "M\u0101nghar",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 413,
+      "y": 473,
+      "bbox": [
+       409,
+       469,
+       418,
+       478
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Jasai",
+      "style": "solid",
+      "partial": false
+     },
+     {
+      "x": 472,
+      "y": 461,
+      "bbox": [
+       468,
+       457,
+       477,
+       466
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Jambhulp\u0101da",
+      "style": "solid",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

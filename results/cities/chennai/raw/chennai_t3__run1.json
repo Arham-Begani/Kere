@@ -1,0 +1,50 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "chennai",
+ "tile": "chennai_t3",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 4.58,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2075,
+  "output_tokens": 259
+ },
+ "cost_usd": 0.0135,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 892,
+  "image_height": 717,
+  "tanks": []
+ },
+ "content": [
+  {
+   "signature": "CAQSygcKEAgSGAI4AUIIdGhpbmtpbmcSDH28dmTafNt/KlcO7BoMhOeWTe25mth17745IjB+NjXF0hk3WdvjsYUNasz1uH02vLhlxHSww5rdFs86G9BjR9Jw/rulPQuvHKMMIrcq5waeQ9CGQXIz+WI/XVjQycePWey3HPAdgELYuGE8yMPI6bNxzH+aDtrDfSXEs7W8Uy69FOEWxTzzy5LSms5TCMtUwi3+vbUz8suwRlAEmGuCDOTJKVFpRaGi8+ddt+VXDoKv/U+s6dpIpMfpQqFZCE2YBuvj9OuaZ4XwGPmYv/+h9YW+w28a8xEDovpIfIOTXNseTpaBBSRT3Gnu+E/LTmrpWhwHU3xKOXfixdTeFelhPT9A32BS1vzvH7ejCCH4qETwWgqlFbKlnTfJh21/5Gp/YX00AirYucyZZjA5y1ehf2VBbhA4p6zV5Dp1hJ0coxBp9JtnG6tIH8/EcYjCw/dtSFkjcHx080g1SnYYZN1yqWtrQmpDZWSTDHJNrU6XOVuLFtWbdRdubxu4RFBvvaGTzImePCQZteyesoMVDKOCHCUCBiKUEn9OjbSEMk3PRo/rgpyA/R4G3FqtBwzyAuzNyEfwKSwp8Rjb1uf3k2x1WFmpNw5IyFWOzDlSRu3SBUrIceW3Q0mCNTJMavefttC0JcvTge7kly9g6QuGyhEJQ/BwpV9x0FRS98YCJUv03QC2aho0YJlG1Y8YOfzawEU04xLGoItX3EgY/DkV9Sz6MedR2vule/wHTJ7z6r/AxWe6sV73N/s8kSNN/4zFVKBUF608f8NHrwt1BmWUEXbjAbhkFKF6Ir92gIvFVGHEAnee0sg+FSB19d1bw3S9K4srrHQANKJEAAJw1cm6ivnIoDJqo/T06Av3sOtRiiFiYTifkD2SjCggE1y0o1Addad+rlsVNRXcATGJljKiRj3Vd8rh6+N0ohgSwWdnSgVMPqGYnGKzthtOlxMTgHopbzHk/mu/xOdJIvBYSTY7w8l203ox2x7eCCoqv7gcykaLCqJ16ZdTJBmC3q/xvUjopqhRglRpDohePovG5stiGZNtff11bDpdr5HWN3XF55VJH413S2g1F04fltnbJ+nW/OOt2rSwr3mOyjcNuLgvj+//PKB3Oe9VqFTu4wo4aE5iAqgjUZJYLywDq6FnNCggomugZxNM3dOa6E9zj/KAu66OlXipyXqJEqa7wVZxrSzA3TvwAnBAumaRsepIfZYSqA9jQ4CiRnIX/Q/6KdtQVwSLuRSr5GO12wm9o2nWhukXqrXf7QaVikzHGAE=",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01C27XauxcrjAG9fjUCETYXG",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 892,
+    "image_height": 717,
+    "tanks": []
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}

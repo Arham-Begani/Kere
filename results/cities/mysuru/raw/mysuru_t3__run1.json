@@ -1,0 +1,164 @@
+{
+ "model": "claude-opus-5-5",
+ "city": "mysuru",
+ "tile": "mysuru_t3",
+ "run": 1,
+ "prompt_version": "kere-city-v1",
+ "request": {
+  "effort": "high",
+  "thinking": {
+   "type": "adaptive"
+  },
+  "strict_tool": true,
+  "dropped_params": [],
+  "max_tokens": 16000
+ },
+ "latency_s": 10.01,
+ "stop_reason": "tool_use",
+ "usage": {
+  "input_tokens": 2301,
+  "output_tokens": 767
+ },
+ "cost_usd": 0.0245,
+ "parse": "tool_use",
+ "answer": {
+  "image_width": 893,
+  "image_height": 923,
+  "tanks": [
+   {
+    "x": 112,
+    "y": 200,
+    "bbox": [
+     88,
+     125,
+     132,
+     232
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Gejjagahalli",
+    "style": "mixed",
+    "partial": false
+   },
+   {
+    "x": 635,
+    "y": 78,
+    "bbox": [
+     598,
+     48,
+     666,
+     104
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Varuna",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 790,
+    "y": 163,
+    "bbox": [
+     775,
+     130,
+     806,
+     196
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Dandikere",
+    "style": "hatched",
+    "partial": false
+   },
+   {
+    "x": 675,
+    "y": 670,
+    "bbox": [
+     645,
+     612,
+     716,
+     702
+    ],
+    "name_as_printed": null,
+    "nearest_place_as_printed": "Hadin\u0101du",
+    "style": "mixed",
+    "partial": false
+   }
+  ]
+ },
+ "content": [
+  {
+   "signature": "CAQS+QoKEAgSGAI4AUIIdGhpbmtpbmcSDDvu9QWH+rlL5RxSphoMsZdfx9qEMiLDdTYJIjBAsLOniOCFSmbrpgu1DFMAE4RfWYhuG34SWQxhT1LPho2hFWe/HIxlZhfxGwatSagqlgqt4/cZrJOxy6Zv5uyiFVF2JIRngA6I8mzSFEbBQxvIlWGiZr1XvTz8U6wrZlmViJzaprkcbjVW/rQA0PFtZdbex2bNYjwjcgRix+38JxfpFsTnuBoklEg7t+4QRKgWInYZJsK2E9wQU6/883oO9pgvVX3lhy+ytSzWHudBMgDq62aUnEsqYqNhQi9lK1xdhM2yrPZ1VINNo5Q88tQOkA/cIdG2zMWAnEk72NCRgEWHyhvUZEedNoAL+xXzBB+vjdew/6LzxP0niRjkbYNtopB6wk3FUU7WBr89RZsIhfYJclElNfEvoEESlzGwJvjWkfLCsg/XddSF3DdnKltlklwL13NV7GdXnl2vAiU+3HFMy2E33tQ5Sk5LB0Vjtq+EomJOGanDgvFJRAULoAeBeW9zxkDEcL6DiKLRLP4AjWqf5lY4+wCQ9Z3EY3CwhBYts5trmBEf3lREpi4TgB4GsstizXivMewsfF9PY+AqMVrLJnzsoAfrDZdhCTCGBBqZdH0QWWAgP/g70ufNCuPLWOsnWbIgNnIPyN0T/BVsu/IrU1vwfV6tCuaMPFPPJfjibM/rsoKpyrzlQZfAgqDVre3pBvsO6dhm8e2a4EIBY1xRbkOAoa6pqvtCPuQelzMt3Iv8nnr9eEdTmYGq1onU3tYUXPkw/7LDsycgDbFeqnW0U/NAgj9aW0arQGxCrJfW+dgMcCGMXPLwyMwGP14iFIkPQALOh20ZKz17lSV96NPbp25ijH6kQua+hKTCwUFqI/5iFbpk1j7o4trhe2aQxoRFj7uJuix61KJ1Sg17Favs7W03mqCIf0WB5y6tM+mLHM4f8RFfG1Gnv04u1Bfgx69Zaeve+XPH/oLKwC6QQ94R9inw9RQ2CXHNlu1bz9IzIhdFJ8KqqTngz1Av6JgiA2SWiy918ps2BBhpCFu0v6Zb2WLfliQ24bERRNRti2LXf3aRroIopiEo7TK+Z0/cSR8v3lBnX+GXVBzGa/zq+Twac/gWVWpzYb1BXyjTYDiTP3cEHFG+/92eMrZc/4gpA45K7359bdMVyxzMlw8lSYDwlxzJW7AEx3DC5OAPOR9g+K2Daw7nPQHJdWXvUF8c4qmvyt6LRt/flUkxb8H3d8wUSuhprKaaSPVIpg8by+CF+u47WQX1L1rotwz+v0p97/+VJgCOEQ5Md4f6jjSDfvdiXURecx4qXQCwjVVT9M3hjKOHHtxU7nNGoPyMlFgqb5bbCbuSZB7xkCgLuZ05RBHH645ofLtGZG2HZlcj6N2yfF71kLIlWkntvatI8ku3p2XwOfW+U86/pRTBg/f3Nn1Xp/B9WqJ5OyyGKNBZNelg+J//T9mrbICRsw3p9GeCUSGjpMg/PmeStjSUjdnN55H2fVOxrnE5OhAXv3hHxgLt+QBNqCd1glo1kpbWqAKd8inAn1u+FGlzE2oAnXMLVJ+8zYMhBztLH2gdEsiAdgYzWPPHaslGZOhgwNOw7Otqzj9wTBjRh9/VZqxT0EWBMHSSujs5TxGjWd3RO6dbhuB9U9DBYZTn7F7FSSBoT2c5fC0+aje1K1xV0movr07Xt1CaKC3hmy2Ge4/7ETrvXSZJfpAE7xSIFDaIQZD4bIF793vlYAvQgfRHgegWvnxXjsnUD2LqUxnsOkmVvbIfEIhlT3eIsVtm3Jdu4By4338LrPsT7d3BF9AEXdwPeJWbXeghwnryEJLLd1ASYknvjvsj4G+6km622CcYAQ==",
+   "thinking": "",
+   "type": "thinking"
+  },
+  {
+   "id": "toolu_01SHwcXGffU15aejnW6yegxG",
+   "caller": {
+    "type": "direct"
+   },
+   "input": {
+    "image_width": 893,
+    "image_height": 923,
+    "tanks": [
+     {
+      "x": 112,
+      "y": 200,
+      "bbox": [
+       88,
+       125,
+       132,
+       232
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Gejjagahalli",
+      "style": "mixed",
+      "partial": false
+     },
+     {
+      "x": 635,
+      "y": 78,
+      "bbox": [
+       598,
+       48,
+       666,
+       104
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Varuna",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 790,
+      "y": 163,
+      "bbox": [
+       775,
+       130,
+       806,
+       196
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Dandikere",
+      "style": "hatched",
+      "partial": false
+     },
+     {
+      "x": 675,
+      "y": 670,
+      "bbox": [
+       645,
+       612,
+       716,
+       702
+      ],
+      "name_as_printed": null,
+      "nearest_place_as_printed": "Hadin\u0101du",
+      "style": "mixed",
+      "partial": false
+     }
+    ]
+   },
+   "name": "report_tanks",
+   "type": "tool_use",
+   "toolset_name": null
+  }
+ ]
+}
